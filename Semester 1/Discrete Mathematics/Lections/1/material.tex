@@ -1,0 +1,90 @@
+
+
+%\setcounter{chapter}{-1}
+
+
+\chapter{Алгоритмы}
+
+\lesson{1}{27.09.2023}{Продолжение}
+
+\section{Продолжение}
+
+% дискретка
+
+\begin{enumerate}
+    \item Прибавляем 1 к t
+\end{enumerate}
+
+% pic 1
+
+$T_k = M_1 \times M_2 \times \dots \times M_k$
+
+$|M_i| = j$
+
+$(r_1, r_2, \dots, r_k)$
+
+$T_k \leftrightarrow P_k$
+
+% pic 2
+
+\begin{enumerate}
+    \item Прибавляем 1 к t
+    \item Определяем номер разряда в котором значение увеличивается на 1, записываем в j
+    \item Для любого i от 1 до N такого что i > j, меняем $d_i = -d_i$.
+    \item j (не номер, именно такой элемент) меняем с соседом слева если $d_j=-$, и с соседом справа, если $d_j = +$.
+\end{enumerate}
+
+% pic 3
+
+\section{Перебор и нумерации, сочетания}
+
+
+$C_n^k = \frac{n!}{k!(n-1)!}$
+
+\begin{enumerate}
+    \item $C_n^k = C_n^{1-k}$
+    \item $C_{n-1}^m + C_{n-1}^{m-1} = C_n^m$ 
+\end{enumerate}
+
+
+$(a + b)^n = \sum_{k = 0}^{n}C_n^k a^k b^{n-k}$
+
+
+\begin{enumerate}
+    \item $a = b = 1$
+
+$2^n = \sum_{k = 0}^{n}C_n^k$
+
+    \item $a = 1$, $b = -1$
+    
+\end{enumerate}
+
+
+$(a + b)^n = \sum_{k = 0}^{n}C_n^k a^k b^{n-k}$
+
+$(a + b)^n = (a+b)(a+b)^{n-1} = $
+$a(a +b)^{n- 1} + (a + b)^{n - 1} = a \cdot \sum_{k = 0}^{n - 1}C_{n-1}^k a^k b^{n-1-k} +$
+
+$+ b \cdot \sum_{k = 1}^{n-1}C_{n-1}^k a^k b^{n-1-k} = \sum_{k = n}^{n - 1} C_{n-1}^k a^{k + 1} b^{n-1-k} +$
+
+$+ \sum_{k=n}^{n - 1} C_{n-1}^k a^k b^{n-k} = $
+
+$\sum_{k = 1}^{n} C_{n-1}^{k-1} a^k b^{n-k} +$
+
+$+ \sum_{k = 0}^{n - 1} C_{n-1}^k a^k b^{n-k} =$
+
+$= a^n + \sum_{k = 1}^{n - 1} C_{n - 1}^{k-1} a^k b^{n-k} + \sum_{k = 1}^{n - 1} C_{n-1}^k a^k b^{n-k} + b^n$
+
+$= a^n + \sum_{k = 1}^{n - 1}(C_{n-1}^{k-1} + C_{n-1}^k) a^k - b^{n-k} + b^n = $
+
+% Не дописано? на доске конца не нашёл.
+
+\begin{enumerate}
+    \item Увеличиваем на 1 номер самого правого элемента который можно увеличить
+    \item Справа выписываем натуральный ряд
+\end{enumerate}
+
+%pic 5
+
+%pic 6
+
