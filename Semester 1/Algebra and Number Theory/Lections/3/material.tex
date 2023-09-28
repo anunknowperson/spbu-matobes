@@ -1,0 +1,210 @@
+
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+\lesson{3}{22.09.2023}{Группы, кольца, поля и теория чисел}
+
+\section{Группы}
+
+\begin{eg}
+    \begin{enumerate}
+        \item $\R^{*} = (\R \setminus \{0\} , \cdot  )$ - абелева группа
+        
+
+        аналогично с $\Q^*, \Q^{*}_{+}, \R^{*}_{+}$
+        \item $(\R, +)$ - абелева
+        \item пусть X - множество, G - множество биекций $X \Rightarrow X, \circ$ - композиция, тогда G - группа
+        \item Группа движений плоскости, операция - $\circ$
+        \item пусть X - множество, тогда $(2^{X}, \triangle)$ - группа (доказать)
+    \end{enumerate}
+\end{eg}
+
+\begin{property} (сокращение), G - группа, $a, b, c \in G$
+    \begin{enumerate}
+        \item если $ac = bc \Rightarrow a = b$
+        \item если $ca = cb \Rightarrow a = b$
+    \end{enumerate}
+    \begin{proof}
+        $ac = bc \overset{\exists c^{-1}}{\Rightarrow} (ac)c^{-1} = (bc)c^{-1} \overset{\text{ассоц.}}{\Rightarrow} a(cc^{-1}) = $
+        
+        $b(cc^{-1}) \Rightarrow ae = be \Rightarrow a = b$ Q.E.D.
+    \end{proof}
+\end{property}
+
+\begin{definition}
+    Группы G и H - $\underline{\text{изоморфны}}$, если $\exists$ биекция из G в H, т.ч. $\forall x, y \in G: f(x \cdot  y) = f(x) * f(y)$
+    где $\cdot$ - операция G, * - операция H
+\end{definition}
+
+\begin{notation}
+    $G \cong H$, f - изоморфизм
+\end{notation}
+
+\begin{eg}
+    G$(\R, +)$
+    H$(\R^{*}_{+}, \cdot)$
+    $f(x) = 2^x$ - изоморфизм: 
+    \begin{align*}
+        f(x+y) &= 2^{x+y} \\
+        f(x)f(y) &= 2^x \cdot 2^y
+    \end{align*}
+\end{eg}
+
+
+\section{Кольца и поля}
+
+
+\begin{remark}
+    в теории чисел все числа по умолчанию целые
+\end{remark}
+
+\begin{definition}
+    число a делится на b, если:
+    $\exists c: a= bc$
+\end{definition}
+
+\begin{property}
+    \begin{enumerate}
+        \item $a \divby c, b \divby c \Rightarrow a + b \divby c, a - b \divby c$
+        \begin{proof}
+            $ a \divby c \Rightarrow a = kc \land b \divby c \Rightarrow b = mc$
+            
+            $a = kc \land b = mc \Rightarrow \begin{cases}
+                a + b = (m + k)c \divby c \\
+                a - b = (m - k)c \divby c
+                \end{cases}$ Q.E.D.
+        \end{proof}
+        \item $ \forall k: a \divby b \Rightarrow ak \divby b$
+        \item $a \divby b \land b \divby c \Rightarrow a \divby c$
+        \item $a \divby b \Rightarrow |a| \geq |b| \lor a = 0$
+        \begin{proof}
+            $a = bc \Rightarrow$
+            $\left[ 
+                \begin{gathered} 
+                c = 0, \text{значит } a = 0\\ 
+                c \neq 0, \text{значит } |c| \geq 1\\ 
+                \end{gathered} 
+            \right.$
+            
+            $\text{значит, } |a| = |c||b| \geq |b|$ Q.E.D.
+        \end{proof}
+        \item $\forall a: a \divby 1$
+        \item $\forall a: 0 \divby a$
+    \end{enumerate}
+\end{property}
+
+\begin{definition}
+    НОД $(a_1, a_2, \ldots, a_k)$ - наибольшее число, на которое делятся $a_1, a_2, \ldots, a_k$
+
+    Обозначается как: $(a_1, a_2, \ldots, a_k)$
+\end{definition}
+
+\begin{definition}
+    НОК $(a_1, a_2, \ldots, a_k)$ - наименьшее число, которое делится на $a_1, a_2, \ldots, a_k$
+
+    Обозначается как: $[a_1, a_2, \ldots, a_k]$
+\end{definition}
+
+\begin{theorem}
+    Если не все числа $a_1, a_2, \ldots, a_k$ равны нулю, но НОД существует.
+\end{theorem}
+
+\begin{proof}
+    Пусть А - множество всех общих делителей, тогда $1 \in A \Rightarrow A \neq \varnothing$
+
+    А ограничено сверху, т.к. $\forall \text{делитель } \leq |a_i|$, где $a_i$ - любое ненулевое число, значит, в множестве А есть наибольший элемент Q.E.D.
+\end{proof}
+
+\begin{theorem}
+    Если все числа $a_1, a_2, \ldots, a_k$ не равны нулю, но НОК существует.
+\end{theorem}
+
+
+
+\begin{proof}
+    Пусть А - множество всех общих кратных, тогда $a_1, a_2, \ldots, a_k \in A \Rightarrow A \neq \varnothing$
+
+    А ограничено снизу числом 0, значит, в множестве А есть наименьший элемент Q.E.D.
+\end{proof}
+
+\section{Алгоритм Евклида}
+
+\begin{theorem} (деление с остатком)
+    Пусть $b \in \N, a \in \Z$, тогда $\exists! q, r$: 
+    $\begin{cases} 
+        a= bq + r,\\ 
+        0 \leq r \leq b - 1
+    \end{cases}$
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Пусть $A = \{a - bx : x \in \Z\}$
+        
+            Среди элементов А есть хотя бы один неотрицательный:
+            \begin{enumerate}
+                \item[.] если $a \geq 0$, то $a \in A$
+                \item[.] если $a <  0$, то $a - ab = a(1 - b) \in A$
+            \end{enumerate}
+
+            Пусть r - наименьший неотрицательный элемент в А. Проверим, что он подходит.
+
+            $r = a - bx \Rightarrow a = bx + r$, х можно взять в качестве q 
+
+            Преположим, что $r \geq b$, тогда: 
+
+            $r - b = a - b(x + 1) \in A \Rightarrow$ r - не наименьший элемент в А $\Rightarrow r \leq b - 1$ 
+        \item Докажем единственностью Пусть $a = bq_1 + r_1 = bq_2 + r_2;$
+        
+            $0 \leq r_1, r_2 \leq b - 1$
+
+            $b(q_1 - q_2) = r_2 - r_1 \Rightarrow (r_2 - r_1) \divby b \Rightarrow \left[ 
+                \begin{gathered} 
+                    r_2 - r_1 = 0\\ 
+                    |r_2 - r_1| \geq b - \text{противоречие: } r_1; r_2 \leq b - 1\\ 
+                \end{gathered} 
+            \right.$
+            
+            Значит, $r_1 = r_2 \Rightarrow q_1 = q_2$  Q.E.D.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition} (Алгоритм Евклида)
+    даны числа $a, b \in \N, a \geq b$
+    \begin{enumerate}
+        \item если $a \divby b$ - конец алгоритма, результат = b 
+        \item если же не делится, то алгоритм применяется к паре (b, r), где r - остаток от деления a на b
+    \end{enumerate}
+\end{definition}
+
+\begin{eg}
+    a = 22, b = 6
+    \begin{enumerate}
+        \item $22 = 3 \cdot  6 + 4: (22, 6) \to (6, 4)$
+        \item $6 = 1 \cdot 4 + 2: (22, 6) \to (4, 2)$
+        \item $4 = 2 \cdot 2$ - конец, ответ: 2
+        
+    \end{enumerate}
+\end{eg}
+
+\begin{remark} (Запись с формулами:)
+    
+    
+    $a = bq_0 + r_1  \;\;\;\;\;\;\;\;\;\;\;\;\;\;    0 \leq r_1 < b$
+    
+    $b = r_1q_1 + r_2  \;\;\;\;\;\;\;\;\;\;\;\;\;    0 \leq r_2 < r_1$
+    
+    $r_1 = r_2q_2 + r_3  \;\;\;\;\;\;\;\;\;\;\;    0 \leq r_3 < r_2$
+    
+    
+    $\vdots \;\;\;\;\;\;\;\;\;\;\;\; \vdots \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots$
+
+    $r_{k-2} = r_{k-1}q_{k-1} + r_k  \;\;\;\;  0 \leq r_k <r_{k-1}$
+
+    $\vdots \;\;\;\;\;\;\;\;\;\;\;\; \vdots \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots$
+
+    $r_{n-2} = r_{n-1}q_{n-1} + r_n   \;\;\;\;  0 \leq r_n <r_{n-1}$
+
+    $r_{n-1} = r_nq_n$, ответ: $r_n$
+\end{remark}
