@@ -1,0 +1,170 @@
+\lesson{2}{18.09.2023}{Базис векторого пространства}
+
+
+Пусть v - Это конечно мерно пространство
+
+\begin{definition}
+    Набор $v_1, v_2, ..., v_n$ называется порождающим для $V$,
+    если $\forall w \in V \exists \alpha_1,..., \alpha_n : w =
+        \alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n$
+\end{definition}
+
+\begin{remark}
+    Если к порождающему набору прибавить вектор, то он останется порождающим.
+    Если убрать векторы из непорождающего набора векторы, то набор останется непорождающим.
+\end{remark}
+
+
+\begin{definition}
+    $v_1, v_2, ..., v_n$ называется базисом $V$, если этот набор ЛНЗ и порождающий.
+\end{definition}
+\begin{theorem}[О базисе]
+    Следующие определения базиса равносильны:
+    \begin{enumerate}
+        \item ЛНЗ и  порождающий набор
+        \item Минимальный порождающий набор (минимальный по включениям)
+        \item Максимальный ЛНЗ набор (максимальный по включениям)
+        \item Порождающий набор $\forall w \in V \exists! \alpha_1, ..., \alpha_2:
+                  w = \alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Цепочка доказательств:
+
+    \begin{center}
+        \begin{tikzpicture}
+            \node[draw, circle](first) at (0.5,0.5) {$1$};
+            \node[draw, circle](second) at (2,1) {$2$};
+            \node[draw, circle](fourth) at (3.5,0.5)  {$4$};
+            \node[draw, circle](third) at  (2,0) {$3$};
+            \draw[-Latex] (first) -- (second);
+            \draw[-Latex] (second) -- (fourth);
+            \draw[-Latex] (fourth) -- (third);
+            \draw[-Latex] (third) -- (first);
+        \end{tikzpicture}
+    \end{center}
+
+    $1 \to 2$. Дан $v_1, ..., v_n$ -- ЛНЗ и порождающий набор.
+    Доказать, что он минимальный порождающий.
+
+    Допустим, что $v_i$ выкинули, оставшийся набор остался порождающим
+    $\Rightarrow v_i$ -- ЛК остальных $\Rightarrow$ ЛЗ.
+
+    $2 \to 4$. Дан $v_1, ..., v_n$ -- минимальный порождающий набор.
+    Доказать $v_1, ..., v_n$ -- порождающий с единственностью коэффициентов.
+
+    Допустим противное: $\alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n =
+        \beta_1 v_1 + ... + \beta_n v_n$
+    \begin{gather*}
+        \alpha_i \neq \beta_i\\
+        (\alpha_i - \beta_i)v_i = (\beta_1 - \alpha_1) v_1 + ...\text{ (без $i$-ого)}
+        + (\beta_n - \alpha_n)v_n\\
+        v_i = \frac{\beta_1 - \alpha_1}{\alpha_i - \beta_i} + ...\text{ (без $i$-ого)}
+        + \frac{\beta_n - \alpha_n}{\alpha_i - \beta_i}
+    \end{gather*}
+    $v_i$ -- выкинем. В любой ЛК с $v_i$ заменим $v_i$ на выражение выше $\Rightarrow$
+    набор порождающий. Значит без единственности коэффициентов получаем противоречие с дано
+
+    $4 \to 3$. Дан $v_1, ..., v_n$ -- порождающий набор с единственностью коэффициентов.
+    Доказать: $v_1, ..., v_n$ -- максимальный ЛНЗ (ЛНЗ уже доказана)
+
+    Допустим противное: $v_1, v_2, ..., v_n; u$ --  ЛНЗ набор
+    \[u = \alpha_1 v_1 + ... + \alpha_n v_n (\alpha_1, ... \alpha_n \exists!)
+        \Rightarrow v_1, ..., v_n, u \text{ -- ЛЗ }\]
+
+    $3 \to 1$. Дан $v_1, ..., v_n$ -- максимальный ЛНЗ.
+    Доказать $v_1, ..., v_n$ -- ЛНЗ и порождающий набор.
+    \begin{align*}
+        \forall w \in V  &                 &  & v_1, v_2, ..., v_n, w \text{ -- ЛЗ набор} \\
+                           &                 &  & \alpha_1 v_1 + \alpha_2 v_2 + ...
+        + \alpha_n v_n +\beta w = 0                                                           \\
+        \text{Если } \beta & = 0 \Rightarrow    &  & \alpha_1 v_1 + ... + \alpha_n v_n =0        \\
+                           &                 &  & \text{не все коэффициенты } = 0 (\alpha_i \neq 0) \\
+                           &                 &  & \Rightarrow v_1,..., v_n \text{ -- ЛЗ}           \\
+        \beta              & \neq 0 \Rightarrow &  & w = - \frac{\alpha_1}{\beta} v_1
+        - \frac{\alpha_2}{\beta} v_2 - ...  - \frac{\alpha_n}{\beta} v_n
+    \end{align*} Q.E.D.
+\end{proof}
+
+\begin{remark} (Следствия)
+    Любую конечную порождающую систему можно сузить до базиса.
+
+    Если есть конечный порождающий набор, то любую ЛНЗ систему можно расширить
+    до базиса.
+\end{remark}
+
+\begin{definition}
+    Размерность пространства равна количеству элементов в базисе.
+    (пока нет доказательств корректности)
+\end{definition}
+
+\begin{lemma}
+    Система линейных уравнений: $(a_{ij} \in \R; x_i \in \R; 0 \in \R)$
+    \begin{equation*}
+        \begin{cases}
+            a_{11} x_1 + a_{12}x_2 + ... + a_{1n} x_n = 0 \\
+            a_{21} x_1 + a_{22}x_2 + ... + a_{2n} x_n = 0 \\
+            ...                                           \\
+            a_{k1} x_1 + a_{k2}x_2 + ... + a_{kn} x_n = 0 \\
+        \end{cases}
+    \end{equation*}
+    Имеет ненулевые решения, если $n>k$.
+\end{lemma}
+
+\begin{proof}
+    Индукция по $k$. База $k=1$:
+    \begin{gather*}
+        a_{11} x_1 + a_{12}x_2 + ... + a_{1n} x_n = 0\\
+        \text{Пусть } a_{11} \neq 0 \Rightarrow x_1 = -\frac{a_{12}}{a_{11}}x_2
+        -\frac{a_{13}}{a_{11}}x_3 - ... - -\frac{a_{1n}}{a_{11}}x_n\\
+        \forall x_2,...,x_n: x_1 \text{ выражается через них}\\
+        a_{11} = 0 \Rightarrow x_1 = 1; x_2=x_3=...=x_n=0
+        \intertext{Переход}
+        a_{11} x_1 + a_{12}x_2 + ... + a_{1n} x_n = 0\\
+        \exists i: a_{1i} \neq 0 \text{, иначе выкинем предыдущее уравнение}\\
+        x_i = -\frac{a_{11}}{a_{1i}}x_1 - ...\text{ (без $i$-ого)} - -\frac{a_{1n}}{a_{1i}}x_n
+    \end{gather*}
+    Подставим выраженное $x_i$ во все остальные уравнения.
+    Уравнений на 1 меньше, переменных на 1 меньше. Q.E.D.
+\end{proof}
+
+\begin{theorem}
+    Если $v_1, ..., v_k$ и $w_1, ...,w_n$ базисы $\in V$, то $k=n$.
+\end{theorem}
+\begin{proof}
+    $v_1, ..., v_n$ -- порождающая система.
+    \begin{gather*}
+        w_1 = a_{11} v_1 + a_{21} v_2  + a_{31} v_3 + ... + a_{k1} v_k \\
+        w_2 = a_{12} v_1 + a_{22} v_2  + a_{32} v_3 + ... + a_{k2} v_k \\
+        ...                                                            \\
+        w_n = a_{1n} v_1 + a_{2n} v_2  + a_{3n} v_3 + ... + a_{kn} v_k \\
+    \end{gather*}
+    \begin{equation}\label{eq:star}
+        x_1 w_1 + x_2 w_2 + ... + x_n w_n = 0, x_i \in \R
+    \end{equation}
+    т.к. $w_1, ..., w_n$ -- ЛНЗ $\Rightarrow$ все $x_i=0$
+    \begin{gather*}
+        \begin{multlined}
+            x_1 (a_{11} v_1 + a_{21} v_2 + ... + a_{k1} v_k) +
+            x_2 (a_{12} v_1 + a_{22} v_2 + ... + a_{k2} v_k) \\
+            + ... +
+            x_n (a_{1n} v_1 + a_{2n} v_2 + ... + a_{kn} v_k) = 0
+        \end{multlined}\\
+        \begin{multlined}
+            v_1 (a_{11} x_1 + a_{12} x_2 + ... + a_{1n} x_n ) +
+            v_2 (a_{21} x_1 + a_{22} x_2 + ... + a_{2n} x_n ) \\
+            + ... +
+            v_k (a_{k1} x_1 + a_{k2} x_2 + ... + a_{kn} x_n ) = 0
+        \end{multlined}
+    \end{gather*}
+    $v_1, v_2, ..., v_k$ -- ЛНЗ $\Rightarrow$ все коэффициенты равны 0.
+    \[\begin{cases}
+            a_{11} x_1 + a_{12} x_2 + ... + a_{1n}x_n = 0 \\
+            a_{21} x_1 + a_{22} x_2 + ... + a_{2n}x_n = 0 \\
+            ...                                           \\
+            a_{k1} x_1 + a_{k2} x_2 + ... + a_{kn}x_n = 0
+        \end{cases}\]
+    Если $n>k \Rightarrow \exists$ ненулевые решения $\Rightarrow$ противоречие
+    с \eqref{eq:star} и ЛНЗ $w_i \Rightarrow n \le k$. Аналогично $k \le n \Rightarrow n=k$. Q.E.D.
+\end{proof}
