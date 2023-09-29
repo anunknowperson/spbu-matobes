@@ -1,0 +1,286 @@
+
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+\lesson{4}{29.09.2023}{}
+
+\section{Алгоритм Евклида}
+
+
+\begin{lemma}
+  $\forall a, b, k \text{НОД(a, b)} = \text{НОД(a + kb, b)}$
+\end{lemma}
+
+\begin{proof}
+  $M_1$ - мнодество общих делителей a, b
+  
+  $M_2$ - множество общих делителей a + kb, b
+
+  докажем, что $M_1 = M_2$
+  \begin{enumerate}
+    \item $M_1 \subset M_2$
+    
+    $\exists d \in M_1 \Rightarrow a \divby d, b \divby d \Rightarrow kb \divby d \Rightarrow a + kb \divby d \Rightarrow d - \text{общий делитель}$
+
+    \item $M_2 \subset M_1$
+    
+    $\exists d \in M_2 \Rightarrow a + kb \divby d, b \divby d \Rightarrow a = (a + kb) - kb \divby d \Rightarrow d \in M_1$
+    Q.E.D.
+  \end{enumerate}
+
+\end{proof}
+
+\begin{theorem} (Алгоритм Евклида)
+  для любых a, b алг. Евклида заканчивается за конечное число шагов, и его резуьтат равен НОД(a, b)
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Алгоритм заканвивается:
+    
+    $a \geq b > r_1 > r_2 > \ldots > 0, \text{где} r_i - \text{остаток}$
+    \item Результат равен НОД(a, b)
+    
+    если $a \divby b$, то НОД(a, b) = b
+
+    если $a \cancel{\divby} b$, то итог алгоритма не меняет НОД:
+
+    НОД(a, b) = НОД(a, - bq, b) Q.E.D.
+  \end{enumerate}
+\end{proof}
+
+\section{Линейное представление НОД}
+
+\begin{theorem} (Линейное представление НОД)
+  Пусть $a, b \in \N$
+  \begin{enumerate}
+    \item $\exists x, y \in \Z: ax + by = (a, b)$
+    \item Пусть k - общий делитель a, b. Тогда $(a, b) \divby k$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Положим $M = \{au + bv: u, v \in \Z\}$
+
+  Обозначним через d наименьший положительный элемент M через x, y - такие числа, что $d = ax + by$
+
+  Докажем:
+  
+  \begin{enumerate}
+    \item d - общий делитель a и b
+    \item если k - общий делитель a и b, то $k \divby d$
+  \end{enumerate}
+
+  Докажем, что $a, b \divby d$
+
+  Пусть $a \cancel{\divby} d$. Делим a на d с остатком:
+
+  $a = dq + r, 0 < r < d$
+
+  $r = a - dq = a - (ax + by)q = a(1 - qx) + b(-qy) \in M$
+
+  $0 < r < d, r \in M \Rightarrow d - \text{не наименьший положительный, противоречие}$
+
+  аналогично, $b \divby d$
+
+  Докажем, что если k - общий делитель a и b, то $k \divby d$:
+
+  $d = ax + by$
+
+  $a \divby k \Rightarrow ax \divby k \land b \divby k \Rightarrow by \divby k \Rightarrow ax + by \divby k$ Q.E.D.
+
+\end{proof}
+
+\begin{remark}
+  Линейное представление можно найти с помощью алгоритма Евклида
+\end{remark}
+
+\begin{remark}
+  Уравнение $ax + by = c$ имеет решения $\Leftrightarrow c \divby (a, b)$
+\end{remark}
+
+\section{Простые числа}
+
+\begin{definition}
+  числа a и b - взаимно простые, если $(a, b) = 1$
+\end{definition}
+
+\begin{definition}
+  Числа $a_1, a_2, \ldots, a_k$ называются взаимно простыми в совокупности, если $(a_1, a_2, \ldots, a_k) = 1$
+\end{definition}
+
+\begin{definition}
+  Числа $a_1, a_2, \ldots, a_k$ называются попарно взаимно промтыми, если любые два из них - взаимно простые
+\end{definition}
+
+\begin{eg}
+  6, 10, 15 - взаимно простые в совокупности, но не попарно
+\end{eg}
+
+\begin{lemma}
+  Числа a и b взаимно просты $\Leftrightarrow \exists x, y: ax + by = 1$
+\end{lemma}
+
+\begin{proof}
+  $\Rightarrow$: по теореме о линейном представлении НОД
+
+  $\Leftarrow$: Пусть $d = (a, b), d \neq 1$. Тогда $ax + by \divby d, 1 \cancel{\divby} d$. противоречие, Q.E.D.
+\end{proof}
+
+\begin{property} (взаимная простота с произведением)
+  Если каждое из чисел $a_1, a_2, \ldots, a_k$ взаимно просты с b, то $a_1 \cdot a_2 \cdot \ldots \cdot a_k$ тоже взаимно просто с b
+\end{property}
+
+\begin{proof} (Индукция)
+  База k = 2. Докажем, что если $a_1, a_2$ взаимно просты с b, то $a_1a_2$ взаимно просты с b.
+  По лемме (2): $\exists x_1, y_1, x_2, y_2: a_1x_1 + by_1 = 1, a_2x_2 + by_2 = 1$. Перемножим:
+  
+  
+  $(a_1a_2)(x_1x_2) + b(a_1x_1y_2 + y_1a_2x_2 + by_1y_2) = 1$
+
+  Получили линейное представление 1 через $a_1a_2$ и d $\Rightarrow a_1a_2, b$  - взаимно просты
+
+  Переход $k \to k + 1$
+
+  $\underline{a_1, a_2, \ldots, a_k}, a_{k+1}$ взаимно просты с b
+
+  $a_1, a_2, \ldots, a_k$ взаимно просты с b $\overset{\text{ИП для k}}{\Rightarrow} a_1 \cdots a_2 \cdot \ldots \cdot a_k$
+\end{proof}
+
+\begin{property}
+  \begin{enumerate}
+    \item Пусть $ab \divby c,$ a и с взаимно просты. Тогда $a \divby c$
+    \item Пусть $a \divby b, a \divby c$, b и c взаимно просты. Тогда $a \divby bc$
+  \end{enumerate}
+\end{property}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $\exists x, y: ax + cy = 1$. Умножим на b:
+    
+    $\underset{\divby c}{(ab)x} + bcy = b$
+
+    $ab \divby c - \text{по условию } \Rightarrow abx \divby c \land bcy \divby \Rightarrow b \divby c$
+    \item $a = bk, a = cm, \exists x, y: bx + cy = 1$. Умножим на k:
+    
+    $k = \underset{a}{bk}x + cyk = ax + cyk = cmx + cyk \divby c \Rightarrow k \divby c$
+
+    $k = cz, a = bk = (bc)z \divby bc$ Q.E.D.
+  \end{enumerate}
+\end{proof}
+
+\begin{property}
+  Число p называется простым, если $p > 1$ и у p нет натуральных делителей, кроме 1 и p
+\end{property}
+
+\begin{property}
+  Число n называется составным, если n > 1 и n - не простое
+\end{property}
+
+\begin{notation}
+  множество простых чисел - $P$
+\end{notation}
+
+\begin{property}
+  число a составное $\Leftrightarrow  \exists b, c: a = bd, 1 < b, c < a$
+\end{property}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $\Rightarrow$: $a \notin P$, тогда у a есть делитель $b: b \neq 1, b \neq a \Rightarrow 1 < b < a$
+    
+    $\exists c: a = bc, c = \frac{a}{b}, \frac{a}{a} < c < \frac{a}{1}$
+    \item $\Leftarrow$: $a = bc, 1 < b < a \Rightarrow$ у а есть делитель $\neq 1, \neq a \Rightarrow a \notin P$ Q.E.D.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  У любого натурального числа, большего 1, есть хотя бы один протой делитель
+\end{lemma}
+
+\begin{proof} (Индукция)
+  \begin{enumerate}
+    \item База n = 2, делителя 2
+    \item Переход. Предположим, что $ n > 2, \forall k: 1 < k < n$ у k есть простой делитель. Докажем, что у n есть простой делитель
+    
+    \begin{enumerate}
+      \item случай 1: n - простое $\Rightarrow n - \text{простой делитель } n$
+      \item случай 2: n - составное $\Rightarrow$ у n есть делитель, $n = km, 1 < k, m < n$
+    \end{enumerate}
+
+    По индукции: $\exists p \in P: k \divby p \Rightarrow n \divby p$ Q.E.D.
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem} (Евклида)
+  Множество простых чисел бесконечно
+\end{theorem}
+
+\begin{proof}
+  Пусть $p_1, p_2, \ldots, p_k$ - все простые числа
+
+  Положим $N = p_1 \cdot p_2 \cdot \ldots \cdot p_k + 1$, Тогда по лемме у N есть некий простой делитель,  $N p_1, p_2, \ldots, p_k$, т.к. $\Rightarrow 1 \divby p_i$ - невозможно
+
+  Значит N - простое. Противоречие. Q.E.D.
+
+\end{proof}
+
+\begin{theorem} (Дирихле)
+  Пусть (a, m) = 1. Тогда $\exists$ бесконечно много простых чисел вида $a + km$ (Доказательство слишком сложное)
+\end{theorem}
+
+\section{Основная теорема арифметики}
+
+\begin{theorem}
+  Любое натуральное число, большее 1 можно представить в виде произведения простых чисел. С точностью представления до порядка сравнения.
+\end{theorem}
+
+\begin{proof}
+  
+  \begin{enumerate}
+    \item Существование: Индукция
+    
+    \begin{enumerate}
+      \item База n = 2, 2 = 2 - разложение
+      \item Переход: Предположим, что все числа, меньшие n, раскладываются в произведение простых. Докажем для n.
+      
+      \begin{enumerate}
+        \item случай 1: n - простое, n = n - разложение
+        \item случай 2: n - составное, тогда $\exists p: p \in P, n \divby p, 1 < p < n$
+        
+        $1 < \frac{n}{p} < n$ По инд. предположению $\frac{n}{p}$ можно разложить: $\frac{n}{p} = p_1p_2 \cdot \ldots \cdot p_k \Rightarrow n = p \cdot p_1p_2 \cdot \ldots \cdot p_k \Rightarrow$ существование доказано.
+        
+      \end{enumerate}
+    \end{enumerate}
+    \item Единственность.
+    
+    Пусть n - наименьшее число, которое можно разложить двумя способами:
+    % допиши, в галерее
+    $n = p_1 \cdot \ldots \cdot p_k, n = q_1 \cdot \ldots \cdot q_m$ Если $p_i = q_j$ для неких $i, j$, то $\frac{n}{p_i} = \frac{n}{q_j}$ - тоже раскладывается двумя способами, n - не минимальное, $\underline{\text{противоречие}} \Rightarrow \forall i, j: p_i \neq q_j \Rightarrow p_i, q_j$  - взаимно простые
+    
+    Далее: $q_1 \neq p_1, q_2 \neq p_1, \ldots, q_m \neq p_1 \Rightarrow q_1, p_1 - \text{взаимно просты},$
+
+    $q_2, p_1 - \text{взаимно просты},$
+
+    $\vdots$
+
+    $q_m, p_1 - \text{взаимно просты},$
+
+    Значит, $n = q_1 \cdot \ldots \cdot q_m \cancel{\divby} p_1$, при этом $n = p_1 \cdot \ldots \cdot p_k \divby p_1$ - противоречие, единственность доказана.
+  \end{enumerate} Q.E.D.
+\end{proof}
+
+\begin{property} 
+  Пусть $p \in P, a_1, \ldots a_k \divby p$, тогда для некотрого $a_i \divby p$
+
+  Пусть не делится, тогда:
+
+  $a_1 = p_{11} \cdot p_{12} \cdot \ldots$
+
+  $a_2 = p_{21} \cdot p_{22} \cdot \ldots$
+
+  $\vdots$
+
+  Получаем: $\underset{\text{делится на p}}{a_1 \cdot a_2 \cdot \ldots a_k} = \underset{\text{не делится на p}}{p_{11} \cdot p_{12} \ldots} \Rightarrow$ противоречие. Q.E.D. 
+\end{property}
