@@ -1,5 +1,5 @@
 # Матобес 2023
-Материалы по направлению "Технологии программирования" в СПБгУ.
+Материалы по направлению "Технологии программирования" в СПбГУ.
 
 Materials on the "Technology Programming" direction at SPbU
 
@@ -10,3 +10,5 @@ Materials on the "Technology Programming" direction at SPbU
 - [Алгебра и теория чисел (Algebra and Number Theory)](https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Algebra%20and%20Number%20Theory/INDEX.md)
 - [Геометрия и топология (Geometry and Topology)](https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Geometry%20and%20Topology/INDEX.md)
 - [Дискретная математика (Discrete Mathematics)](https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Discrete%20Mathematics/INDEX.md)
+- [Математический Анализ (Mathematical Analysis)](https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/INDEX.md)
+
