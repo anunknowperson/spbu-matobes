@@ -4,4 +4,3 @@
 
 ## Лекции
 1. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/1/master.pdf
-4. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/4/master.pdf
