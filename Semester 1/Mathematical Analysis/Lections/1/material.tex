@@ -1,0 +1,234 @@
+
+%\setcounter{chapter}{-1}
+
+\chapter{Построение множества вещественных чисел}
+
+\lesson{1}{14.09.2023}{Введение}
+
+\section{Множества}
+
+\begin{definition}
+    Множества X и У равны, если:
+    
+    $\forall a \in X: a \in Y$
+
+    $\forall b \in Y: b \in X$
+\end{definition}
+
+\begin{definition}
+    $x \subset Y$ если:
+    
+    $\forall a \in X: a \in Y$
+\end{definition}
+
+\begin{definition}
+    \begin{enumerate}
+        \item $a \in A \cup B \Leftrightarrow a \in A \lor a \in B$
+        \item $a \in A \cap B \Leftrightarrow a \in A \land a \in B$
+        \item $a \in A \setminus B \Leftrightarrow a \in B \land a \notin B$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition} (Декартово произведение множеств)
+    
+    $A \times B = \{(a, b): \forall a \in A, \forall \in B\}; A, B \neq \varnothing$
+\end{definition}
+
+\begin{definition}
+
+    $F: A \rightarrow B$ - функция, такая, что: $\forall a \in A$ сопостовляет $b = F(a) \in B$
+\end{definition}
+
+\section{Сечения}
+
+\begin{definition}
+    
+    Множество $\alpha \subset \Q$ называется сечением, если:
+    \begin{itemize}
+        \item I. $\alpha \neq \varnothing$
+        \item II. если $p \in \alpha, $ то $q < p \Leftrightarrow q \in \alpha$
+        \item III. в $\alpha$ нет наибольшего
+    \end{itemize}
+\end{definition}
+
+\begin{eg}
+    \begin{enumerate}
+        \item $p^* = \{r \in \Q: r < p\}$ - нет наибольшего
+        \item $\sqrt{2} = \{p \in \Q: p \leq 0 \lor p > 0 \land p^2 < 2\}$ 
+    \end{enumerate}
+\end{eg}
+
+\begin{theorem} (Утверждение 1)
+    \label{Statement1}
+    Если $p \in \alpha \land q \notin \alpha$, то $ q > p$
+\end{theorem}
+
+\begin{proof}
+    Если $p \in \alpha$ и $q \leq p$, то из (II.) следует. что $q \in \alpha$
+\end{proof}
+
+\begin{theorem} (Утверждение 2)
+    $\alpha < \beta \land \beta < \gamma \Rightarrow \alpha < \gamma$
+\end{theorem}
+
+\begin{proof}
+    $\begin{cases}
+        \alpha < \beta \Rightarrow \exists p \in \beta, p \notin \alpha \\
+        \beta < \gamma \Rightarrow \exists p \in \gamma, q \notin \beta
+    \end{cases}$
+    $\Rightarrow p < q \Rightarrow \alpha < \gamma$
+\end{proof}
+
+\begin{theorem}
+    Пусть $\alpha, \beta$ - сечения. Между ними существует одно из нескольких отношений:
+    $\left[ 
+        \begin{gathered} 
+        \alpha < \beta \\ 
+        \beta > \alpha \\
+        \alpha = \beta 
+        \end{gathered} 
+    \right.$
+\end{theorem}
+
+\begin{proof}
+    Предположим, что $\alpha < \beta$ и $\beta < \alpha$, тогда:
+
+    $\begin{cases}
+        \exists p \in \alpha, p \notin \beta \\
+        \exists q \in \beta, q \notin \alpha  
+    \end{cases}$
+    $\Rightarrow$
+    $\begin{cases}
+        p > q \\
+        q > p
+    \end{cases}$ - Противоречие, тогда $\alpha \neq \beta$
+\end{proof}
+
+\section{Сумма сечений}
+
+\begin{theorem}
+    Пусть $\alpha, \beta$ - сечения, тогда:
+
+    $\alpha + \beta = \{p + q: p \in \alpha, q \in \beta\}$ - тоже сечение.
+\end{theorem}
+
+\begin{proof}
+    
+    \begin{itemize}
+        
+        
+        \item (I.) Пусть $\exists s \notin \alpha, \exists t \notin \beta$, тогда:
+
+        $\forall p \in \alpha, q \in \beta:$
+        $\begin{cases}
+            p < s \\
+            q < t
+        \end{cases} \Rightarrow p + q < s + t \Rightarrow \alpha + \beta \neq \Q$
+        \item (II.) 
+        
+        $r \in \alpha + \beta, r_1 < r$
+        
+        $r = p + q, p \in \alpha, q \in \beta$
+
+        $r_1 = p + q_1, r_1 < r \Rightarrow q_1 < q \Rightarrow q_1 \in \beta \Rightarrow p + q_1 \in \alpha + \beta$
+        \item (III.)
+        
+        $\exists p_1 \in \alpha, p > p_1 \Rightarrow p_1 + q > p + q = r, p_1 + q \in \alpha + \beta$ - нет наибольшего
+    \end{itemize}
+\end{proof}
+
+\begin{theorem} (Свойства суммы сечений)
+    \begin{enumerate}
+        \item $\alpha + \beta = \beta + \alpha$
+        \item $(\alpha + \beta) + \gamma = \alpha + (\beta + \beta)$
+        \item $\alpha + 0^* = \alpha$, где $0^* = \{p \in \Q: p < 0\}$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Свойства 1 и 2 справедливы в силу коммутативности и ассоциативности рациональных чисел.
+    
+    Докажем свойство 3:
+    \begin{enumerate}
+        \item Пусть $p \in \alpha, q \in 0^* $, тогда: $ p + q < p \Rightarrow p + q \in \alpha$, т.е. $\alpha + 0^* \subset \alpha$
+        \item Пусть $p \in \alpha$, тогда: $\exists p_1 > p \Rightarrow p_1 \in \alpha, p = p_1 + (p - p_1)$, при том $p_1 \in \alpha, p - p_1 \in 0^* \Rightarrow p \in \alpha + 0^* \Rightarrow \alpha \subset \alpha + 0^*$
+    \end{enumerate}
+
+    $\begin{cases}
+        \alpha \subset \alpha + 0^* \\
+        \alpha + 0^* \subset \alpha
+    \end{cases} \Rightarrow \alpha = \alpha + 0^*$
+\end{proof}
+
+\section{Теоремы сечений}
+
+\begin{theorem} (Теорема 2)
+    Пусть $\alpha$ - сечение, $r \in \Q^+$, тогда $\exists p \in \alpha \land q \notin \alpha$:
+
+    q - не наименьшее верхнее (не входящее в сечение) число
+
+    $q - p = r$
+\end{theorem}
+
+\begin{proof}
+    Пусть $p_0 \in \alpha, p_1 = p_0 + r$
+
+    \begin{enumerate}
+        \item Возможно, $p_1 \notin \alpha$, тогда:
+        
+        \begin{enumerate}
+            \item если $p_1$ - не наименьшее в верхнем классе, то $q = p_1$
+            \item если же наименьшее, то $p = p_0 + \frac{r}{2}, q = p_1 + \frac{r}{2}$
+        \end{enumerate}
+        \item Если $p_1 \in \alpha$, тогда:
+        
+        Положим $p_n = p_1 + nr$ для $n = 0, 1, 2, \ldots$. Тогда $\exists! m$: 
+        
+        $p_m \in \alpha$ и $p_{m+1} \notin \alpha$
+
+        \begin{enumerate}
+            \item Если $p_{m+1}$ - не наименьшее в верхнем классе, то выберем $p = p_m, q = p_{m+1}$
+            \item Если же наименьшее, то $p = p_m + \frac{r}{2}, q = p_{m+1} + \frac{r}{2}$
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem} (Существование противоположного элемента)
+    Пусть $\alpha$ - сечение, тогда $\exists! \beta: \alpha + \beta = 0^*$
+\end{theorem}
+
+\begin{proof} (нужно доказать единственность и существование)
+    \begin{enumerate}
+        \item Докажем единственность: пусть $\exists \beta_1, \beta_2$, удовлетворяющие условию, тогда:
+        
+        $\beta_2 = 0^* + \beta_2 = (\alpha + \beta_1) + \beta_2 = (\alpha + \beta_2) + \beta_1 = 0^* + \beta_1 = \beta_1$
+        \item Докажем существование: пусть 
+        
+        $\beta = \{p: -p \notin \alpha, -p \text{ не является наименьшим в верхнем классе }\alpha\}$
+        \begin{itemize}
+            \item (I.) Очевидно, что $\beta \neq \varnothing, \Q$
+            \item (II.) Возьмем $p \in \beta, q < p \Leftrightarrow -q > -p \Rightarrow -q$ в верхнем классе $\alpha$, но не наименьшее $\Rightarrow q \in \beta$
+            \item (III.) Если $p \in \beta$, то -p - не наименьшее в верхнем классе $\alpha$, значит $\exists q: -q < -p$ и $-q \notin \alpha$
+            
+            Положим $r = \frac{p+q}{2}$, тогда:
+
+            $-q < -r < -p \Rightarrow$ -r -- не наименьшее в верхнем классе $\alpha$. Значит, нашли такое r > p, что $r \in \beta$
+        \end{itemize}
+    \end{enumerate}
+
+    Теперь проверим, что $\alpha + \beta = 0^*$:
+
+    \begin{enumerate}
+        \item Возьмем $p \in \alpha, q \in \beta$
+
+        По определению $\beta: -q \notin \alpha \underset{\text{Утв. 1}}{\Rightarrow} -q > p \Leftrightarrow p + q < 0 \Rightarrow p + q \in 0^* \Rightarrow \alpha + \beta \subset 0^*$ 
+        \item Возьмем по Теореме (2) $q - p = r \Leftrightarrow p - q = -r \in 0^*$
+        
+        т.к. $q \notin \alpha$, то $-q \in \beta$, значит $p - q = p + (-q) \in \alpha + \beta \Rightarrow 0^* \subset \alpha + \beta$
+    \end{enumerate}
+    
+    $\begin{cases}
+        \alpha + \beta \subset  0^* \\
+        0^* \subset \alpha + \beta
+    \end{cases} \Rightarrow \alpha  + \beta = 0^*$
+\end{proof}
