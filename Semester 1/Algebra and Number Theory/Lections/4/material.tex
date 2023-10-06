@@ -26,7 +26,7 @@
     \item $M_2 \subset M_1$
     
     $\exists d \in M_2 \Rightarrow a + kb \divby d, b \divby d \Rightarrow a = (a + kb) - kb \divby d \Rightarrow d \in M_1$
-    Q.E.D.
+  
   \end{enumerate}
 
 \end{proof}
@@ -46,7 +46,7 @@
 
     если $a \cancel{\divby} b$, то итог алгоритма не меняет НОД:
 
-    НОД(a, b) = НОД(a, - bq, b) Q.E.D.
+    НОД(a, b) = НОД(a, - bq, b)
   \end{enumerate}
 \end{proof}
 
@@ -88,7 +88,7 @@
 
   $d = ax + by$
 
-  $a \divby k \Rightarrow ax \divby k \land b \divby k \Rightarrow by \divby k \Rightarrow ax + by \divby k$ Q.E.D.
+  $a \divby k \Rightarrow ax \divby k \land b \divby k \Rightarrow by \divby k \Rightarrow ax + by \divby k$
 
 \end{proof}
 
@@ -125,7 +125,7 @@
 \begin{proof}
   $\Rightarrow$: по теореме о линейном представлении НОД
 
-  $\Leftarrow$: Пусть $d = (a, b), d \neq 1$. Тогда $ax + by \divby d, 1 \cancel{\divby} d$. противоречие, Q.E.D.
+  $\Leftarrow$: Пусть $d = (a, b), d \neq 1$. Тогда $ax + by \divby d, 1 \cancel{\divby} d$. противоречие,
 \end{proof}
 
 \begin{property} (взаимная простота с произведением)
@@ -139,18 +139,18 @@
   
   $(a_1a_2)(x_1x_2) + b(a_1x_1y_2 + y_1a_2x_2 + by_1y_2) = 1$
 
-  Получили линейное представление 1 через $a_1a_2$ и d $\Rightarrow a_1a_2, b$  - взаимно просты
+  Получили линейное представление 1 через $a_1a_2$ и b $\Rightarrow a_1a_2, b$  - взаимно просты
 
   Переход $k \to k + 1$
 
   $\underline{a_1, a_2, \ldots, a_k}, a_{k+1}$ взаимно просты с b
 
-  $a_1, a_2, \ldots, a_k$ взаимно просты с b $\overset{\text{ИП для k}}{\Rightarrow} a_1 \cdots a_2 \cdot \ldots \cdot a_k$
+  $a_1, a_2, \ldots, a_k$ взаимно просты с b $\overset{\text{ИП для k}}{\Rightarrow} a_1 \cdot a_2 \cdot \ldots \cdot a_k$
 \end{proof}
 
 \begin{property}
   \begin{enumerate}
-    \item Пусть $ab \divby c,$ a и с взаимно просты. Тогда $a \divby c$
+    \item Пусть $ab \divby c,$ a и с взаимно просты. Тогда $b \divby c$
     \item Пусть $a \divby b, a \divby c$, b и c взаимно просты. Тогда $a \divby bc$
   \end{enumerate}
 \end{property}
@@ -161,22 +161,22 @@
     
     $\underset{\divby c}{(ab)x} + bcy = b$
 
-    $ab \divby c - \text{по условию } \Rightarrow abx \divby c \land bcy \divby \Rightarrow b \divby c$
+    $ab \divby c - \text{по условию } \Rightarrow abx \divby c \land bcy \divby c \Rightarrow b \divby c$
     \item $a = bk, a = cm, \exists x, y: bx + cy = 1$. Умножим на k:
     
     $k = \underset{a}{bk}x + cyk = ax + cyk = cmx + cyk \divby c \Rightarrow k \divby c$
 
-    $k = cz, a = bk = (bc)z \divby bc$ Q.E.D.
+    $k = cz, a = bk = (bc)z \divby bc$
   \end{enumerate}
 \end{proof}
 
-\begin{property}
+\begin{definition}
   Число p называется простым, если $p > 1$ и у p нет натуральных делителей, кроме 1 и p
-\end{property}
+\end{definition}
 
-\begin{property}
+\begin{definition}
   Число n называется составным, если n > 1 и n - не простое
-\end{property}
+\end{definition}
 
 \begin{notation}
   множество простых чисел - $P$
@@ -191,7 +191,7 @@
     \item $\Rightarrow$: $a \notin P$, тогда у a есть делитель $b: b \neq 1, b \neq a \Rightarrow 1 < b < a$
     
     $\exists c: a = bc, c = \frac{a}{b}, \frac{a}{a} < c < \frac{a}{1}$
-    \item $\Leftarrow$: $a = bc, 1 < b < a \Rightarrow$ у а есть делитель $\neq 1, \neq a \Rightarrow a \notin P$ Q.E.D.
+    \item $\Leftarrow$: $a = bc, 1 < b < a \Rightarrow$ у а есть делитель $\neq 1, \neq a \Rightarrow a \notin P$
   \end{enumerate}
 \end{proof}
 
@@ -209,7 +209,7 @@
       \item случай 2: n - составное $\Rightarrow$ у n есть делитель, $n = km, 1 < k, m < n$
     \end{enumerate}
 
-    По индукции: $\exists p \in P: k \divby p \Rightarrow n \divby p$ Q.E.D.
+    По индукции: $\exists p \in P: k \divby p \Rightarrow n \divby p$
   \end{enumerate}
 \end{proof}
 
@@ -222,7 +222,7 @@
 
   Положим $N = p_1 \cdot p_2 \cdot \ldots \cdot p_k + 1$, Тогда по лемме у N есть некий простой делитель,  $N p_1, p_2, \ldots, p_k$, т.к. $\Rightarrow 1 \divby p_i$ - невозможно
 
-  Значит N - простое. Противоречие. Q.E.D.
+  Значит N - простое. Противоречие.
 
 \end{proof}
 
@@ -268,12 +268,14 @@
     $q_m, p_1 - \text{взаимно просты},$
 
     Значит, $n = q_1 \cdot \ldots \cdot q_m \cancel{\divby} p_1$, при этом $n = p_1 \cdot \ldots \cdot p_k \divby p_1$ - противоречие, единственность доказана.
-  \end{enumerate} Q.E.D.
+  \end{enumerate}
 \end{proof}
 
 \begin{property} 
   Пусть $p \in P, a_1, \ldots a_k \divby p$, тогда для некотрого $a_i \divby p$
+\end{property}
 
+\begin{proof}
   Пусть не делится, тогда:
 
   $a_1 = p_{11} \cdot p_{12} \cdot \ldots$
@@ -282,5 +284,5 @@
 
   $\vdots$
 
-  Получаем: $\underset{\text{делится на p}}{a_1 \cdot a_2 \cdot \ldots a_k} = \underset{\text{не делится на p}}{p_{11} \cdot p_{12} \ldots} \Rightarrow$ противоречие. Q.E.D. 
-\end{property}
+  Получаем: $\underset{\text{делится на p}}{a_1 \cdot a_2 \cdot \ldots a_k} = \underset{\text{не делится на p}}{p_{11} \cdot p_{12} \ldots} \Rightarrow$ противоречие. 
+\end{proof}
