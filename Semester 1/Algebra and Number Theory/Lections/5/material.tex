@@ -1,0 +1,283 @@
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+
+\lesson{5}{06.10.2023}{}
+
+\section{Степень вхождения простого числа}
+
+\begin{definition}
+   $v_p(n)$ --- степень вхождения $p \in P$ в разложение $n$ на простые множители.
+
+   Т.е. $v_p(n) = k$, если $n \divby p^k \; \text{и} \; n \; \cancel{\divby} \; p^{k+1}$.
+\end{definition}
+
+\begin{eg}
+   $v_2(12) = 2$, $v_2(15) = 0$, $v_2(16) = 4$.
+\end{eg}
+
+\begin{property}
+   
+  
+  \begin{enumerate}
+    \item $v_p(nm) = v_p(n) + v_p(m)$.
+    \item $a, b \in \N$. Тогда $a = b \Leftrightarrow v_p(a) = v_p(b)$
+    \item $a \divby b \Leftrightarrow v_p(a) \geq v_p(b) \forall p \in P$
+    \item $v_p((a, b)) = min(v_p(a), v_p(b))$
+    $v_p([a, b]) = max(v_p(a), v_p(b))$
+   \end{enumerate}
+\end{property}
+
+\chapter{Сравнения и классы вычетов}
+
+\begin{definition}
+  $m \in \N$. Числа a и b называют сравнивыми по модулю m, если $a - b \divby m$.
+\end{definition}
+
+\begin{notation}
+  $a \equiv b \mod m \; a \underset{m}{\equiv} b$.
+\end{notation}
+
+\begin{theorem}
+  Сравнение по модулю m --- отношение эквивалентности.
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $a \equiv a \mod m \Leftrightarrow a - a \divby m \Leftrightarrow 0 \divby m$ --- рефлексивное.
+    \item $a \equiv b \mod m \Rightarrow (a - b) \divby m \Rightarrow (-1)(a - b) \divby m \Rightarrow b - a \divby m \Rightarrow b \equiv a \mod m$ --- симметричное.
+    \item $a \equiv b \mod m, b \equiv c \mod m \Rightarrow (a - b) \divby m, (b - c) \divby m \Rightarrow (a - b) + (b - c) \divby m \Rightarrow a - c \divby m \Rightarrow a \equiv c \mod m$ --- транзитивное.
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}
+  $a \in \Z, m \in \N$. Классом вычетов по модулю m называется множество $\overline{a}_m = \{b \in \Z \; | \; a \equiv b \mod m\}$.
+\end{definition}
+
+\begin{definition}
+  Набор чисел называется полной системой вычетов по модулю m, если в него входят по одному представителю из каждого класса вычетов
+\end{definition}
+
+\begin{eg}
+  $m = 5$. Полные системы вычетов:
+  
+  $\{0, 1, 2, 3, 4\}$
+
+  $\{-2, -1, 0, 1, 2\}$
+
+  $\{5, 11, -13, 3, 4\}$
+\end{eg}
+
+\begin{property} (Арифметические свойства сравнений)
+  
+  Пусть $a \equiv b \mod m$ и $c \equiv d \mod m$, тогда:
+  \begin{enumerate}
+    \item $a + c \equiv b + d \mod m$
+    
+    $a - c \equiv b - d \mod m$
+    \item $ac \equiv bd \mod m$
+
+  \end{enumerate}
+\end{property}
+
+\begin{proof}
+  
+  \begin{enumerate}
+    \item $(a + c) - (b + d) = \underset{\divby m}{(a - b)} + \underset{\divby m}{(c - d)} \Rightarrow $
+    
+    $\Rightarrow a + c \equiv b + d \mod m$
+
+    Аналогично для разности.
+    \item $ac - bd = ac - bc + bc - bd = \underset{\divby m}{c(a - b)} + \underset{\divby m}{b(c - d)} \Rightarrow ac \equiv bd \mod m$
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  $2 \equiv 12 \mod 10, 1 \cancel{\equiv} 6 \mod 10$
+\end{remark}
+
+\begin{property} (Решение линейного сравнения)
+
+  
+  Пусть $a, b \in \Z, m \in \N, (a, m) = 1$, Тогда:
+
+  \begin{enumerate}
+    \item Сравнение $ax \equiv b \mod m$ имеет решение.
+    \item Если $x_1, x_2$ --- решения, то $x_1 \equiv x_2 \mod m$.
+  \end{enumerate}
+\end{property}
+
+\begin{eg}
+  $3x \equiv 2 \mod 5$
+
+  $x_0 = 4$ --- решение, множество решений: $x \equiv 4 \mod 5$
+\end{eg}
+
+\begin{proof}
+
+  Докажем первое, затем второе.  
+  \begin{enumerate}
+    \item (a, m) = 1 $\Rightarrow \exists u, v: au + mv = 1 \Rightarrow$
+    
+    $\Rightarrow au \equiv 1 \mod m \Rightarrow a(bu) \equiv b \mod m$
+
+    $x = bu$ --- решение.
+    \item $\begin{cases}
+      ax_1 \equiv b \mod m \\
+      ax_2 \equiv b \mod m 
+    \end{cases} \Rightarrow ax_1 \equiv ax_2 \mod m \Rightarrow a(x_1 - x_2) \divby m \Rightarrow x_1 - x_2 \divby m \Rightarrow x_1 \equiv x_2 \mod m$
+    
+    
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}
+  Определим сложение и умножение на множестве классов вычетов по модулю m:
+  \begin{itemize}
+    \item $\overline{a} + \overline{b} = \overline{a + b}$
+    \item $\overline{a} \cdot \overline{b} = \overline{a \cdot b}$ 
+  \end{itemize}
+\end{definition}
+
+\begin{eg}
+  $m = 5$
+
+  $\overline{2} + \overline{3} = \overline{5} = \overline{0}$
+
+  $\overline{2} \cdot \overline{3} = \overline{6} = \overline{1}$
+\end{eg}
+
+\begin{theorem} (Кольцо вычетов)
+  Пусть $m > 1, m \in \N$. Рассмотрим классы вычетов по модулю m.
+
+  \begin{enumerate}
+    \item Сумма и произведение определены корректно, т.е. результат не зависит от выбора представителей.
+    \item Классвы вычетов образуют коммутативное и ассоциативное кольцо с единицей.
+    \item Кольцо классов вычетов является полем $\Leftrightarrow m$ --- простое. 
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Приведем доказательство только для суммы, для произведения доказательство строится аналогично.
+  \begin{enumerate}   
+    \item $\begin{cases}
+        a_1, a_2 \text{ --- представители одного класса} \\
+        b_1, b_2 \text{ --- представители одного класса}
+      \end{cases} \Rightarrow \begin{cases}
+        a_1 \equiv a_2 \mod m \\
+        b_1 \equiv b_2 \mod m
+      \end{cases} \Rightarrow a_1 + b_1 \equiv a_2 + b_2 \mod m$ --- $a_1 + b_1$ и $a_2 + b_2$ в одном классе.
+    \item Нейтральный по сложению: $\overline{0}: \overline{0} + \overline{x} = \overline{x + 0} = \overline{x}$
+      
+    Нейтральный по умножению: $\overline{1}: \overline{1} \cdot \overline{x} = \overline{1 \cdot x} = \overline{x}$
+
+    Свойства ассоциативности и коммутативности очевидны. Докажем, например, ассоциативность:
+
+      $(\overline{x} \cdot \overline{y})\cdot \overline{z} = \overline{xy} \cdot \overline{z} = \overline{xyz} = \overline{x} \cdot \overline{yz} = \overline{x} \cdot (\overline{y} \cdot \overline{z})$
+      \item ассоциативное коммутативное кольцо с единицей является полем $\Leftrightarrow \forall \overline{a} \neq \overline{0}$ есть обратный по умножению.
+      
+      \begin{enumerate}
+        \item Пусть $m \in P, \overline{a} \neq \overline{0}$
+        
+        $\overline{a} \neq \overline{0} \Rightarrow a \cancel{\divby} m \underset{m \in P}{\Rightarrow} (a, m) = 1$
+
+        Из решения линейного сравнения следует, что $\exists x: ax \equiv 1 \mod m \Rightarrow \overline{a} \cdot \overline{x} = 1 \Rightarrow \overline{x} = \overline{a}^{-1}$
+        \item Пусть $m \notin P$. Тогда $\exists a, b: m = ab, 1 < a, b < m$
+        
+        Докажем, что $\cancel{\exists} \; \overline{a}^{-1}$
+
+        Предположим, что есть, тогда: $\overline{x} = \overline{a}^{-1}$
+
+        $\overline{b} = 1 \cdot \overline{b} = \overline{x} \cdot \overline{a} \cdot \overline{b} = \overline{x} \cdot \overline{ab} = \overline{x} \cdot \overline{m} = \overline{x} \cdot \overline{0} = \overline{0}$ --- противоречие.
+      \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+\begin{notation}
+  Кольцо вычетов по модулю m обозначается $\Z_m$ или $\Z /m\Z$.
+\end{notation}
+
+\chapter*{Теорема Вильсона и малая теория Ферма}
+
+\begin{theorem} (Теорема Вильсона)
+  Пусть $p \in P$, тогда $(p - 1)! \equiv -1 \mod p$.
+\end{theorem}
+
+\begin{proof}
+  2 случая:
+  \begin{enumerate}
+    \item случай p = 2: $(p - 1)! = 1 \equiv -1 \mod 2$
+    \item случай p > 2: Рассмотрим поле $\Z_p$
+    
+    \begin{enumerate}
+
+      \item Нужно доказать, что $(p - 1)! = 1 \in \Z_p$.
+      \begin{itemize}
+        \item $1, 2, \ldots, p - 1$ - ненулевые элементы $\Z_p$.
+        \item у каждого элемента есть обратный по умножению.
+      \end{itemize}
+      \item Докажем, что $x = \overline{x}^{-1}$ выполнено только при $x = 1, x = p - 1$:
+      
+      $x = \overline{x}^{-1} \Leftrightarrow x \cdot x = \overline{x}^{-1} \cdot x \Leftrightarrow x^2 = 1 \Leftrightarrow (x - 1)(x + 1) = 0 \underset{\text{обл. целост.}}{\Leftrightarrow} $
+      $\left[ 
+        \begin{gathered} 
+          x - 1 = 0 \\ 
+          x + 1 - 0 \\ 
+        \end{gathered} 
+      \right. \Leftrightarrow \left[ 
+        \begin{gathered} 
+        x = 1\\ 
+        x = p - 1 \\ 
+        \end{gathered} 
+      \right.$
+      \item Все элементы, кроме 1 и $p - 1$ распадаются на пары, обратные друг другу:
+      
+      $1 \cdot 2 \cdot \ldots \cdot (p - 1) = 1 \cdot (p - 1) \cdot (x_1 \cdot \overline{x_1}^{-1}) \cdot (x_2 \cdot \overline{x_2}^{-1}) \cdot \ldots = p - 1 = 1$
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  \label{lemma_for_ferma}
+  Пусть $p \in P$. Тогда $\forall a \in \Z_p, a \neq 0$ набор элементов:
+
+  $0 \cdot a, 1 \cdot a, \ldots, (p - 1) \cdot a$ --- перестановка элементов $0, 1, \ldots, p - 1$.
+
+  Другая формулировка: 
+  
+  Если $a \; \cancel{\divby} \; p$, то $0 \cdot a, 1 \cdot a, \ldots, (p - 1) \cdot a$ --- полная система вычетов по $\mod p$.
+\end{lemma}
+
+\begin{proof}
+  Докажем, что элементы $0 \cdot a, 1 \cdot a, \ldots, (p - 1) \cdot a$ --- различны.
+
+  Предположим, что не различны, тогда $\exists i, j: i \neq j, i \cdot a = j \cdot a \Rightarrow (i - j) \cdot a = 0 \Rightarrow i = j$ --- противоречие.
+
+  $0 \cdot a, 1 \cdot a, \ldots, (p - 1) \cdot a$ --- p шт. различных элементов в $\Z_p \Rightarrow$ это все элементы $\Z_p$.
+\end{proof}
+
+\begin{eg}
+  $p = 5, a = 3$
+  
+  $\{0 \cdot 3, 1 \cdot 3, 2 \cdot 3, 3 \cdot 3, 4 \cdot 3\} = \{0, 3, 6, 9, 12\}$
+\end{eg}
+
+\begin{theorem} (Малая теорема Ферма)
+  Пусть $p \in P, a \in \Z, a \; \cancel{\divby} \; p$. Тогда 
+  
+  $a^{p - 1} \equiv 1 \mod p$.
+\end{theorem}
+
+\begin{proof}
+  Рассмотрим наборы $0, 1, \ldots p - 1$ и $0 \cdot a, 1 \cdot a, \ldots, (p - 1) \cdot a$ --- совпадающие по лемме \ref*{lemma_for_ferma}
+  
+  Выкинем 0 из наборов, тогда $1, \ldots, p - 1$ --- перестановка $1 \cdot a, \ldots, (p - 1) \cdot a$.
+  
+  Перемножим:
+  \begin{align*}
+    1 \cdot 2 \cdot \ldots \cdot (p - 1) &= (1 \cdot a) \cdot (2 \cdot a) \cdot \ldots \cdot ((p - 1) \cdot a) \\
+    1 \cdot 2 \cdot \ldots \cdot (p - 1) &= a^{p - 1} \cdot 1 \cdot 2 \cdot \ldots \cdot (p - 1) \\
+    1 &= a^{p - 1} \quad \text{в } \Z_p
+  \end{align*}
+\end{proof}
