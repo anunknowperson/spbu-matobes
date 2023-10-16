@@ -1,0 +1,282 @@
+
+%\setcounter{chapter}{-1}
+
+\lesson{2}{21.09.2023}{Сечения}
+
+\begin{theorem}
+    Пусть $\alpha, \beta$ --- сечения. Тогда $\exists! \; \gamma \text{ --- сечение}: \alpha + \gamma = \beta$
+\end{theorem}
+
+\begin{proof}
+    Пусть имеем $\gamma_1 \neq \gamma_2$, удовлетворяющие условию. Тогда: $\alpha + \gamma_1 = \beta = \alpha + \gamma_2 \implies \gamma_1 = \gamma_2$ --- противоречие.
+
+    Положим $\gamma = \beta + (-\alpha$). Тогда в силу свойств сечений имеем:
+
+    $\alpha + \gamma = \alpha + (\beta + (-\alpha)) = \alpha + ((-\alpha) + \beta) = (\alpha + (-\alpha)) + \beta = 0^* + \beta = \beta$
+\end{proof}
+
+\begin{definition}
+    Сечение $\gamma$, построенное в предыдущей теореме обозначается через $\beta - \alpha$
+\end{definition}
+
+\begin{definition} (Абсолютная велечина)
+    $|a| = 
+    \begin{cases}
+        \alpha, \text{ если } \alpha \geq 0^*\\
+        -\alpha, \text{ если } \alpha < 0^*
+    \end{cases}$
+\end{definition}
+
+\begin{definition} (Произведение)
+    Пусть $\alpha, \beta$ --- сечения, причем $\alpha \geq 0^*, \beta \geq 0^*$
+    
+    Тогда $\alpha\beta = \{r \in \Q: r < 0 \lor r = pq, \text{ где } p \in \alpha, q \in \beta\}$
+\end{definition}
+
+\begin{eg}
+    $\sqrt{2} \cdot \sqrt{2} = 2^*$
+\end{eg}
+
+\begin{theorem} (Любые 3 из них необоходимо доказать самостоятельно)
+    Для любых сечений $\alpha, \beta, \gamma$ имеем:
+    \begin{enumerate}
+        \item $\alpha\beta = \beta\alpha$
+        \item $(\alpha\beta)\gamma = \alpha(\beta\gamma)$
+        \item $\alpha(\beta + \gamma) = \alpha\beta + \alpha\gamma$
+        \item $\alpha0^* = 0^*$
+        \item $\alpha1^* = \alpha$
+        \item если $\alpha < \beta$ и $\gamma > 0^*$, то $\alpha\gamma < \beta\gamma$ 
+        \item если $\alpha \neq 0^*$, то $\exists \beta: \alpha \cdot \beta = 1^*, \beta = \frac{1^*}{\alpha}$ 
+        \item если $\alpha \neq 0^*$, то $\exists \beta, \gamma: \alpha \cdot \gamma = \beta, \gamma = \frac{\beta}{\alpha}$ 
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem} (Свойства рациональных сечений)
+    \begin{enumerate}
+        \item $p^* + q^* = (p + q)^*$
+        \item $p^*q^* = (pq)^*$
+        \item $p^* < q^* \Leftrightarrow p < q$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Возьмем $r \in (p + q)^* \Rightarrow r < p + q$
+        
+        Положим $h = p + q - r$:
+        
+        $\begin{cases}
+            p_1 = p - \frac{h}{2}\\
+            q_1 = q - \frac{h}{2}
+        \end{cases} \Rightarrow \begin{cases}
+            p_1 < p\\
+            q_1 < q
+        \end{cases} \Rightarrow \begin{cases}
+            p_1 \in p^*\\
+            q_1 \in q^*
+        \end{cases} \Rightarrow p_1 + q_1 = r \in p^* + q^* \Rightarrow (p^* + q^*) \subset p^* + q^*$
+
+        Теперь возьмем $r \in p^* + q^* \implies r = p_1 + q_1$:
+
+        $\begin{cases}
+            p_1 \in p^*\\
+            q_1 \in q^*
+        \end{cases} \implies \begin{cases}
+            p_1 < p\\
+            q_1 < q
+        \end{cases} \implies p_1 + q_1 < p + q \implies p_1 + q_1 = r \in (p^* + q^*) \implies p^* + q^* \subset (p^* + q^*)$
+
+        $\begin{cases}
+            p^* + q^* \subset (p + q)^*\\
+            (p + q)^* \subset p^* + q^*
+        \end{cases} \implies p^* + q^* = (p^* + q^*)$
+
+        \item Для умножения доказательство аналогично.
+        \item Если $p < q$, то $p \in q^*, p \notin p^* \implies p^* < q^*$
+        
+        Если $p^* < q^*$, то $\exists r \in \Q: r \in q^*, r \notin p^* \implies p \leq r < q \implies p < q$
+
+        Значит $p^* < q^* \Leftrightarrow p < q$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Пусть $\alpha, \beta$ --- сечения, $\alpha < \beta$. Тогда $\exists \; r^* \text{ --- рациональное сечение}: \alpha< r^* < \beta$
+\end{theorem}
+
+\begin{proof}
+    $\alpha < \beta \implies \exists \; p: p \in \beta, p \notin \alpha$
+
+    Выберем такое $r > p$, так, что $r \in \beta$. Поскольку $r \in \beta, r \notin r^*$, то $r^* < \beta$
+
+    Поскольку $p \in r^*, p \notin \alpha$, то $ \alpha < r^*$
+\end{proof}
+
+\chapter{Вещественные числа}
+
+\begin{definition}
+    В дальнейшем сечения будут называться вещественными числами. Рациональные сечения будут отождествляться с рациональными числами. Все другие сечения будут называться иррациональными числами.
+
+    Таким образом, множество всех рациональных чисел оказывается подмножеством системы вещественных чисел.
+\end{definition}
+
+\begin{theorem} (Дедекинда)
+    Пусть A и B --- такие множества вещественных чисел, что:
+    \begin{enumerate}
+        \item $A \cup B = \R$
+        \item $A \cap B = \varnothing$
+        \item $A, B \neq \varnothing$
+        \item $\forall \alpha \in A, \beta \in B: a < b$
+    \end{enumerate}
+
+    Тогда $\exists! \; \gamma \in \R: \alpha \leq \gamma \leq \beta \; \forall \alpha \in A, \forall \beta \in B$
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Докажем единственность. 
+        
+        Пусть $\gamma_1, \gamma_2$ --- два числа, причем $\gamma_1 < gamma_2$. Тогда $\exists \; \gamma_3: \gamma_1 < \gamma_3 < \gamma_2 \implies \gamma_3 \in A, \gamma_3 \in B$ --- противоречие. Значит $\gamma_1 = \gamma_2$.
+
+        \item Проверим, является ли $\gamma$ сечением.
+        
+        $\gamma = \{p \in \Q: \exists \alpha \in A: p \in \alpha\}$
+
+        \begin{enumerate}
+            \item[I.] $\gamma \neq \varnothing$, т.к. $A \neq \varnothing$
+            
+            $\gamma \neq \Q$, т.к. $\exists q \in \Q: q \notin B \implies q \notin \gamma$
+            \item[II.] Пусть $p_1 < p, p \in \gamma$. Тогда $\exists \alpha \in A: p_1 \in \alpha \implies p_1 \in \gamma$
+            \item[III.] Пусть $p \in \gamma$. Тогда $\exists \alpha \in A: p \in \alpha$. Поскольку $\alpha$ --- сечение, то $\exists q \in \Q: q \in \alpha, q > p \implies q \in \gamma$
+        \end{enumerate}
+    \end{enumerate}
+
+    Ясно, что $\alpha \leq \gamma \forall \alpha \in A$.
+
+    Предположим, что $\exists \beta \in B: \beta < \gamma$. Тогда $\exists q \in \Q: q \in \gamma, q \notin \beta \implies \exists \alpha \in A: q \in \alpha \implies \alpha > \beta$ --- противоречие. Значит $\gamma \leq \beta \;  \forall \; \beta \in B$.
+\end{proof}
+
+\section{Супремумы и инфимумы}
+
+\begin{definition}
+    $E \subseteq \R, E \neq \varnothing$
+
+    E - ограничено сверху, если $\exists y \in \R: \forall x \in E: x \leq y$
+\end{definition}
+
+\begin{definition}
+    $G \subseteq \R, G \neq \varnothing$
+
+    G - ограничено снизу, если $\exists y \in \R: \forall x \in E: x \geq y$
+\end{definition}
+
+\begin{remark}
+    Если множество ограничено сверху и снизу, оно называется ограниченным.
+\end{remark}
+
+\begin{definition}
+    Пусть E ограничено сверху. Тогда $y$ называется точной верхней границей (верхней гранью) E, если: 
+    \begin{enumerate}
+        \item y --- верхняя граница множества E.
+        \item если $x < y$, то x не является верхней границей множества E.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Пусть E ограничено снизу. Тогда $y$ называется точной нижней границей (нижней гранью) E, если: 
+    \begin{enumerate}
+        \item y --- нижняя граница множества E.
+        \item если $x > y$, то x не является нижней границей множества E.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Точная верхняя граница --- $y \sup E$
+
+    Точная нижняя граница --- $y \inf E$
+\end{definition}
+
+\begin{eg}
+    E состоит из всех чисел $\frac{1}{n}, n = 1, 2, 3, \ldots$. Тогда множество ограничено, верхняя грань равна 1 и принадлежит множеству, а нижняя равна 0 и множеству не принадлежит.
+\end{eg}
+
+\begin{theorem}
+    Пусть E ограничено сверху. Тогда $\sup E$ существует.
+\end{theorem}
+
+\begin{proof}
+    Пусть есть множества:
+    
+    $A = \{\alpha \in \R: \exists x \in E: x > \alpha\}$
+
+    $B = \R \setminus A$
+
+    Тогда $A \cap B = \varnothing, A \cup B = \R, A \neq \varnothing, B \neq \varnothing$
+
+    $\begin{cases}
+        \beta \in B \\
+        \alpha \in A
+    \end{cases} \implies \begin{cases}
+        \forall x \in E: x \leq \beta\\
+        \exists x_0 \in E: x_0 > \alpha
+    \end{cases} \implies \alpha < \beta$
+
+    Ясно, что никакой элемент множества А не является верхней границей множества E, а любой элемент множества B является верхней границей множества E. Поэтому достаточно доказать, что В содержит наименьшее число.
+    
+    По теореме Дедекинда: $\exists \gamma: \begin{cases}
+        \alpha \leq \gamma \; \forall \alpha \in A\\
+        \beta \leq \gamma \; \forall \beta \in B
+    \end{cases}$
+
+    Предположим, что $\gamma \in A$. Тогда $\exists x \in E: x > \gamma$.
+    
+    Возьмем $\gamma_1: \gamma < \gamma_1 < x \implies \gamma_1 \in A$ --- противоречие. 
+    
+    Значит $\gamma \in B$.
+\end{proof}
+
+\begin{theorem}
+    Пусть E ограничено снизу. Тогда $\inf E$ существует.
+\end{theorem}
+
+\begin{proof}
+    Доказательство тривиально и предоставляется читателю в качестве упражнения $\bigodot \smile \bigodot$.
+\end{proof}
+
+\begin{theorem} (Существование корня из вещественного числа)
+    $\forall x \in \R: x > 0, \forall n \in \N: n > 0 \; \exists! \; y \in \R, y > 0: y^n = x, y = \sqrt[n]{x}$
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Единственность.
+        
+        Пусть $y_1 > y_2: y^{n}_{2} = x = y^{n}_{1} \implies y^{n}_{2} - y^{n}_{1} = 0$
+
+        $\overset{> 0}{(y_2 - y_1)} \cdot \overset{> 0}{(y^{n-1}_{2} + y^{n-2}_{2} \cdot y_1 + \ldots + y^{n-1}_{1})} = 0$ --- противоречие.
+
+
+        \item Существование.
+        
+        Пусть $E = \{t \in \R: t \geq 0, t^n < x\}$
+
+        $0 \in E \implies E \neq \varnothing$
+
+        Положим $t_0 = 1 + x, t_{0}^{n} = (1 + x)^n$
+
+        $\sum_{k = 1}^{n} C_{n}^{k} x^k = 1 + nx + \underset{> 0}{\dots} > x \implies E$ --- ограничено сверху.
+
+        Пусть $y = \sup E$ (она существует по теореме о Существовании супремума). 
+        
+        \begin{itemize}
+        
+            \item Допустим, что $y^n < x$. Возьмем $h: 0 < h < 1$ и $h < \frac{x - y^{n}}{(1+y)^{n} - y^n}$
+            
+            Тогда $(y + h)^n = \sum^{n}_{k = 0} C_{n}^{k} y^{n - k}h^{k} = y^n + \sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k} = y^n + h\sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k-1} < y^n + h \sum_{k = 1}^{n} C_{n}^{k}y^{n-k} =  y^n + h \cdot ((1 + y)^n - y^n) <(y + 1)^n - y^n < y^n + x - y^n = x$ --- y не вехрняя граница.
+
+            \item Допустим, что $y^n > x$. Возьмем $k: 0 < k < 1$, 
+            $k < \frac{y^{n} - x}{(1 + y)^{n} - y^{n}}$ и  $k < y$. Тогда аналогично с $y^n > x$ получаем, что $y - k$ --- верхняя граница E, что противоречит тому, что $y = \sup E$. 
+        \end{itemize}
+        Значит $y^n = x$.
+    \end{enumerate}
+\end{proof}
