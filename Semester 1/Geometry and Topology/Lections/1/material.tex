@@ -1,0 +1,104 @@
+\lesson{1}{09.09.2023}{Векторное пространство}
+
+\chapter{Векторное пространство}
+
+\section{Определение векторного пространства}
+
+\begin{definition}
+    Пусть $V$ - множество; \newline
+    $+: V \times V \longrightarrow V
+    \newline
+    \cdot : \mathbb{R} \times V \longrightarrow V
+    \newline
+    \forall u, w, v \in V: \forall \alpha , \beta$
+    \begin{enumerate}
+        \item (u+v)+w=(u+v)+w (ассоциативность сложения)
+        \item u+v=v+u (коммутативность сложения)
+        \item $\exists ! 0 \in V: u+0=0+u=u$ (нейтральный элемент по сложению)
+        \item $\exists u; -u: u+(-u)=0$ (обратный элемент по сложению)
+        \item $\alpha (u+v)=\alpha u+\alpha v$ (дистрибутивность)
+        \item $(\alpha \cdot \beta)u=\alpha(\beta \cdot u)$ (ассоциативность умножения)
+        \item $1 \cdot u=u$ (нейтральный элемент по умножению)
+    \end{enumerate}
+    Если 1-8 выполняются, то V - (вещественное) векторное пространство.
+\end{definition}
+
+\begin{eg}
+    \begin{enumerate}
+        \item $\mathbb{R}^n=\mathbb{R}\times \mathbb{R}\times ... \times \mathbb{R}$ - n-мерное пространство ($a_{1}...a_{n}$)+($b_{1}...b_{n})=(a_{1}+b_{1}...a_{n}+b_{n})$
+        \item Множество многочленов V \newline
+         Множество многочленов n степени --- не веркторное пространство, т. к. ($x^n+1)+(-x^n+x)=x+1$ --- сложение не определено
+        \newline Множество многочленов степени $n\leqslant n$ --- векторное пространство.
+        \item Множество определенных на $[a .. b]$, непрерывных и имеющих непрерывную производную функций --- векторное пространство.
+        \item Матрицы $n\times m$ --- векторное пространство.
+        \item Множество вращений шара (сложение --- композиция, умножение --- умножение угла на число на число) --- не векторное пространство. (Упражнение: докажите почему)
+    \end{enumerate}
+\end{eg}
+
+\begin{property} (Доказуемые свойства)
+    \begin{enumerate}
+        \item $\overline{1}$ --- единственный.
+        \item $\begin{cases}
+            u + v = 0 \\
+            u + w = 0
+        \end{cases} \implies v = w$
+        \item  $-\overline{1} \cdot u = -u$
+        \item $u \cdot 0 = 0$
+    \end{enumerate}
+\end{property}
+
+\section{Линейная комбинация, линейная зависимость и  линейная независимость}
+\begin{definition}
+    $V$ - векторное пространство и векторы \\ $v_1,v_2,v_3,..., v_n \in V$.
+    Система $v_1,...,v_n$ называется линейно независимой (ЛНЗ), если из
+    $\alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n = 0 \implies \alpha_1=\alpha_2=...=\alpha_n =0$.
+\end{definition}
+
+\begin{definition}
+    Если $\alpha_1,..., \alpha_n \in \R$, $v_1,...,v_n \in V$.
+    То $\alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n$ -- линейная комбинация (ЛК)
+    векторов $v_1,...,v_n$.
+\end{definition}
+
+\begin{definition}
+    Если $\exists \alpha_1,..., \alpha_n$, не все $=0$, но $\alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n = 0$,
+    то система $v_1,...,v_n$ называется линейно зависимой (ЛЗ).
+\end{definition}
+
+\begin{theorem}
+    $v_1,...,v_n$ -- ЛЗ $\Leftrightarrow$ один из этих векторов можно представить как ЛК остальных.
+    $\exists i: v_i= \alpha_1 v_1 +\alpha_2 v_2 + ... + \alpha_{i-1} v_{i-1} + \alpha_{i+1} v_{i+1} + ... +\alpha_n v_n$
+\end{theorem}
+\begin{proof}
+    $\implies : \exists \alpha_1,...,\alpha_n (\exists i: \alpha_i \neq 0)$
+    \begin{gather*}
+        \alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_n v_n = 0\\
+        \alpha_i v_i = - \alpha_1 v_1 - \alpha_2 v_2 - ... - \alpha_{i-1} v_{i-1} - \alpha_{i+1} v_{i+1} - ... -\alpha_n v_n\\
+        \alpha_i \neq 0 \quad v_i = -\frac{\alpha_1}{\alpha_i}v_1 -... - \frac{\alpha_n}{\alpha_i}v_n\\
+        \Leftarrow: v_i = \alpha_1 v_1 + ... + \alpha_n v_n \text{ без } i\text{-ого слагаемого}\\
+        \alpha_1 v_1 + \alpha_2 v_2 + ... + (-1)v_i + ... + \alpha_n v_n =0\\
+        \text{ЛК } = 0 \text{ не все коэффициенты} = 0
+    \end{gather*}
+\end{proof}
+
+\begin{prop}
+    $v_1,...,v_n $ -- ЛНЗ, то любой его поднабор тоже ЛНЗ.\\
+    $v_1,...,v_n $ -- ЛЗ, то при добавлении векторов, набор останется ЛЗ.
+\end{prop}
+
+
+\begin{theorem}
+    $v_1,..., v_n$ -- ЛНЗ $\Leftrightarrow$ если
+    \begin{gather*}
+        \alpha_1 v_1 + ... + \alpha_n v_n = \beta_1 v_1 + ... + \beta_n v_n\\
+        \implies \alpha_1 = \beta_1; \alpha_2 = \beta_2; ... ; \alpha_n = \beta_n
+    \end{gather*}
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        (\alpha_1 - \beta_1)v_1 + (\alpha_2 - \beta_2)v_2 + ...
+        + (\alpha_n - \beta_n)v_n = 0\\
+        \alpha_i - \beta_i = 0 \Leftrightarrow v_1, ..., v_n\text{-- ЛНЗ}
+    \end{gather*}
+\end{proof}
+\end{document}
