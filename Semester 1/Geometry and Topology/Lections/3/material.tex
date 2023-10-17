@@ -1,35 +1,34 @@
-\lesson{2}{25.09.2023}{Матрицы}
+\lesson{3}{25.09.2023}{Матрицы}
 \section{Матрицы}
 
-Пусть v - Это конечно мерно пространство
-
-$v_1 ... v_2$ - базис v
-
-$w \leq V => \exists! v_1, v_2, v_3$
-
-$v = k_1 * v_1 + k_2 * v_2 + k_n * v_n$
-
 \begin{definition}
-    $\alpha_1 \alpha_2 \alpha_3$ - координаты
+    Пусть V - Это конечно мерно пространство
 
-    w в базисе $v_1 v_2$
+    $v_1 \ldots v_n$ - базис V
+
+    $w \in V \implies \exists! \alpha_1, \alpha_2, \ldots, \alpha_n:$
+
+    $w = \alpha_1 \cdot v_1 + \alpha_2 \cdot v_2 + \ldots + \alpha_n \cdot v_n$
+
+    Тогда $\alpha_1, \alpha_2, \ldots \alpha_n$ --- координаты w в базисе $u_1 \ldots u_n$
+
+    \begin{itemize}
+        \item $w \Leftrightarrow (\alpha_1, \alpha_2 \ldots \alpha_n)$
+        \item $u \Leftrightarrow (\beta_1 \ldots \beta_n)$
+        \item $u + w \Leftrightarrow (\alpha_1 + \beta_1 \cdot \alpha_2 + \beta_2 \ldots \alpha_n \beta_n)$
+        \item $f \cdot w \Leftrightarrow (f \cdot \alpha_1, f \cdot \alpha_2 \ldots f \cdot \alpha_n)$
+    \end{itemize}
 \end{definition}
 
 
-$w \leftrightarrow (\alpha_1, \alpha_2 ... \alpha_n)$
+\begin{definition}
+    Пусть $v_1 \ldots v_n$ и $u_1, u_2, \ldots u_n$ --- базисы
+    
+    Тогда w может выражаться как:
 
-$u \leftrightarrow (\beta_1 ... \beta_n)$
-
-$u + w \leftrightarrow (\alpha_1 + \beta_1 * \alpha_2 + \beta_2 ... \alpha_n \beta_n)$
-
-$f * w \leftrightarrow (f * \alpha_1, f * \alpha_2 ... f * \alpha_n)$
-
-
-$v_1 ... v_n$ - Базис
-
-$u_1, u_2, ... u_n$ - базис
-
-$w = \alpha_1 * v_1 + \alpha_2 * v_2 + \alpha_n * v_n = \beta_1 * u_1 + ... + \beta_n * u_n$
+    $w = \alpha_1 \cdot v_1 + \alpha_2 \cdot v_2 + \alpha_n \cdot v_n = \beta_1 \cdot u_1 + \ldots + \beta_n \cdot u_n$
+        
+\end{definition}
 
 \begin{figure}[H]
     \centering
@@ -41,181 +40,192 @@ $w = \alpha_1 * v_1 + \alpha_2 * v_2 + \alpha_n * v_n = \beta_1 * u_1 + ... + \b
 
 \begin{definition}
     (*)
+    Пусть $v_1 \ldots v_n$ и $u_1, u_2, \ldots u_n$ --- базисы
 
-    $U_1 = a_1 * v_1 + a_2 * v_2 + ... + a_n * v_n$
+    Выразим базис $u_1 \ldots u_n$ через $v_1 \ldots v_n$:
 
-    $U_2 = a_2 * v_1 + a_2 * v_2 + ... + a_{2n} * v_n$
+    $u_1 = a_1 \cdot v_1 + a_2 \cdot v_2 + \ldots + a_n \cdot v_n$
+    
+    $u_2 = a_2 \cdot v_1 + a_2 \cdot v_2 + \ldots + a_{2n} \cdot v_n$
 
-    \dots
+    $dots$
 
-    $U_n = a_n * v_1 + a_{n2} * v_2 + ... + a_{nr} * vn$
+    $u_n = a_n \cdot v_1 + a_{n2} \cdot v_2 + \ldots + a_{nr} \cdot vn$
 
+    Тогда $A = \left(
+        \begin{array}{ccc}
+            a_{11} & \ldots & a_{1m}\\
+            dots & \ddots & dots\\
+            a_{n1} &\ldots & a_{nm}
+        \end{array}
+        \right)$ -- матрица перехода от $v_1 \ldots v_n$ к $u_1 \ldots u_n$
+        
 
 \end{definition}
 
 
-
-$A = \left(
-\begin{array}{ccc}
-    a_{11} & \ldots & a_{1m}\\
-    \vdots & \ddots & \vdots\\
-    a_{n1} &\ldots & a_{nm}
-\end{array}
-\right)$
-
-
-
-матрица перехода от $(v_1 ... v_n) * k $
-
-$u_1 ... u_n$
-
 \begin{definition}
+    Пусть есть 
+    
     $A = \left(
     \begin{array}{cccc}
         a_{11} & a_{12} & \ldots & a_{1k}\\
         a_{21} & a_{22} & \ldots & a_{2k}\\
-        \vdots & \vdots & \ddots & \vdots\\
+        dots & dots & \ddots & dots\\
         a_{n1} &\ldots & \ldots & a_{nk}
     \end{array}
-    \right)$
+    \right)$ --- Матрица $n \times K$
 
-    Матрица N * R
-
+    
     $B = \left(
     \begin{array}{cccc}
         b_{11} & b_{12} & \ldots & b_{1l}\\
         b_{21} & b_{22} & \ldots & b_{2l}\\
-        \vdots & \vdots & \ddots & \vdots\\
+        dots & dots & \ddots & dots\\
         b_{n1} &\ldots & \ldots & b_{nl}
     \end{array}
-    \right)$
+    \right)$ --- Матрица $k \times l$
 
-    $k \times l$
-
+    $\space$
+    Умножение матриц определяется как:
+    
     $A \cdot B := \left(
         \begin{array}{cccc}
             c_{11} & c_{12} & \ldots & c_{1l}\\
             c_{21} & c_{22} & \ldots & c_{2l}\\
-            \vdots & \vdots & \ddots & \vdots\\
-            c_{n1} &\ldots & \ldots & c_{nl}
+            dots & dots & \ddots & dots\\
+            c_{k1} &\ldots & \ldots & c_{kl}
         \end{array}
         \right)$
 
-    $c_{11} = a_{11} * b_{11} + a_{12} * b_{21} + ... + a_{1k} * b_{kl}$
+    Элементы матрицы равны:
 
-    $c_{12} = a_{11} * b_{12} + a_{12} * b_{22} + ... + a_{1k} * b_{k2}$
+    $c_{11} = a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + \ldots + a_{1k} \cdot b_{kl}$
 
+    $c_{12} = a_{11} \cdot b_{12} + a_{12} \cdot b_{22} + \ldots + a_{1k} \cdot b_{k2}$
+    
+    $dots$
+
+    $c_{ij} = a_{i1} \cdot b_{1j} + a_{i2} \cdot b_{2j} + \ldots + a_{ik} \cdot b_{kj}$
+
+    $dots$
 
 \end{definition}
 
-$c_ij := a_{i1} b_{1j} + a_{i2} b_{1y} + ... + a_{zk} b_{kj}$
+\begin{remark}
+    Выражение базиса через базис можно записать так:
 
-
-(*) $\left(
+    $\left(
     \begin{array}{c}
-        c_{1} \\
-        c_{2} \\
-        \vdots \\
-        c_{n} 
+        u_{1} \\
+        u_{2} \\
+        dots \\
+        u_{n} 
     \end{array}
     \right) \left(
         \begin{array}{ccc}
             a_{11} & \ldots & a_{1n}\\
-            \vdots & \ddots & a_{\vdots}\\
-            a_{r1} &\ldots & a_{rn}
+            a_{21} & \ldots & a_{2n}\\
+            dots & \ddots & dots\\
+            a_{n1} &\ldots & a_{nn}
         \end{array}
         \right) \left(
             \begin{array}{c}
-                r_{1}\\
-                r_{2}\\
-                \vdots\\
-                r_{n}
+                u_{1}\\
+                u_{2}\\
+                dots\\
+                u_{n}
             \end{array}
-            \right)$
-
-$w_1 ... w_n$ - базис
-
-$V_! = b_{11} * w_1 + ... + b_{1n} * w_n$
-
-$\dots$
-
-$v_n = b_{n1} * w_1 + \dots b_{nn} * w_n$
-
-
-
-$u_q = a_{11} * v_1 + a_{12} v_2 + ... + a_{1n} v_n = a_{11} (b_{11} w_1 + ... + b_{1n} w_n) + ... + a_1n (b_{n1} w_1 + ... + b_{nn} w_n) = w_1 (a_{11} b_{11} + a_{12} b_{21} + ... + a_{1n} b_{n1}) . \dots$
+            \right)$    
+\end{remark}
 
 \begin{theorem}
-    Если A - Это матрица перехода от $\{v_i\} к \{u_i\}$
+    Пусть $v_1 \ldots v_n$ и $u_1, u_2, \ldots u_n$ --- базисы.
 
-    B - матрица перехода от $\{w_i\} к \{v_i\}$
+    A --- матрица перехода от $v_1 \ldots v_n$ к $u_1 \ldots u_n$
+    
+    B --- матрица перехода от $w_1 \ldots w_n$ к $v_1 \ldots v_n$
 
-    => $A \cdot B$ - м. п. от $\{w_2\} к \{u_i\}$
+    Тогда матрица перехода от $w_1 \ldots w_n$ к $u_1 \ldots u_n$ равна $A \times B$
 \end{theorem}
 
-$A \setminus B: A \cdot B \neq B \cdot A !$
+\begin{proof} Выразим базис $v_1 \ldots v_n$ через $w_1 \ldots w_n$:
+    
+    $v_1 = b_{11}w_1 + \ldots + b_{1n}w_n$
+    
+    $dots$
+
+    $v_1 = b_{n1}w_1 + \ldots + b_{nn}w_n$
+   
+    Выразим базис $u_1 \ldots u_n$ через $v_1 \ldots v_n$:
+
+    $u_1 = a_{11}(b_{11}w_1 + \ldots + b_{1n}w_n) + \ldots + a_{1n}(b_{n1}w_1 + \ldots + b_{nn}w_n) = w_1(a_{11}b_{11} + a_{12}b_{21} + \ldots + a_{1n}b_{n1}) + \ldots + w_1(a_{n1}b_{1n} + a_{n2}b_{2n} + \ldots + a_{nn}b_{nn})$
+
+    Мы видим, что базис $u_1 \ldots u_n$ выражается через $w_1 \ldots w_n$, а матрица перехода --- $A \times B$.
+\end{proof}
 
 \begin{theorem}
     
     A(BC) = (AB)C 
 
-
-    Умножение матриц хоть и не коммутативно, но ассоциативно.
+    Умножение матриц не коммутативно, но ассоциативно.
 
 \end{theorem}
 
-% волнистая стрелка с C, B, A
-$w_1 ... w_n \to v_1 ... v_k \to u_1 ... u_e \to t_1 ... t_m$
 
-
-$w_1 ... w_n \to w_1 ... w_n$
-
-$\left(
-        \begin{array}{ccc}
-            1 & \ldots & 0\\
-            \vdots & \ddots \vdots\\
-            0 & \ldots & 1
+$E = \left(
+        \begin{array}{cccc}
+            1 & 0 & \ldots & 0\\
+            0 & 1 & \ldots & 0\\
+            dots & \ddots & . &dots\\
+            0 & 0 & \ldots & 1
         \end{array}
         \right)$ - единичная матрица
 
-$u_1 ... u_n$ - базис
 
-$v_1 ... v_n$ - базис
 
-$\left(
+        
+\begin{remark}
+    $u_1 \ldots u_n$, $v_1 \ldots v_n$ --- базисы, выражаются как:
+    
+    
+    $\left(
         \begin{array}{c}
             u_1\\
-            \vdots\\
+            dots\\
             u_n
         \end{array}
         \right) = A \left(
             \begin{array}{c}
-                r_1\\
-                \vdots\\
-                r_n
+                v_1\\
+                dots\\
+                v_n
             \end{array}
             \right)$
 
 
 $\left(
     \begin{array}{c}
-        r_1\\
-        \vdots\\
-        r_n
+        v_1\\
+        dots\\
+        v_n
     \end{array}
     \right) = B \left(
         \begin{array}{c}
             u_1\\
-            \vdots\\
+            dots\\
             u_n
         \end{array}
         \right)$
 
-$A \cdot B = E$
+$A \times B = E$
 
-$B \cdot A = E$
+$B \times A = E$
 
-(A и B) - обратные матрицы
+(A и B) --- обратные матрицы
+\end{remark}
+
+
 
 \section{Скалярное произведение}
 
@@ -226,7 +236,7 @@ $B \cdot A = E$
 
     \begin{enumerate}
         \item (u, u) $\geq 0$
-        (u, u) = 0 <=> U = 0
+        (u, u) = 0 $\Leftrightarrow$ U = 0
 
         \item $(u_1 + u_2; v) = (u_1, v_1) + (u_2, v)$
         $(u, v_1 + v_2) = (u_, v_1) + (u_1 v_2)$
@@ -239,17 +249,11 @@ $B \cdot A = E$
     $(\cdot, \cdot)$ - скалярное произведение
 \end{definition}
 
-Для комплексных чисел 4L
-
-$(u, v) = \overline{(v, u)}$
-
-$(u, \alpha v) = \overline{\alpha} (u, v)$
-
 \begin{eg}
     \begin{enumerate}
         \item $ V = \R^n $
         
-        $(a_1, a_2, ..., a_n) + (b_1, b_2, ..., b_n) := a_1 b_1 + a_2 b_2 + ... + a_n b_n$
+        $(a_1, a_2, \ldots, a_n) + (b_1, b_2, \ldots, b_n) := a_1 b_1 + a_2 b_2 + \ldots + a_n b_n$
 
         
     $\left(
@@ -258,83 +262,81 @@ $(u, \alpha v) = \overline{\alpha} (u, v)$
     \end{array}\right) \left(
                 \begin{array}{c}
                     a_1\\
-                    \vdots\\
+                    dots\\
                     a_n
                 \end{array}
                 \right)$
 
-        \item V - пространство функций (...) 
+        \item V - пространство функций (\ldots) 
         $(f(x), g(x)) := \int_a^b f(x)g(x)dx$
     \end{enumerate}
 \end{eg}
 
 \begin{definition}
-    Пускай V - евклидово пространство
-
-    v - элемент V
-
+    Пусть V - евклидово пространство, $v \in V$
+    
     $|v| := \sqrt{ (v, v) }$
 
-    $cos @a(u, v) := \frac{(u, w)}{|u| \cdot |v|}$
+    $cos\angle(u, v) := \frac{(u, w)}{|u| \cdot |v|}$
 
-    (u, v + 0)
 
 
 \end{definition}
 
-\begin{theorem}(Неравенство КБШ)
+\begin{theorem}(Неравенство Коши-Буняковского-Шварца (КБШ))
 
     $|(u, w)| \leq |u| \cdot |v|$
 
 \end{theorem}
 
-$0 \leq (\overline u + f \overline v; \overline u + f \overline v) = (\overline u, \overline u) + (\overline u, t \overline v) + (t \overline v, \overline u)+ \forall t + (t \overline v, t \overline u) = t^2 (v, v) + 2t(u;v) + (u, u)$
+\begin{proof}
+    \begin{gather*}
+        (u + t v, u+t v) \ge 0 \quad \forall t\\
+        (u, u) + (u,t v)+(t v, u) + (t v, t v) \ge 0\\
+        |u|^2 + 2t(u,v) + t^2 |v|^2 \ge 0 \quad \forall t\\
+        \frac{D}{4} \le 0 \quad (u,v)^2 - |u|^2 |v|^2 \le 0\\
+        |(u,v)| \le |u| |v|
+    \end{gather*}
+\end{proof}
 
-$D \leq 0$
+\begin{corollary} (Следствие из КБШ)
+    \begin{enumerate}
+        
+        \item $|a_1 b_1 + a_2 b_2 + \ldots + a_n b_n| \leq \sqrt{a_1^2 + a_2^2 + \ldots + a_n^2} \sqrt{b_1^2 + b_2^2 + \ldots + b_n^2}$
+        
+        \item $(\int_a^b f(x)g(x)dx)^2 \leq (\int_a^b g(x)dx) \cdot (\int_a^b f(x)dx)$
+    \end{enumerate}
+\end{corollary}
 
-$\frac{D}{u} = (u; v)^2 - (u. u)(v, v) \leq 0$
-
-$(u, v)^2 \leq (u, u) \cdot v, v$
 
 \begin{definition}
-    \begin{enumerate}
-        \item $|a_1 b_1 + a_2 b_2 + ... + a_n b_n| \leq \sqrt{a_1^2 + a_2^2 + ... + a_n^2} \sqrt{b_1^2 + b_2^2 + ... + b_n^2}$
-        
-        \item $(\int_a^b f(x)g(x)dx)^2 \leq (\int_a^b g(x)dx)$
-    \end{enumerate}
+    $u \perp v$, если $(u, b) = 0$
+\end{definition}
+
+\begin{definition}
+    $v_1 \ldots v_n$ --- ортогональная система, если: 
+
+    $\forall v_i, v_j: v_i \perp v_j, (i \neq j)$    
 \end{definition}
 
 
- \begin{definition}
-    $u \perp v$, если $(u, b) = 0$
- \end{definition}
-
- $v_1 ... v_n$ - ортогональная, если 
-
- $v_i \perp v_j (i \neq j)$
-
  \begin{theorem}
-    $v_1 ... v_n$ - ортогональная система, нет нулевых векторов
-
-    => $v_1 ... v_n$ линейно не зависимы.
+    $v_1 \ldots v_n$ - ортогональная система и в ней нет нулевых векторов $\implies v_1 \ldots v_n$ линейно не зависимы.
  \end{theorem}
 
  \begin{proof}
-    
-    $\alpha_1 v_1 + ... + \alpha_n v_n = 0$
-
-    $(v_1 v_i) = 0$
-    $\alpha_1 (v_1 v_i) + \alpha_2 (v_2, v_i) + ... + \alpha_i (v_1, v_i) + ... = 0$
-    
-    $a_i (v_i)^2 = 0$
-
-    $\alpha_i = 0$
+    \begin{gather*}
+        \alpha_1 v_1 + \ldots + \alpha_n v_n = 0 \\
+        \alpha_1 (v_1 v_i) + \alpha_2 (v_2, v_i) + \ldots + \alpha_i (v_i, v_i) + \ldots = 0 \\
+        a_i |v_i|^2 = 0\\
+        \alpha_i = 0
+    \end{gather*}
  \end{proof}
 
  \begin{definition}
-    u - нормированый или единичный если $|u| = 1$
+    $u$ --- нормированый или единичный если $|u| = 1$
 
-    $v_1 ... v_n$ - ортонормированные системы, если $v_i \perp v_j$ и $|v_i| = 1$
+    $v_1 \ldots v_n$ --- ортонормированные системы, если $v_i \perp v_j$ и $|v_i| = 1$
 
-    $v_1 .. v_i$ - ОНБ ортонормированный базис
+    $v_1 .. v_i$ --- ОНБ ортонормированный базис
  \end{definition}
