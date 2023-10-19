@@ -1,0 +1,229 @@
+
+%\setcounter{chapter}{-1}
+
+\lesson{3}{287.09.2023}{Степень, логарифм, десятичные дроби. Последовательности.}
+
+\section{Неравенство Бернулли}
+
+\begin{theorem}[Неравенство Бернулли]
+    Пусть $x > -1$ и $n \in \N$. Тогда $(1 + x)^n \ge 1 + nx$.
+
+\end{theorem}
+
+\begin{proof}
+    Докажем по индукции. При $n = 1$ неравенство очевидно. Пусть оно верно для $n = k$. Тогда
+    \begin{align*}
+        (1 + x)^{k+1} &= (1 + x)^k (1 + x) \ge (1 + kx)(1 + x) = 1 + (k+1)x + kx^2 \ge 1 + (k+1)x.
+    \end{align*}
+    Последнее неравенство выполнено, поскольку $kx^2 \ge 0$.
+\end{proof}
+
+\section{Определение степени и логарифма}
+
+\begin{definition}
+    Пусть $a > 0$, $m, n \in \Z, m \neq 0; r = \frac{n}{m}$. Тогда 
+    
+    $a^r = (a^{\frac{1}{m}})^n$.
+
+    Если $n > 0$, то: $x^m = \underset{m}{x \cdot x \cdot \ldots \cdot x}$
+
+    Если $m < 0$, то $x^m = \frac{1}{x^{|m|}}$.
+\end{definition}
+
+
+\begin{definition}
+    Пусть $p \in \Q, p \neq 0, a > 1$
+
+    Тогда $a^p = \sup\{a^r: r \in \Q, r \neq 0, r < p\}$
+
+    $a^0 = 1$
+\end{definition}
+
+
+
+\begin{definition}
+    Пусть $a > 1, \alpha \in \R$
+
+    $E = \{a^r: r \in \Q, r < \alpha, r \neq 0\}$
+
+    Тогда $\sup E = a^\alpha$.
+
+    И $\forall a \in \R: 0 < a < 1: a^\alpha = (\frac{1}{a})^{-\alpha}$
+\end{definition}
+
+
+\begin{definition}
+    Пусть $a > 0, a \neq 0, x > 0$. Тогда 
+    
+    Если $a > 1: \log_a x = \sup\{r \in \Q: a^r < x\}$.
+
+    Если $0 < a < 1: \log_a x = -\log_{\frac{1}{a}} x$
+\end{definition}
+
+\begin{theorem} (Без доказательства)
+    Для степени и логарифма справедливы все ранее встречавшиеся свойства. (имеется в виду школьный курс)
+\end{theorem}
+
+\chapter{Последовательности}
+
+\begin{definition}
+    Пусть $X$ --- множество, $X \neq \varnothing$. Тогда последовательностью элементов множества $X$ называется функция $f: \N \to X$.
+
+    $x_1, x_2, \ldots, x_n \ldots; x_n \in X$ Последовательность --- $\{x_n\}_{n=1}^{\infty}$
+\end{definition}
+
+\section{Сопоставление вещественным числам десятичных дробей}
+
+\begin{algoritm} (Построение дроби по числу)
+    
+    Рассматриваем только $x > 0, x \in \R$
+
+    Возьмем $n_0 \in \Z_+: n_0 \leq x, n_0$ --- максимальное число с таким свойством.
+
+    \begin{itemize}
+        \item Если $n_0 = x$ --- алгоритм закончен.
+        \item Если $n_0 < x$ --- продолжаем: выбираем $n_1 \in \Z: n_0 + \frac{n_1}{10} \leq x$
+        
+    \end{itemize}
+
+    Аналогично с $n_0$, проверяем равенство с x. Так вплоть до $n_k$:
+
+    $n_0 + \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k}{10^k} \leq x$
+
+    Если ни на одном шаге равенство не выполняется, то задаем последовательность:
+
+    $\{x_n\}_{n=0}^{\infty} = n_0, \frac{n_1}{10}, \frac{n_2}{10^2}, \ldots$
+\end{algoritm}
+
+\begin{theorem} (О супремуме десятичных дробей)
+    Рассмотрим $E = \{r: r = \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k}{10^k}, k \in \N\}$
+
+    Тогда $\sup E = x$ (из алгоритма).
+\end{theorem}
+
+\begin{proof}
+    
+    Так как $n_0 + \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k}{10^k} < x$, то $\sup E \leq x$
+
+    Предположим, что $\sup E < x$. Тогда $\exists r: r = x - \sup E > 0$.
+
+    Выберем такое $k$, что $\frac{1}{k^9} < r \Leftrightarrow k > \frac{1}{r^9}$.
+
+    $n_0 + \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k}{10^k} < x < n_0 + \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k + 1}{10^k} \implies$
+
+    $\implies n_0 + \frac{n_1}{10} + \frac{n_2}{10^2} + \ldots + \frac{n_k}{10^k} > x - \frac{1}{10^k} > x - \frac{1}{9^k} > x - r = \sup E$, значит $x = \sup E$
+\end{proof}
+
+\begin{lemma} (доказать самостоятельно)
+    Пусть есть $E \subset \R, a \in \R, E_a = \{x + a: x \in E\}$
+
+    Тогда $\sup E_a = a + \sup E$
+\end{lemma}
+
+
+Дальше шла какая-то теорема, смысл которой я не понял. Если найдете адекватную запись или сможете объяснить --- пишите $\bigodot \smile \bigodot $
+
+\section{Предел последовательности}
+
+\begin{definition}
+    Пусть $\{x_n\}_{n=1}^{\infty}$ --- последовательность вещественных чисел. Тогда $a \in \R$ называется пределом последовательности, если $\forall \varepsilon > 0 \; \exists N: \forall n > N: |x_n - a| < \varepsilon$.
+\end{definition}
+
+\begin{remark}
+    $\forall x, y, z \in \R: |z - x| \leq |z - y| + |y - x|$
+\end{remark}
+
+\begin{definition}
+    Пусть $X$ --- множество, функция $\rho$: $\rho: X \times X \to \R$
+    
+    $X$ --- метрическое пространство, если: $\forall a, b \in X: \rho(a, b) \geq 0$
+
+    И выполнены следующие свойства:
+    
+    \begin{enumerate}
+        \item $\rho(a, b) = 0 \Leftrightarrow a = b$
+        \item $\rho(a, b) = \rho(b, a)$
+        \item $\rho(a, b) \leq \rho(a, c) + \rho(c, b)$
+    \end{enumerate}
+
+    Тогда $\rho$ --- метрика $X$.
+\end{definition}
+
+\begin{eg}
+    $\R$ --- метрическое пространство, $\rho(x, y) = |x - y|$
+\end{eg}
+
+\begin{definition}
+    Пусть $X$ --- метрическое пространство, $a \in X, \{x_n\}_{n=0}^{\infty}, x_n \in X$
+    
+    $\lim_{n \to \infty} x_n = a$, если $\forall \varepsilon > 0 \; \exists N: \forall n > N: \rho(x_n, a) < \varepsilon$
+\end{definition}
+
+\begin{theorem} (Единственность предела)
+    Если $\lim_{n \to \infty} x_n = a$ и $\lim_{n \to \infty} x_n = b$, то $a = b$
+\end{theorem}
+
+\begin{proof}
+    Пусть $a \neq b$. Тогда $\delta = \rho(a, b) > 0$. Положим $\epsilon = \frac{\delta}{4}$. 
+    
+    \begin{enumerate}
+        \item Так как $\underset{n \to \infty}{x_n} \to a: \exists N_1: \forall n > N_1: \rho(x_n, a) < \varepsilon$
+        \item И так как $\underset{n \to \infty}{x_n} \to b: \exists N_2: \forall n > N_2: \rho(x_n, b) < \varepsilon$.
+    \end{enumerate}
+
+    Пусть $n = N_1 + N_2 + 1$. Тогда для $n$ выполнены (1) и (2)
+    
+    Имеем $0 < \delta = \rho(a, b) \leq \rho(a, x_n) + \rho(x_n, b) < \varepsilon + \varepsilon = \frac{\delta}{2}$ --- противоречие.
+\end{proof}
+
+\begin{theorem} (Ограниченность сходящейся последовательности)
+    $X$ --- метрическое пространство с метрикой $\rho$
+
+    $x_n \in X, a \in X$
+    Пусть $\underset{n \to \infty}{x_n} \to a$. Тогда $\exists\; R > 0: \forall n \in \N: \rho(x_n, a) < R$
+    
+\end{theorem}
+
+\begin{proof}
+    Возьмем \item $\varepsilon = 1 \implies \exists N: \forall n > N: \rho(x_n, a) < 1$ (1)
+
+    Определим R как $R = \max(\rho(x_1, a) + 1, \rho(x_2, a) + 1, \ldots, \rho(x_N, a) + 1, 1)$ (2)
+
+    Тогда:
+
+    \begin{itemize}
+        \item если $n > N$, то из (1) следует (2), значит $R \ge 1$ 
+        \item если $1 \le n \le N$, то $R \ge \rho(x_n, a)$
+    \end{itemize}
+
+    В обоих случаях R удовлетворяет условию теоремы.
+\end{proof}
+
+\section{Арифметические операции над пределами}
+
+\begin{properties}
+    Для $\lim_{n \to \infty} x_n = a, \lim_{n \to \infty} y_n = b, c \in \R$ справедливы следующие свойства:
+    \begin{enumerate}
+        \item $\forall n \in \N: x_n = a \implies \lim_{n \to \infty} x_n = a$
+        \item $c \cdot \lim_{n \to \infty} x_n = c \cdot a$
+        \item $x_n + y_n \underset{n \to \infty}{\to} a + b$
+        \item $x_n \cdot y_n \underset{n \to \infty}{\to} a \cdot b$
+    \end{enumerate}
+\end{properties}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $\forall \varepsilon > 0, \forall n > 1: |x_n - a| = |a - a| = 0 < \varepsilon$
+        \item $\forall \varepsilon > 0 \exists N: \forall n > N: |x_n - a| < \varepsilon \implies |cx_n - ca| = |c(x_n - a) = |c||x_n - a| < |c|\varepsilon$
+        \item $\begin{cases}
+            \forall \varepsilon_1 > 0 \exists N_1: \forall n > N_1: |x_n - a| < \varepsilon_1 \\
+            \forall \varepsilon_2 > 0 \exists N_2: \forall n > N_2: |y_n - b| < \varepsilon_2
+        \end{cases}$ $\implies$ при $n > N_1 + N_2 + 1: |x_n + y_n - a - b| \leq |x_n - a| + |y_n - b| < \varepsilon_1 + \varepsilon_2$
+        \item Аналогично (3) при $n > N_1 + N_2 + 1: |x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \leq |x_ny_n - ay_n| + |ay_n - ab| = |x_n - a||y_n| + |a||y_n - b|$
+        
+        т.к. $\lim_{n \to \infty} y_n = b$, то $\exists R: \forall n: |y_n| \leq R$ (из предыдущей теоремы)
+
+        Тогда $|x_n - a||y_n| + |a||y_n - b| < \varepsilon_1R + |a|\varepsilon_2$
+    \end{enumerate}
+\end{proof}
+
