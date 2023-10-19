@@ -1,0 +1,107 @@
+
+%\setcounter{chapter}{-1}
+
+
+\chapter{Комбинаторика}
+
+\lesson{1}{27.09.2023}{Введение}
+
+\section{Основные определения}
+
+\begin{definition}
+    Перестановкой называется упорядоченный набор неповторяющихся элементов длины $n$, состоящий из элементов от $1$ до $n$.
+
+    Число перестановок: $P_n = n!$
+\end{definition}
+
+\begin{definition}
+    Размещением называется упорядоченный набор неповторяющихся элементов длины $k$, состоящий из элементов от $1$ до $n$.
+
+    Число размещений: $A_n^k = n(n - 1)(n - 2) \cdot \ldots \cdot (n - k + 1) = $
+    
+    $= \frac{n(n - 1)(n - 2) \cdot \ldots \cdot (n - k + 1)(n - k)!}{(n - k)!}= \frac{n!}{(n-k)!}$
+\end{definition}
+
+
+\begin{definition}
+    Сочетанием называется набор неповторяющихся элементов длины $k$, состоящий из элементов от $1$ до $n$.
+
+    Число сочетаний: $C_n^k = \frac{A_{n}^{k}}{k!}=\frac{n!}{k!(n-k)!}$
+\end{definition}
+
+
+\begin{definition}
+    Перестановки с повторениями: $\overline{P_n} = \frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}$
+\end{definition}
+
+\begin{definition}
+    Размещения с повторениями: $\overline{A_n^k} = n^k$
+\end{definition}
+
+\begin{definition}
+    Сочетания с повторениями: $\overline{C_n^k} = C_{n + k - 1}^k$
+\end{definition}
+
+\begin{eg} (Толкование к сочетаниям с повторениями)
+    Сколькими способами можно разложить пять одинаковых шаров по трём различным ящикам? На число шаров в ящике ограничений нет.
+
+    Решение:
+
+    Представим себе, что ящики стоят вплотную друг к другу. Три таких ящика --- это
+    фактически две перегородки между ними. Обозначим шар нулём, а перегородку --- единицей.
+    Тогда любому способу раскладывания пяти шаров по трём ящикам однозначно соответствует
+    последовательность из пяти нулей и двух единиц; и наоборот, каждая такая последовательность
+    однозначно определяет некоторый способ раскладывания. Например, 0010010 означает, что в
+    первом ящике лежат два шара, во втором --- два шара, в третьем --- один шар; последовательность 0000011 соответствует случаю, когда все пять шаров лежат в первом ящике.
+
+    Теперь ясно, что способов разложить пять шаров по трём ящикам существует ровно столько
+же, сколько имеется последовательностей из пяти нулей и двух единиц. А число таких последовательностей равно $C_{7}^{2}$
+\end{eg}
+
+\section{Множества}
+
+\begin{theorem} (Формула включений-исключений)
+    
+    $|A_1 \cup A_2 \cup \ldots \cup A_n| = \left|\bigcup_{i=1}^{n} A_i\right| =$
+
+    $$  = \sum_{i=1}^{n} |A_i| -\sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| - \ldots + (-1)^{n-1} |A_1 \cap A_2 \cap \ldots \cap A_n| $$
+\end{theorem}
+
+\begin{proof} (докажем по индукции)
+    \begin{enumerate}
+        \item База индукции: $n = 2: |A_1 \cup A_2| = |A_1| + |A_2| - |A_1 \cap A_2|$
+        \item Переход индукции: $n \to n + 1:$
+        
+        $|A_1 \cup A_2 \cup \ldots \cup A_{n+1}| = |A_1 \cup A_2 \cup \ldots \cup A_n| + |A_{n+1}| - |(A_1 \cup A_2 \cup \ldots \cup A_n) \cap A_{n+1}| = $
+
+        $$= \sum_{i=1}^{n} |A_i| -\sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| -$$ 
+        $-\ldots + (-1)^{n-1} |A_1 \cap A_2 \cap \ldots \cap A_n|$ + $|A_{n+1}| - |(A_1 \cap A_{n+1}) \cup (A_2 \cap A_{n+1}) \ldots \cup (A_n \cap A_{n+1})| = $
+
+        $$= \sum_{i=1}^{n} |A_i| -\sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| -$$
+        
+        $$- \ldots + (-1)^{n-1} |A_1 \cap A_2 \cap \ldots \cap A_n| - (\sum_{i=1}^{n}|A_i \cap A_{n+1}| -$$
+        
+        $$- \sum_{1 \leq i < j \leq n}|A_i \cap A_j \cap A_{n+1}| + \ldots (-1)^{n-1}|A_1 \cap A_2 \cap \ldots \cap A_{n+1}|) = $$
+
+        $$= \sum_{i=1}^{n+1} |A_i| -\sum_{1 \leq i < j \leq n+1} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n+1} |A_i \cap A_j \cap A_k| - $$
+        $\ldots + (-1)^{n} |A_1 \cap A_2 \cap \ldots \cap A_{n+1}|$
+    \end{enumerate}
+\end{proof}
+
+\section{Разбиения}
+
+\begin{definition}
+    Пусть $A$ --- множество. Имеется $A_1, A_2, \ldots, A_n$. 
+    
+    Совокупность этих множеств --- разбиение, если: $A = \bigcup_{i=1}^{n} A_i; A_i \cap A_j = \varnothing$
+\end{definition}
+
+\begin{definition}
+    Пусть у $A$ есть разбиения $\mathcal{A}$ и $\mathcal{B}$
+    
+    Тогда $\mathcal{B}$ --- измельчение $\mathcal{A}$, если $\forall B_i \in \mathcal{B} \; \exists! A_j \in \mathcal{A}: B_i \subset A_j$
+\end{definition}
+
+\begin{definition}
+    Произведение разбиений --- разбиение, которое является измельчением $\mathcal{A}$ и $\mathcal{B}$ и является самым крупным измельчением.
+\end{definition}
