@@ -19,7 +19,7 @@
     Сечение $\gamma$, построенное в предыдущей теореме обозначается через $\beta - \alpha$
 \end{definition}
 
-\begin{definition} (Абсолютная велечина)
+\begin{definition} (Абсолютная величина)
     $|a| = 
     \begin{cases}
         \alpha, \text{ если } \alpha \geq 0^*\\
@@ -125,7 +125,7 @@
     \begin{enumerate}
         \item $A \cup B = \R$
         \item $A \cap B = \varnothing$
-        \item $A, B \neq \varnothing$
+        \item $A, B \neq \varnothing, A \neq B$
         \item $\forall \alpha \in A, \beta \in B: a < b$
     \end{enumerate}
 
@@ -136,7 +136,7 @@
     \begin{enumerate}
         \item Докажем единственность. 
         
-        Пусть $\gamma_1, \gamma_2$ --- два числа, причем $\gamma_1 < gamma_2$. Тогда $\exists \; \gamma_3: \gamma_1 < \gamma_3 < \gamma_2 \implies \gamma_3 \in A, \gamma_3 \in B$ --- противоречие. Значит $\gamma_1 = \gamma_2$.
+        Пусть $\gamma_1, \gamma_2$ --- два числа, причем $\gamma_1 < \gamma_2$. Тогда $\exists \; \gamma_3: \gamma_1 < \gamma_3 < \gamma_2 \implies \gamma_3 \in A, \gamma_3 \in B$ --- противоречие. Значит $\gamma_1 = \gamma_2$.
 
         \item Проверим, является ли $\gamma$ сечением.
         
@@ -251,7 +251,7 @@
     \begin{enumerate}
         \item Единственность.
         
-        Пусть $y_1 > y_2: y^{n}_{2} = x = y^{n}_{1} \implies y^{n}_{2} - y^{n}_{1} = 0$
+        Пусть $y_2 > y_1: y^{n}_{2} = x = y^{n}_{1} \implies y^{n}_{2} - y^{n}_{1} = 0$
 
         $\overset{> 0}{(y_2 - y_1)} \cdot \overset{> 0}{(y^{n-1}_{2} + y^{n-2}_{2} \cdot y_1 + \ldots + y^{n-1}_{1})} = 0$ --- противоречие.
 
@@ -272,10 +272,13 @@
         
             \item Допустим, что $y^n < x$. Возьмем $h: 0 < h < 1$ и $h < \frac{x - y^{n}}{(1+y)^{n} - y^n}$
             
-            Тогда $(y + h)^n = \sum^{n}_{k = 0} C_{n}^{k} y^{n - k}h^{k} = y^n + \sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k} = y^n + h\sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k-1} < y^n + h \sum_{k = 1}^{n} C_{n}^{k}y^{n-k} =  y^n + h \cdot ((1 + y)^n - y^n) <(y + 1)^n - y^n < y^n + x - y^n = x$ --- y не вехрняя граница.
+            Тогда \[(y + h)^n = \sum^{n}_{k = 0} C_{n}^{k} y^{n - k}h^{k} = \]
+            \[ =y^n + \sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k} = \] 
+            \[ =y^n + h\sum^{n}_{k = 1} C_{n}^{k} y^{n - k}h^{k-1} < y^n + h \sum_{k = 1}^{n} C_{n}^{k}y^{n-k} = \] 
+            \[ =y^n + h \cdot ((1 + y)^n - y^n) <(y + 1)^n - y^n < y^n + x - y^n = x\] --- y не вехрняя граница.
 
             \item Допустим, что $y^n > x$. Возьмем $k: 0 < k < 1$, 
-            $k < \frac{y^{n} - x}{(1 + y)^{n} - y^{n}}$ и  $k < y$. Тогда аналогично с $y^n > x$ получаем, что $y - k$ --- верхняя граница E, что противоречит тому, что $y = \sup E$. 
+            $k < \frac{y^{n} - x}{(1 + y)^{n} - y^{n}}$ и  $k < y$. Тогда аналогично с $y^n < x$ получаем, что $y - k$ --- верхняя граница E, что противоречит тому, что $y = \sup E$. 
         \end{itemize}
         Значит $y^n = x$.
     \end{enumerate}
