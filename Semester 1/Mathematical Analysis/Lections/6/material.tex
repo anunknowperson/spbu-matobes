@@ -1,0 +1,293 @@
+
+
+\lesson{6}{12.10.2023}{Верхний и нижний пределы. Предел функции.}
+
+\begin{theorem} (свойства пределов)
+    Пусть есть последовательность $\{a_n\}_{n=1}^{\infty}$. Тогда справедливы следующие утверждения:
+    
+    $$\exists N: \forall n > N: a_n < \limsup_{n \to \infty} a_n + \epsilon \eqno(1)$$
+    
+    $$\forall N \exists n > N: a_n > \limsup_{n \to \infty} a_n - \epsilon \eqno(2)$$
+    
+    $$\exists N_2: \forall n > N_2: a_n > \liminf_{n \to \infty} a_n - \epsilon \eqno(3)$$
+    
+    $$\forall N_3 \exists n > N_3: a_n < \liminf_{n \to \infty} a_n + \epsilon \eqno(4)$$
+\end{theorem}
+
+\begin{proof}
+    
+    (Все пределы при $n \to \infty$)
+    
+    Докажем только (1) и (2), другие свойства доказываются аналогично.
+
+    
+    \begin{enumerate}
+        \item Возьмем $E_n = \{a_n : m \geq n\}$ и $g_n = \sup E_n$.
+
+        Тогда $\limsup a_n = \lim g_n$, и $\forall n: a_n \leq g_n$. 
+        
+        При этом $\exists N: \forall n > N: g_n < g_n + \epsilon$
+
+        Имеем $\forall n > N: a_n \leq g_n < g_n + \epsilon = \limsup a_n + \epsilon$\
+
+        \item Имеем $g_N = \sup E_N$ и $g_{N+1} \geq g_N$, 
+        
+        значит $\exists a_n \in E_{N + 1}: a_n \geq g_n > g_n - \epsilon \implies $
+        
+        $\implies a_n > \limsup a_n - \epsilon$ 
+    \end{enumerate}
+\end{proof}
+
+\begin{properties} (Без доказательств)
+    
+    Пусть есть последовательность $\{a_n\}_{n=1}^{\infty}$, тогда:
+    
+    $$\exists \{a_{n_k}\}_{k=1}^{\infty}: a_{n_k} \underset{k \to \infty}{\to} \limsup a_n$$
+
+    $$\exists \{a_{n_l}\}_{l=1}^{\infty}: a_{n_l} \underset{l \to \infty}{\to} \liminf a_n$$
+
+\end{properties}
+
+\begin{theorem} (Последнее свойство)
+    Пусть есть подпоследовательность $$\{a_{n_m}\}_{m=1}^{\infty}: \exists \lim_{m \to \infty} a_{n_m} \in \overline{\R}$$
+
+    Тогда выполнено следующее неравенство:
+
+    $$\liminf_{n \to \infty} a_n \leq \lim_{m \to \infty} a_{n_m} \leq \limsup_{n \to \infty} a_n$$
+\end{theorem}
+
+\begin{proof}
+    Пусть $h_n = \inf E_n, g_n = \sup E_n$. Имеем неравенство:
+
+    $$h_{n_m} \leq a_{n_m} \leq g_{n_m} \implies \lim_{m \to \infty} h_{n_m} \leq \lim_{m \to \infty} a_{n_m} \leq \lim_{m \to \infty} g_{n_m}$$.
+
+    В силу существования пределов у последовательностей $g_n, h_n$ имеем:
+
+    $$\liminf_{n \to \infty} a_n \leq \lim_{m \to \infty} a_{n_m} \leq \limsup_{n \to \infty} a_n$$
+\end{proof}
+
+\chapter{Функции. Предел функции, монотонность, непрерывность}
+
+\section{Предел функции}
+
+\begin{definition}
+    Пусть $X$ --- метричесткое простанство с метрикой $\rho$, $\alpha \in X$. Окрестностью точки $\alpha$ называется:
+    
+    $\omega(\alpha) = \{x \in X: \forall \epsilon > 0: \rho(x, \alpha) < \epsilon\}$
+\end{definition}
+
+\begin{definition}
+    $\alpha$ --- точка сгущения множества $X$, если:
+
+    $\forall \epsilon > 0 \; \exists x_1 \in X: x_1 \neq \alpha \land \rho(x_1, \alpha) < \epsilon \Leftrightarrow \forall \omega(\alpha) \; \exists x_1 \in \omega(\alpha), x_1 \neq \alpha$
+\end{definition}
+
+\begin{definition}
+    $\alpha$ --- точка сгущения для $E \subset \overline{\R}$, если:
+
+    $\forall \omega(\alpha) \; \exists b \in (E \cap \omega(\alpha)), b \neq \alpha$
+\end{definition}
+
+\begin{eg}
+    $E = \N, +\infty$ --- точка сгущения для $E$.
+\end{eg}
+
+\begin{theorem} 
+    Пусть $X$ --- метрическое пространство с метрикой $\rho$, $\alpha \in X$ --- точка сгущения, тогда:
+
+    $$\exists \{x_n\}_{n=1}^{\infty}, x_n \underset{n \to \infty}{\to} \alpha, \; \forall x_n: x_n \neq \alpha, x_n \in X$$
+\end{theorem}
+
+\begin{proof}
+    Возьмем $x_1 \neq \alpha$, пусть $\epsilon_1 = \rho(x_1, \alpha) > 0$. 
+    $\exists x_2 \neq \alpha: \rho(x_2, \alpha) < \frac{1}{2} \epsilon_1$. Положим $\epsilon_2 = \rho(x_2, \epsilon)$.
+    
+    Пусть уже выбрали выбрали 
+    $x_1, \ldots, x_n$ так, что $x_k \neq \alpha, 2 \leq k \leq n, \epsilon_k = \rho(x_k, \alpha) < \frac{1}{2} \epsilon_{k-1}$
+
+    Тогда $\exists x_{n+1} \neq \alpha: \rho(x_{n+1}, \alpha) < \frac{1}{2}\epsilon_n$.
+    
+    Имеем $\epsilon_n < \frac{1}{2}\epsilon_{n-1} < \frac{1}{2^2}\epsilon_{n-2} < \ldots < \frac{1}{2^{n-1}}\epsilon_1$, 
+    т.е. $\rho(x_n, \alpha) \underset{n \to \infty}{\to} 0 \implies$
+
+    $\implies x_n \underset{n \to \infty}{\to} \alpha$
+\end{proof}
+
+\begin{definition} (Предел функции)
+    Пусть Х --- метрическое пространство с метрикой $\rho, \alpha \in X$ --- точка сгущения, определна функция $f: X \to \R$ и $A \in \overline{\R}$, тогда:
+
+    $$f(x) \underset{x \to \alpha}{\to} A \Leftrightarrow \lim_{x \to \alpha}f(x) = A, \text{ если выполнено:}$$
+    $$\forall \omega(A) \; \exists \Omega(\alpha): \forall x \in \Omega(\alpha), x \neq \alpha: f(x) \in \omega(A)$$
+\end{definition}
+
+\begin{theorem} (единственность предела)
+    Пусть Х --- метрическое пространство с метрикой $\rho, \alpha \in X$ --- точка сгущения, определна функция $f: X \to \R$. Тогда:
+
+    $$\exists! A \in \overline{\R}: \lim_{x \to \alpha}f(x) = A$$
+\end{theorem}
+
+\begin{proof}
+    Предположим, что есть $A, B \in \overline{\R}, B \neq A$ и 
+    
+    $\lim_{x \to \alpha}f(x) = A, \lim_{x \to \alpha}f(x) = B$.
+
+    Тогда: $\exists \omega_1(A), \omega_2(B): (\omega_1(A) \cap \omega_2(B)) = \varnothing$
+
+    A также: $\begin{cases}
+        \exists \Omega_1(\alpha): \forall x \in \Omega_1(\alpha): f(x) \in \omega_1(A) \\
+        \exists \Omega_2(\alpha): \forall x \in \Omega_2(\alpha): f(x) \in \omega_2(B)
+    \end{cases}$
+
+    Рассмотрим $\Omega(\alpha) = \Omega_1(\alpha) \cap \Omega_2(\alpha)$:
+
+    $\exists x \in \Omega(\alpha), x \neq \alpha: \begin{cases}
+        f(x) \in \omega_1(A) \\
+        f(x) \in \omega_2(B)
+    \end{cases}$ --- противоречие, т.к. $\omega_1(A) \cap \omega_2(B) = \varnothing$.
+\end{proof}
+
+
+
+\section{Односторонние пределы}
+
+\begin{definition}
+    Пусть есть $E = (p, q), p, q \in \R, a \in E, E_- = (p, a), E_+ = (a, q)$
+    
+    А также определены функции: 
+    
+    $f: E \to \R$.
+
+    $f_-: E_- \to \R, \; \; \; f_-(x) = f(x)$, при $x \in E_-$
+
+    
+    $f_+: E_+ \to \R, \; \; \; f_+(x) = f(x)$, при $x \in E_+$
+
+    Тогда пределом справа функции $f$ в точке $a$ называется:
+
+    $$\lim_{x \to a+0} f(x) = c_+$$
+
+    А пределом слева функции $f$ в точке $a$ называется:
+
+    $$\lim_{x \to a-0} f(x) = c_-$$
+\end{definition}
+
+
+\begin{theorem} (обозначения из определения выше)
+    $$\exists \lim_{x \to a} f(x) \Leftrightarrow \lim_{x \to a+0} f(x) = \lim_{x \to a-0} f(x)$$
+\end{theorem}
+
+\begin{proof} 
+    $\;$
+
+    \begin{itemize}
+        \item[$\Rightarrow$:] Пусть $\lim_{x \to a} f(x) = c$. Тогда:
+        
+        $\forall \omega(c) \; \exists \Omega(a): \forall x \in \Omega(a) \cap E, x \neq a: f(x) \in \omega(c)$
+
+        При этом $\begin{cases}
+            \Omega(a) \cap E_+ \in \Omega(a) \cap E \\
+            \Omega(a) \cap E_- \in \Omega(a) \cap E
+        \end{cases}$
+
+        Значит получаем $\begin{cases}
+            \forall x \in \Omega(a) \cap E_+: f(x) \in \omega(c) \\
+            \forall x \in \Omega(a) \cap E_-: f(x) \in \omega(c)
+        \end{cases} \implies $
+        
+        $\implies \lim_{x \to a+0} f(x) = \lim_{x \to a-0} f(x)$
+
+        $\newline$
+
+        \item[$\Leftarrow$:] Пусть $\lim_{x \to a+0} f(x) = \lim_{x \to a-0} f(x) = c$. Тогда:
+        
+        $\begin{cases}
+            \forall \omega(c) \exists \Omega(a): \forall x \in \Omega_1(a) \cap E_+, x \neq a: f(x) \in \omega(c) \\
+            \forall \omega(c) \exists \Omega(a): \forall x \in \Omega_2(a) \cap E_-, x \neq a: f(x) \in \omega(c)    
+        \end{cases}$
+
+        Возьмем $\Omega(a) = \Omega_1(a) \cap \Omega_2(a)$
+
+        Имеем $((\Omega_1(a) \cap E_+) \setminus \{a\}) \cup ((\Omega_2(a) \cap E_-) \setminus \{a\}) = ((\Omega(a) \cap E) \setminus \{a\})$
+
+        Тогда справедливо: $\forall x \in \Omega(a) \cap E, x \neq a: f(x) \in \omega(c)$
+    \end{itemize}
+\end{proof}
+
+
+\section{Сущестование предела}
+
+\begin{theorem} (Соответствие предела функции пределу последовательности)
+    Пусть есть $X$ --- метрическое пространство с метрикой $\rho, \alpha \in X$ --- точка сгущения, определна функция $F: X \to \R$.
+
+    И пусть $E \subset \overline{\R}, a$ --- точка сгущения, определена функция $f: E \to \R$.
+
+    Рассмотрим последовательности: 
+    
+    $\{F(x_n)\}_{n=1}^{\infty}, x_n \to \alpha, \forall n: x_n \neq \alpha$
+
+    $\{f(b_n)\}_{n=1}^{\infty}, b_n \to a, \forall n: b_n \neq a$
+
+    Тогда:
+
+    $$\exists \lim_{x \to \alpha} F(x) = A \Leftrightarrow \forall \{x_n\}: F(x_n) \underset{n \to \infty}{\to} A$$
+
+    $$\exists \lim_{b \to a} f(x) = c \Leftrightarrow \forall \{b_n\}: f(b_n) \underset{n \to \infty}{\to} A$$
+
+\end{theorem}
+
+\begin{proof} (Будем доказывать для метрического пространства, для множества $E$ доказательство аналогично)
+    \begin{itemize}
+        \item[$\Rightarrow$:] Пусть $\lim_{x \to \alpha} F(x) = A$. Тогда:
+        
+        $\forall \omega(A) \; \exists \Omega(\alpha): \forall x \in \dot{\Omega}(\alpha): F(x) \in \omega(A)$
+
+        Поскольку $x_n \to \alpha$, то $\exists N: \forall n > N: x_n \in \Omega(\alpha)$
+
+        Имеем, что $\forall n > N: F(x_n) \in \omega(A) \implies F(x_n) \to A$
+        
+
+        \item[$\Leftarrow$:] Предположим, что $\forall \{x_n\}: F(x_n) \to A$ --- неверно. Тогда:
+        
+        $\exists \omega_0(A): \forall \Omega_0(\alpha) \; \exists x \in \dot{\Omega}_0(\alpha): F(x) \notin \omega_0(A)$
+
+        Будем брать $\Omega_{1/n}(\alpha) = \{x \in X: \rho(x, \alpha) < \frac{1}{n}\}$
+
+        $\exists x_n \in \dots{\Omega}_{1/n}(\alpha): F(x) \notin \omega_0(A)$
+
+        Это означает, что $x_n \underset{n \to \infty}{\to} \alpha \implies F(x_n) \underset{n \to \infty}{\to} A$ --- противоречие.
+    \end{itemize}
+\end{proof}
+
+\section{Свойства пределов функции}
+
+\begin{properties} (обозначения как в теореме выше)
+    Для метрического пространства и для множества $E$:
+    \begin{enumerate}
+        \item $F(x) \equiv A \implies F(x) \to A, A \in \overline{\R}$
+        \item $\lim qF(x) = q\lim F(x), q \in \R$
+        \item $\lim(F(x) + G(x)) = \lim F(x) + \lim G(x)$
+        \item $\lim(F(x) \cdot G(x)) = \lim F(x) \cdot \lim G(x)$
+        \item $\lim \frac{1}{F(x)} = \frac{1}{\lim F(x)}$, если $\lim F(x) \neq 0$
+        \item $\lim \frac{F(x)}{G(x)} = \frac{\lim F(x)}{\lim G(x)}$, если $\lim G(x) \neq 0$
+        \item $\forall x: F(x) \leq G(x) \implies \lim F(x) \leq \lim G(x)$
+        \item $F(x) \leq G(x) \leq H(x)$ и $\lim F(x) = \lim H(x) \implies \exists \lim G(x) = \lim F(x)$
+
+    \end{enumerate}
+    UPD: для множества $E$ свойства аналогичны.
+\end{properties}
+
+\begin{proof}
+    Все эти свойства доказываются аналогично свойствам пределов последовательностей, так как была доказана теорема о соответствии предела функции пределу последовательности.
+
+    $\newline$
+    
+    Докажем 5 свойство для метрического пространства:
+
+    Возьмем последовательность $\{x_n\}$ из теоремы. 
+    
+    По теореме: $F(x_n) \to A, A \neq 0$
+
+    Получаем, что $\forall n: F(x_n) \neq 0 \implies \lim \frac{1}{F(x_n)} = \frac{1}{A} \implies$
+
+    $$\implies \lim_{x \to \alpha} \frac{1}{F(x)} = \frac{1}{A}$$
+\end{proof}
