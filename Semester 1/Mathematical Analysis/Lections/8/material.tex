@@ -1,0 +1,235 @@
+
+
+\lesson{8}{26.10.2023}{Непрерывность. Точки разрыва.}
+
+
+\section{Непрерывность функции}
+
+\begin{definition}
+    Пусть $f: E \to \R$, $a \in E$ и $X$ --- метрическое пространство с метрикой $\rho$, $A$ --- точка сгущения. Тогда $f$ непрерывна в точке сгущения $a$, если $\lim_{x \to a} f(x) = f(a)$.
+\end{definition}
+
+\begin{definition} (определение в другом виде)
+    
+    \begin{itemize}
+        \item на языке $\forall \varepsilon > 0 \exists \delta > 0: \forall x \in X, \rho(x, A) < \delta \implies |f(x) - f(A)| < \varepsilon$;
+        \item окрестности: $\forall \omega(f(A)) \exists \Omega(A): \forall x \in \Omega(A): f(x) \in \omega (f(A))$
+    \end{itemize}
+\end{definition}
+
+\section{Арифметические свойства функций, непрерывных в точке}
+
+\begin{properties}
+    
+    Задано метрическое пространство $X$ и функция $f$. Справедливы следующие свойства:
+    
+    \begin{enumerate}
+        \item $f(x) \equiv c, \forall x \in X \implies f -$ непрерывна в $A$
+        \item $f$ -  непрерывно в $A \implies cf$  непрерывно в $A$
+        \item $f, g$  непрерывны в $A \implies f + g$ непрерывна в $A$
+        \item $f, g$ непрерывна в $A$ $\implies fg$ непрерывна в $A$
+        \item $f$ непрерывна в $A$, $f(x) \neq 0, \forall x \in X \implies \displaystyle\frac{1}{f}$ непрерывна в $A$
+        \item $f$, как и в 5 $g$ непрерывна в $A$ $\implies \displaystyle\frac{g}{f}$ непрерывна в $A$
+    \end{enumerate}
+\end{properties}
+
+\begin{proof}
+    Докажем (5), остальное предоставляется читателю в качестве упражнения $\bigodot \smile \bigodot$.
+
+    $\displaystyle\lim_{x \to a} f(x) = f(A) \neq 0 \implies \displaystyle\lim_{x \to A} \displaystyle\frac{1}{f(x)} = \displaystyle\frac{1}{f(x)}$
+\end{proof}
+
+\section{Непрерывность композиции функций}
+
+\begin{theorem} (Теорема о непрерывности композиции функций)
+    
+    Пусть $E \subset \mathbb{R}, a \in E, a -$ точка сгущения $E$, $F \subset \mathbb{R}, b \in F, b -$  точка сгущения $F$ и  определены неперывные в $a$ и $b$ соответственно функции $f: E \to \mathbb{R}, \forall x \in E, f(x) \in F, f(a) = b, g: F \to \mathbb{R}$.
+
+    $\newline$
+    
+    Тогда $h(x) = g(f(x)), h: E \to \mathbb{R}$ непрерывна в $a$.
+\end{theorem}
+
+\begin{proof}
+    
+    $$h(a) = g(f(a)) = g(b)\eqno(5) $$
+	$$\text{Возьмем }\forall \omega: (h(a)) = \omega (g(b)) \text{ по (5). Тогда:}$$
+	$$\exists \Omega (b): \forall y \in \Omega (b) \cap F: g(y) \in \omega (g(b)) \eqno(6)$$
+	$$\text{По условию: }b = f(a) \text{, тогда: }\Omega (b) = \Omega (f(a))$$
+	$$\exists \lambda (a) \text{ --- окрестность a: } \forall x \in E \cap \lambda (a): f(x) \in \Omega (f(a)) \eqno(7)$$
+	$$(7) \implies \forall x \in E \cap \lambda (a): f(x) \in \Omega (f(a)) \cap F = \Omega (b) \cap F$$
+	$$(6) \implies g(f(x)) \in \omega (g(b)) = \omega (h(a))$$
+	Значит имеем:
+    $$g(f(x)) = h(x) \in \omega (h(a))$$
+\end{proof}
+
+\begin{definition}
+	$f: X \to \mathbb{R}, f$ непрерывно на $X$, если она непрерывна в каждой точке сгущения множества $X$
+	
+    Обозначается как $f \in C(X)$ $(a,b) = [a,b]$
+\end{definition}
+
+\begin{eg} (Непрерывные функции)
+    \begin{enumerate}
+        \item $f(x) \equiv c, x \in \mathbb{R}$
+        \item $f(x)=x, f \in C(\mathbb{R})$
+        \item $x^2=x \cdot x \in C(\mathbb{R}), x^{n+1} = x^n \cdot x \in C(\mathbb{R})$ 
+        \item $c_0 + c_1x + \ldots + c_n x^n \in C(\mathbb{R})$
+        \item $x\neq 0 \implies x^n \neq 0, n \in \mathbb{N} \implies \displaystyle\frac{1}{x^n} \in C(\mathbb{R} \setminus \{0\}$
+        \item Пусть $p(x) = c_0 + c_1x + \ldots + c_n x^n$, пусть $a_1, \ldots, a_m, m\le n, a_k \neq a _e, k \neq l -$ все числа$: p(a_k) = 0 \implies \displaystyle\frac{1}{p(x)} \in C(\mathbb{R} \setminus U^m_{k=1} \{a_k\}$
+        \item $p(x)$, как в (6),  $q(x) = b_0 + b_1x + \ldots + b_x x^t$\\
+            $\displaystyle\frac{q(x)}{p(x)} \in C(\mathbb{R} \setminus U^m_{k=1} \{a_k\})$
+        \item $f(x) = e^x$\\
+            из прошлой лекции:  $\displaystyle\lim_{h \to 0} e^h = 1 = e^0 \implies e^x -$ непрерывна в $0$\\
+            Рассмотрим  $\forall x_0 \neq 0 \implies e^x = e^{x_0}  \cdot  e^{x-x_0} (x - x_0 \in C(\mathbb{R})) \implies$ непрерывно в $x_0 \implies  e^x \in C(\mathbb{R})$
+        \item ($\displaystyle\lim_{h \to 0} \ln {(1 + h)} = 0 = \ln {1} \quad \ln {(1+h)} = \displaystyle\frac{\ln {(1+h)}}{h}h \implies \ln {x} -$  непрерывно при $x=1$)\\
+            $x_0\neq_1, x_0 > 0, \ln {x}  = \ln {\displaystyle\frac{x}{x_0} + \ln {x_0} } $ \\
+            $\displaystyle\frac{x}{x_0} \in C(\mathbb{R}), \quad \displaystyle\frac{x_0}{x_0} = 1 \implies \ln {x} -$ непрерывен при $x = x_0 \implies \ln {x} \in C(\{x: x > 0\}) $
+        \item $x > 0, r \in \mathbb{R}, \implies x^r \in C(\{x: x>0\}) \implies x^r = e^{r \ln {x}}$
+        \item[10'] Пусть $r>0, 0^r := 0 \implies x^r -$ непрерывно при $x = 0$\\
+            \begin{description}
+                \item[Доказательство 10':] если $x^r$ монотонно возрастает при  $x > 0$ \\
+                    $\forall \varepsilon > 0, \delta^r = \varepsilon \implies \delta = \varepsilon^r \implies$  при $x < \delta: 0 <x^r< \delta^r = (\varepsilon^{\displaystyle\frac{1}{2}})^2 = \varepsilon (r = \displaystyle\frac{1}{2}$ \\
+
+            \end{description}
+        \item $\sin x, \cos x$ непрерывно при $x =0$\\
+            $\sin x = \displaystyle\frac{\sin x}{x} = x \to 0 (x \to 0), \sin 0 = 0$\\
+            $\sqrt{1-x^2} \le \cos x = \sqrt{1 - \sin^2 x} \le 1 $ \\
+            $\cos x \to 1 (x \to 0), cos_0 = 1$\\
+        \item $\sin x, \cos x$ непрерывно при $x=x_0, x_0 \neq 0$\\
+            $\begin{aligned}
+                \sin x &= \sin ((x-x_0) + x_0) = \sin (x-x_0)\cos (x_0) + \cos (x-x_0)\sin (x_0)\\
+                \cos x &= \cos ((x-x_0)+x_0) = \cos (x-x_0)\cos x - \sin (x-x_0)\sin (x_0)
+            \end{aligned}$
+            $\sin x \cdot \cos x \in C(\mathbb{R})$
+        \item $\tan x = \displaystyle\frac{\sin x}{\cos x}$ непрерывен при $x \neq \displaystyle\frac{\pi}{2} + \pi n, n \in \mathbb{Z}$\\
+        \item $\cot x = \displaystyle\frac{\cos x}{\sin x}$ непрерывен при $x\neq \pi n$\\
+    \end{enumerate}
+\end{eg}
+
+\begin{theorem} (об обращении непрерывной функции в 0 (Коши))
+    
+    Пусть $f \in C([a,b]), f(a) \cdot f(b) < 0 \implies \exists c \in (a,b): f(c) = 0$ 
+
+\end{theorem}
+
+\begin{proof}
+    Пусть  $a_1 = a, b_1 = b$, значит $f(a_1) \cdot f(b_1) <0$ (3)\\
+    $c_1 = \displaystyle\frac{a+b}{2} = \displaystyle\frac{a_1+b_1}{2}$ \\
+    если $f(c_1) = 0$, то полагаем $c=c_1$\\
+    если $f(c_1) \neq 0$, то по (3) $\implies f(a_1)f(c_1) < 0$ или $f(c_1)f(b_1) < 0$\\
+    
+    $\newline$
+    $[a_2, b_2] -$ тот из $[a_1,c_1], [c_1,b_1]$ для которого $f(a_2)f(b_2) < 0$ (4)\\
+    $c_2 = \displaystyle\frac{a_2+b_2}{2}$, если $f(c_2) = 0$, то полагаем $c=c_2$\\
+    если $f(c_2) \neq 0$, то $f(a_2)f(c_2) < 0$ или $f(c_2)f(b_2)<0$ в силу (4)\\
+    
+    $\newline$
+    $[a_n, b_n]: f(a_n)f(b_n) < 0, c_n = \displaystyle\frac{a_n+b_n}{2}$,
+    если $f(c_n) = 0$, полагаем  $c=c_n$,
+    если  $f(c_n) \neq 0$, то либо $f(a_n)f(c_n) < 0$, либо  $f(c_n)f(b_n) < 0$\\
+    $[a_{n+1}, b_{n+1}] -$ тот из  $[a_n, c_n], [c_n,b_n]$ для которого $f(a_{n+1})f(b{n+1}) < 0$ (6)\\
+    \\
+    Пусть  $\forall n, c_n = \displaystyle\frac{a_n+b_n}{2}$ и $f(c_n) \neq 0$ и $f(a_n)f(b_n) < 0$\\
+    $b_n - a_n = \displaystyle\frac{b-a}{2^{n-1}} \to 0 (n \to \infty)$ (7) \\
+    $[a_{n+1},b_{n+1}] \subset [a_n, b_n] \forall n$ (8)\\
+    (7),(8) $\implies \exists c \in [a_n, b_n] \forall n$ (9)\\
+    $\begin{cases}
+        a_n \to c (n \to \infty)\\
+        b_n \to c ( n_. \infty)
+    \end{cases}$ (10)\\
+    $f \in C([a,b]) \implies f$ непрерывно в c (11)\\
+    (10),(11) $\implies$
+    $\begin{cases}
+        f(a_n) \to f(c) (n \to \infty)\\
+        f(b_n) \to f(c) (n \to \infty)
+    \end{cases}$(12)\\
+    (12) $\implies f(a_n)f(b_n) \to f^2(c) (n \to \infty)$ (13)\\
+    \\
+    $f(a_n)f(b_n) < 0 \implies \displaystyle\lim_{n \to \infty} f(a_n)f(b_n) \le 0$ (14)\\
+    (13),(14) $\implies f^2(c) \le 0 \implies f(c) = 0$
+\end{proof}
+
+\begin{theorem} (Теорема о промежуточных значениях)
+    
+    Пусть $f \in C([a,b])$ и $f(a) = q \neq f(b) = p m\in(p,q) < r < \max (p,q) \implies \exists c \in [a,b]: f(c) = r$
+    
+\end{theorem}
+
+\begin{proof}
+    Рассмотрим $g(x) = f(x) - r:$
+    
+    $$g(a)g(b) = (f(a)-r)(f(b)-r) = (p-r)(q-r) < 0 \implies$$
+
+    $$\implies \exists c \in [a,b]: g(c) = 0 \implies f(c) -r = 0$$
+\end{proof}
+
+\section{Классификация точек разрыва непрерывной функции}
+
+\begin{definition}
+    Пусть $E \subset \mathbb{R}, a \in E, a -$ точка сгущения $E$, $f: E \to \mathbb{R}, f$ ненепрерывна в $a$\\
+    Тогда точка $a$ --- точка разрыва функции  $f$
+\end{definition}
+
+\begin{properties} (Классификация точек разрыва)
+    \begin{enumerate}
+        \item $a \in (p,q), f: (p,q) \to \mathbb{R}$\\
+            $\exists \displaystyle\lim_{x \to a-0} f(x) \in \mathbb{R}$ и $\displaystyle\lim_{x \to q+0} f(x) \in \mathbb{R}: \displaystyle\lim_{x \to a-0} f(x) = \displaystyle\lim_{x \to a+0} f(x)$, но $f(a) \neq \displaystyle\lim_{x \to a} f(x)$\\
+            \textbf{тогда $a$ $-$ устранимая точка разрыва}\\
+            $f(x)$ =
+            $\begin{cases}
+                f(x), x \neq a\\
+                \displaystyle\lim_{x \to a} f(x)
+            \end{cases}$
+            $\implies f$ непрерывна в $a$ 
+        \item \textbf{разрыв 1 рода или скачок:} $a \in (p,q), \exists \displaystyle\lim_{x \to a-0} f(x) \in \mathbb{R}, \exists \displaystyle\lim_{x \to a + 0} f(x) \in \mathbb{R}$ и $\displaystyle\lim_{x \to a-0} f(x) \neq \displaystyle\lim_{x \to a+0} f(x)$\\
+            $f: [a,q] \to \mathbb{R}, \exists \displaystyle\lim_{x \to a+0} f(x) \neq f(a)$\\
+            $f: (p,a] \exists \displaystyle\lim_{x \to a-0} f(x) \neq f(a)$\\
+        \item \textbf{разрыв 2 рода:} $-$ если по крайней мере $\displaystyle\lim_{x \to a-0}f(x)$ или $\displaystyle\lim_{x \to a+0} f(x)$ не существует или бесконечен
+    \end{enumerate}
+\end{properties}
+
+\begin{theorem} (Теорема о разрывах монотонной фукнции)
+    
+    $f: [a,b]$ и монотонна $\implies \forall x_0 \in [a,b] \; f$ либо непрерывна в $x_0$, либо имеет в $x_0$ разрыв 1 рода
+\end{theorem}
+
+\begin{proof}
+    Пусть $f$ возрастает и $x_0 \in (a,b)$\\
+		Предположим, что $x_0$ $-$ точка разрыва $f$ (*)\\
+		$$\text{Рассматрим }a < x < x_0 \implies f(x) \le f(x_0) \eqno(17)$$ 
+		$$(17) \implies \exists \displaystyle\lim_{x \to x_0-0} f(x) \le f(x_0) \implies (18)$$ 
+		$$\text{Пусть } x_0 < x < b, \text{тогда } f(x_0) \le f(x) \eqno(19)$$
+		$$(19) \implies \exists \displaystyle\lim_{x \to x_0+0} f(x) \ge f(x_0) \eqno(20)$$
+		$$(18),(20): \displaystyle\lim_{x \to x_0-0} f(x) \le f(x_0) \le \displaystyle\lim_{x \to x_0+0} f(x) \eqno(21)$$
+		$$(*), (21) \implies \displaystyle\lim_{x \to x_0-0} f(x) < \displaystyle\lim_{x \to x_0+0} f(x)$$
+\end{proof}
+
+\begin{theorem} (Об отображении отрезков)
+    
+    Пусть $f: [a,b], f$ монотонна, $f(a) = p, f(b) = q, p \neq q$, тогда 
+    $$f([a,b]) = [\min (p,q), \max (p,q)] \iff f \in C([a,b])$$
+\end{theorem}
+
+\begin{proof}
+    
+    Пусть $f$ непрерывна на  $[a,b]$\\
+		 $\forall r: \min (p,q) < r < \max (p,q)$\\
+		 по теореме о промежуточных значениях: $\exists c \in (a,b): f(c) = r$ (23)\\
+		 $\forall x \in [a,b]: min(p,q) \le f(x) \le map(p,q)$\\
+		 то есть $f([a,b]) \subset [\min (p,q), \max (p,q)]$\\
+		 (23) $\implies f([a,b]) = [\min (p,q), \max (p,q)]$\\
+		 \\
+		 Пусть $f([a,b]) = [\min (p,q), \max (p,q)]$ (24)\\
+		 $\exists x_0 \in [a,b]: f\text{ разрывна в }x_0$ (25)\\
+		 Пусть $x_0 \in (a,b)$ и $f$ возрастает\\
+		 по доказанной теормеме $x_0$ $-$ развыв первого рода\\
+		 $\displaystyle\lim_{x \to x_0-0} f(x) = A < B = \displaystyle\lim_{x \to x_0+0} f(x)$ (26)\\
+		 Рассмотрим $y \in (A, B), y_0 \neq f(x_0)$ (27)\\
+		 По теореме о пределе монотонной функции (когда возрастает): $\forall x < x_0, f(x) \le A$ (28)\\
+		 По той же теореме $\forall x  > x_0: f(x) \ge B$ (29)\\
+		 (27),(28),(29) $\implies \forall x \in [a,b], x \neq x_0$ будет $f(x) \neq y_0$ (30) и $A < y_0 < B$ \\
+		 если $x = x_0$, то $f(x_0) \neq y_0$ (31)\\
+		 (30),(31) $\implies y_0 \not\in f([a,b])$ (32)\\
+		 (24) и (32) противоречат \\
+\end{proof}
