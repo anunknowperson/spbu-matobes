@@ -1,0 +1,87 @@
+
+
+\lesson{10}{9.11.2023}{Продолжение свойств производных}
+
+
+\begin{properties} (дальнейшие свойства производных)
+    \begin{enumerate}
+        \item[3] $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$
+        \item[4] Пусть $\forall x \in (a,b): f(x) \neq 0$, тогда: $$\left(\frac{1}{f}\right)'(x) = -\frac{f'(x)}{f^2(x)}$$
+        \item[5] Пусть $f$ как в (4), и есть $g$ тогда: $$\left(\frac{g}{f}\right)'(x) = \frac{g'(x)f(x) - g(x)f'(x)}{f^2(x)}$$
+        \item[6] Производная суперпозиции: пусть $f: (a, b) \to \R, f(x) \in (p, q)$
+        
+        $g: (p, q) \to \R, f(x) \defeq y \in (p, q)$
+
+        Положим $\phi(x) = g(f(x))$, Тогда:
+
+        $$\phi'(x) = g'(y) \cdot f'(x)$$
+
+        \item[7] Производная обратной функции: пусть $f$ непрерывна на отрезке $(a, b)$ и строго монотонна, $x_0 \in (a, b)$, $f$ имеет производную в $x_0$, не равную нулю. $g$ --- обратная к $f$ функция. Положим $f(x_0) = y_0$, тогда:
+        $$g'(y_0) = \frac{1}{f'(x_0)}$$
+    \end{enumerate}
+\end{properties}
+
+\begin{proof} (Доказательства свойств)
+    \begin{enumerate}
+        \item[3] $$(fg)'(x) = \lim\limits_{h \to 0} \frac{f(x+h)g(x + h) - f(x)g(x)}{h} = $$
+        $$= \lim\limits_{h \to 0} \frac{f(x + h) - f(x)}{h} \cdot \lim\limits_{h \to 0} g(x + h) + f(x) \cdot \lim\limits_{h \to 0} \frac{g(x+h) - g(x)}{h} = $$
+        $$= f'(x)g(x) + f(x)g(x)$$
+
+        \item[4] $$\left(\frac{1}{f}\right)'(x) = \lim\limits_{h \to 0} \frac{\frac{1}{f(x+h)} - \frac{1}{f(x)}}{h} = $$
+        $$= - \frac{1}{f(x)} \cdot \lim\limits_{h \to 0} \frac{1}{f(x+h)} \cdot \lim\limits_{h \to 0} \frac{f(x + h)f(x)}{h} = \frac{f'(x)}{f^2(x)}$$
+
+        \item[5] Используя (3) и (4) получаем:
+        
+        $$\left(\frac{g}{f}\right)'(x) = \left(g \cdot \frac{1}{f}\right) (x) = g'(x) \cdot \frac{1}{f(x)} + g(x) \left(\frac{1}{f}\right)'(x) =$$
+        $$= \frac{g'(x)}{f(x)} - \frac{g(x)f'(x)}{f^2(x)} = \frac{g'(x)f(x) - g(x)f'(x)}{f^2(x)}$$
+
+        \item[6] используя связь производной с дифференцируемостью функции, получаем:
+        
+        $$g(y + l) = g(y) + g'(y)\cdot l + g(l), \text{ где } \lim\limits_{l \to 0} \frac{g(l)}{l} = 0$$
+
+        Положим $\delta(l) \defeq \frac{g(l)}{l}, l \in \dot{\omega}(0)$
+
+        Положим $\delta(0) = 0$, тогда функция $\delta(l)$ определена в $\omega(0)$ и непрерывна в 0, $\omega(0)$ --- окрестость из определения дифференцируемости функции $g$.
+        
+        Возьмем теперь $h \neq 0$ и положим
+
+        $$l \defeq f(x + h) - f(x) = f(x + h) - y$$
+
+        В отличие от $h$, возможно, что $l = 0$ при каких-то значениях $h$. Теперь имеем, используя дифференцируемость $f$:
+        
+        $$\phi(x + h) = g(f(x + h)) = g(f(x) + f'(x)h + \overline{\rho}(h)), \text{ где } \lim\limits_{l \to 0} \frac{\overline{\rho}(l)}{l} = 0$$
+
+        Пусть $f'(x)h + \overline{\rho}(h) = q$, тогда:
+
+        $$g(f(x) + q) = g(y + q) = g(y) + g'(y)q + q\delta(q) = $$
+        $$ =\phi(x) + g'(y)(f'(x)h + \overline{\rho}(h))+(f'(x)h+\overline{\rho}(h)) \cdot \delta(f'(x)h + \overline{\rho}(h)) \defeq$$
+        $$\defeq \phi(x) + g'(y)f'(x) + R(h)$$ 
+        
+        Где $R(h) = g'(y)\overline{\rho}(h) + f'(x)h \cdot \delta(f'(x)h + \overline{\rho}(h)) + \overline{\rho}(h)\cdot \delta(f'(x)h + \overline{\rho}(h))$
+
+        При $h \to 0$ имеем $f'(x)h + \overline{\rho}(h) \to 0$, поэтому $\frac{R(h)}{h} \underset{h \to 0}{\to} g'(y) \cdot 0 + f'(x) \cdot 0 + 0 = 0$
+
+        Таким образом, функция $\phi$ дифференцируема в $x$, и по теореме о связи производной и дифференцируемости:
+
+        $$\phi'(x) = g'(y)f'(x)$$
+
+        \item[7] Возьмем последовательность $\{h_n\}_{n=1}^{\infty}, \forall n: h_n \neq 0$ и $h_n \to 0$. Положим $l_n = f(x + h_n) - f(x)$. В силу строгой 
+        монотонности функции $f$ имеем $\forall n: l_n \neq 0$ и $l_n \to 0$ при $n \to \infty$ в силу непрерывности $f$ на $[a, b]$.
+        $l_n$ и $h_n$ связаны также соотношением:
+        
+        $\newline$
+        
+        $\begin{cases}
+            f(x+h) = f(x) + l_n = y + l_n \\
+            g(f(x + h)) = g(y + l_n) \\
+            x + h_n = g(y + l_n) \\
+            h_n = g(y + l_n) - x = g(y+l_n) - g(y) \\
+        \end{cases}$
+        
+        Это соотношение показывает, что мы можем произвольно задать $l_n, \forall n: l_n \neq 0, l_n \underset{n \to \infty}{\to} 0$ и получим $h_n \neq 0, h_n \underset{n \to \infty}{\to} 0$. Возьмем теперь произвольную последовательность $\{l_n\}_{n=1}^{\infty}, \forall n: l_n \neq 0, \l_n \underset{n \to \infty}{\to} 0, h_n$ --- соответствующая ей последовательность имеет:
+        
+        $$\frac{g(y + l) -g(y)}{l_n} = \frac{h_n}{l_n} = \frac{h_n}{f(x+h_n) - f(x)} = \frac{1}{\frac{f(x+h)-f(x)}{h_n}} \underset{n \to \infty}{\to} \frac{1}{f'(x)}$$
+
+        В силу произвольности $\{l_n\}_{n=1}^{\infty}$ получаем: $g'(y)=\frac{1}{f'(x)}$
+        \end{enumerate}
+\end{proof}
