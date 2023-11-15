@@ -1,0 +1,187 @@
+
+%\setcounter{chapter}{-1}
+
+
+
+\lesson{4}{04.10.2023}{Фибоначчи и теория вероятностей}
+
+\section{Фибоначчи}
+
+\begin{definition}
+    Последовательность Фибоначчи определяеется как: $\begin{cases}
+        F_0 = 0,\\
+        F_1 = 1,\\
+        F_n = F_{n-1} + F_{n-2}, n \geq 2.
+    \end{cases}$
+\end{definition}
+
+
+\begin{lemma}
+    $$F_{2k} = F_{2k-1} + F_{2k-3} + \ldots + F_1$$
+
+    $$F_{2k - 1} = F_{2k} + F_{2k-2} + \ldots + F_0 + 1$$ 
+
+\end{lemma}
+
+\begin{proof}
+    Докажем по индукции. База: $k = 1$: 
+    
+    $F_2 = F_1 + F_0 = 1 + 0 = 1$. 
+    
+    $F_1 = F_0 + 1 = 0 + 1 = 1$. 
+    
+    Переход: $k \to k + 1$. По предположению индукции: 
+    
+    $F_{2k} = F_{2k-1} + F_{2k-3} + \ldots + F_1$. Тогда $F_{2k+2} = F_{2k+1} + F_{2k-1} + \ldots + F_1 + F_0 = F_{2k+1} + F_{2k}$. Аналогично для нечетных.
+\end{proof}
+
+\begin{theorem} (Представление натуральных чисел в виде суммы чисел Фибоначчи)
+
+    $\forall S \in \N: S = F_{i_0} + F_{i_1} + \ldots + F_{i_s}$
+
+    Где $i_0 = 0, i_{k-1} + 1 < i_k: k \in 1 : s$
+\end{theorem}
+
+
+
+\begin{proof}
+    Докажем, что такое представление существует. 
+    Пусть $j(s)$ --- номер максимального числа Фибоначчи, не большего чем $S$. Положим $S' = S - F_{j(s)}$. 
+    Предположим, что $S' > F_{j(s)-1}$, тогда: $S' > F_{j(s)-1} \implies S > F_{j(s)} + F_{j(s)-1} \implies S > F_{j(s)+1}$, но по лемме $S \leq F_{j{s}+1}$ --- противоречие, значит $S' < F_{j(s)-1}$
+
+    Далее можно построить представление для $S'$, итого число $S$ прдставляется в виде представление для $S'$, дополненное слагаемым $F_{j(s)}$
+
+    Проверим однозначность предсталвения: пусть $S = F_{j_0} + \ldots + F_{j_q} (2)$. Не умоляя общности, $j_q < j(s)$ (больше быть не может, а равные можно отбросить)
+    Заменим $F_{j_q}$ на $F_{j(s)-1}$, тогда правая часть равенства (2) увеличится. Будем заменять $F_{j_q - 1}$ на $F_{j(s)-3}$ и т.д. Но при таких заменах сумма не превзойдет $F_{j(s)}$ по лемме, значит, представление для $S$ однозначно.
+\end{proof}
+
+
+\section{Фибоначчиева система счисления}
+
+Вектор набора $(i_0, i_1, \ldots, i_s)$ --- запись числа $S$ в фибоначчиевой системе счисления.
+
+\begin{algoritm} (Прибалвение единицы в фибоначчиевой системе счисления)
+    \begin{itemize}
+        \item Начальное положение: имеем набор $x[0: n - 1]$ из нулей и единиц, в котором нет двух единиц рядом и $x[0] = 1$.
+        \item Положим $x[1] := 1$.
+        \item Шаг: выбирем наибольшее $k$: $x[k] = 1 \land x[k-1] = 1$. Тогда:
+        
+        $\begin{cases}
+
+            x[k] := 0, \\
+            x[k-1] := 0, \\
+            x[k+1] := 1, \\
+            x[0] := 1.
+        \end{cases}$
+    \end{itemize}
+\end{algoritm}
+
+\begin{eg}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        0 & 1 & 2 &3 &4&5&6&7&8&9& пояснение\\
+        \hline
+        1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & = 46\\
+        1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & начало\\
+        1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1-й шаг\\
+        1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 2-й шаг\\
+        1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 3-й шаг\\
+        \hline        
+    \end{tabular}
+\end{eg}
+
+\chapter{Элементарная теория вероятностей}
+
+\section{Основные понятия}
+\begin{definition}
+    $\Omega$ --- множество элементарных исходов. $A \subset \Omega$ --- событие.
+\end{definition}
+
+\begin{definition}
+    $\varnothing \subset \Omega$ --- невозможное событие, $\Omega \subset \Omega$ --- достоверное событие.
+\end{definition}
+
+\begin{definition}
+    Пусть есть события $A, B$, тогда:
+    \begin{itemize}
+        \item $A \cup B$ --- объединение событий
+        \item $A \cap B$ --- совмещение событий, причем, если $A \cap B = \varnothing$, то $A, B$ --- несовместные события.
+        \item $\overline{A}$ --- противоположное событие.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    $p: \Omega \to [0, 1]$ --- вероятность события. Причем:
+    \begin{enumerate}
+        \item $0 \leq p(A) \leq 1$
+        \item $A \subset B \implies p(A) \leq p(B)$
+        \item если $A = A_1 + A_2, A_1 \cap A_2 = \varnothing$, то $p(A) = p(A_1) + p(A_2)$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    $p(A) = \frac{|A|}{|\Omega|}$ --- классическая вероятность.
+\end{definition}
+
+\begin{definition} (Полная система событий)
+    
+    Пусть есть события $S_1, \ldots, S_n$, таких, что:
+    \begin{itemize}
+        \item $S_i \cap S_j = \varnothing, i \neq j$
+        \item $S_1 \cup \ldots \cup S_n = \Omega$
+    \end{itemize}
+
+    Тогда вероятность события $A$ можно посчитать следующим образом:
+
+    $$p(A) = \sum_{i=1}^{n} p(A \cap S_i)$$
+\end{definition}
+
+\begin{definition}
+    События $A, B$ --- независимы, если:
+
+    $$p(A \cap B) = p(A) \cdot p(B)$$
+\end{definition}
+
+\begin{definition}
+    События $A_1, \ldots, A_n$ --- независимы попарно, если:
+
+    $$p(A_i \cap A_j) = p(A_i) \cdot p(A_j)$$
+
+    И независимы в совокупности, если:
+
+    $$p(A_1 \cap \ldots \cap A_n) = \prod_{i=1}^{n}p(A_i)$$
+\end{definition}
+
+\begin{definition} (Условная вероятность)
+    
+    Событие $B$ при условии, что произошло событие $A$:
+
+    $$p(B | A) = \frac{p(A \cap B)}{p(A)}$$
+\end{definition}
+
+
+\begin{eg}
+    Пусть есть тетраэдр с одной красной, одной черной, одной белой и одной, покрашенной во все цвета гранями. Тогда:
+
+    \begin{itemize}
+        \item $p(\text{Крас.}) = \frac{1}{2}$
+        \item $p(\text{Крас.} \cap \text{Черн.}) = \frac{1}{4}$ --- попарно независимы
+        \item $p(\text{Крас.} \cap \text{Черн.} \cap \text{Бел.}) = \frac{1}{4}$ --- не независимы в совокупности.
+    \end{itemize}
+\end{eg}
+
+\begin{definition} (Полная вероятность, используя условную)
+    $$p(A) = \sum_{i=1}^{n} p(A \cap S_i) = \sum_{i=1}^{n} p(A | S_i) \cdot p(S_i)$$
+\end{definition}
+
+\begin{definition} (Формула Байеса)
+    Пусть есть события $A, B$: 
+    $$p(B) = \sum_{i=1}^{n} p(B | A_i) \cdot p(A_i)$$
+    
+    $$p(B | A_i) = \frac{p(A_i \cap B)}{p(A_i)} \implies p(B \cap A_i) = p(A_i) \cdot p(B | A_i) = p(B) \cdot p(A_i | B) $$
+    
+    Получаем формулу Байеса:
+    
+    $$p(A_i | B) = \frac{p(B | A_i) \cdot p(A_i)}{\sum_{j=1}^{n} p(B | A_j) \cdot p(A_j)}$$
+
+\end{definition}
