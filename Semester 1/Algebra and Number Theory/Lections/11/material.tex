@@ -1,0 +1,276 @@
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+% разобрать: 
+%1 формулу Лагранжа (proof) 
+%2 табилцу в примере в начале
+%3 пример после Лагранжа допиши с itemize
+\lesson{11}{17.11.2023}{}
+
+\section{Интерполя}
+
+%\begin{remark} По точкам можно найти многочлен
+%  \begin{tabular}{c|c|c|c}
+%    $x$ & $x_1$ & $x_2$ & $\ldots$ & $x_n$ \\
+%    \hline
+%    $F(x)$ & $y_1$ & $y_2$ & $\ldots$ & $y_n$ \\
+%  \end{tabular}
+%\end{remark}
+
+\begin{theorem} (Интерполяционная формула Лагранжа)
+  
+  Пусть $K$ --- поле. $\forall x_1, \ldots, x_n \in K$ и $\forall y_1, \ldots, y_n \in K$, тогда : 
+  $$\exists! F \in K[x]: \forall i: F(x_i) = y_i$$
+  
+  Многочлен можно найти по формуле:
+
+  $$F(x) = L_1(x)y_1 + L_2(x)y_2 + \ldots + L_n(x)y_n$$
+
+  $$\text{ где } L_i(x) =\frac{(x - x_1) \cdot \ldots \cdot (x - x_{i-1}) \cdot (x - x_{i+1}) \cdot \ldots \cdot (x - x_n)}{(x_i - x_1) \cdot \ldots \cdot (x_i - x_{i-1}) \cdot (x_i - x_{i+1}) \cdot \ldots \cdot (x_i - x_n)}$$
+\end{theorem}
+
+\begin{proof}
+ 
+  $\newline$
+
+  \begin{enumerate}
+    \item Существование. Проверим, что многочлен, заданный формулой, подходит:
+    
+    $\deg L_i = n - 1 \implies \begin{cases}
+      \deg (L_i(x) y_i) = n - 1\\
+      L_i (x) y_i = 0
+    \end{cases} \implies \deg F \leq \max \{\deg L_i\} = n - 1$
+
+    $\forall i: L_i(x_i) = 1$ и $\forall i \neq j: L_i(x_j) = 0$
+
+    $F(x_i) = L_1(x_i)y_1 + \ldots + L_i(x_i)y_i + \ldots + L_n(x_i)y_n = 0 \cdot y_1 + \ldots + 1 \cdot y_i + \ldots + 0 \cdot y_n = y_i$
+    
+    \item Единственность. Пусть $F(x), G(x): \forall i: F(x_i) = y_i \land G(x_i) = y_i$ тогда:
+    
+    $\deg F \neq n - 1, \deg G \neq n - 1$
+
+    Пусть $H(x) =F(x) - G(x) \implies \deg H \neq n - 1$
+
+    $H(x_i) = y_i - y_i = 0$ --- у $H$ есть $n$ корней, значит $H = 0 \implies F = G$
+  \end{enumerate}
+\end{proof}
+
+\begin{eg}
+  \begin{tabular}{c|c|c|c}
+    $x$ & $1$ & 2 & 3 \\
+    \hline
+    $F(x)$ & 1 & 4 & 9 \\
+  \end{tabular}
+  
+  $\newline$
+
+  $L_1(x) = \frac{(x-2)(x-3)}{(1-2)(1-3)} = \frac{1}{2}x^2 - \frac{5}{2}x + 3$
+
+  $L_2(x) = \frac{(x-1)(x-3)}{(2-1)(2-3)} = -x^2 + 4x - 3$
+
+  $L_3(x) = \frac{(x-1)(x-2)}{(3-2)(3-2)} = \frac{1}{2}x^2 - \frac{3}{2}x + 1$
+
+  $F(x) = (\frac{1}{2}x^2 - \frac{5}{2}x + 3) \cdot 1 + (-x^2 + 4x - 3) \cdot 4 + (\frac{1}{2}x^2 - \frac{3}{2}x + 1) \cdot 9 = x^2$
+\end{eg}
+
+\section{Метод интерполяции Ньютона}
+
+\begin{algoritm} (Ньютона)
+
+  Для данных различных $x_1, x_2, \ldots, x_n$ и данных $y_1, y_2, \ldots, y_n$ требуется построить многочлен $F(x)$ (он уже существует и единственен) такой, что:
+  $$\forall i: F(x_i) = y_i, \deg F \leq n - 1$$
+
+  Построим последовательно многочлены $f_1, f_2, \ldots, f_n$ так, что: $\deg f_k(x) \leq k - 1$ и $f_k(x_1) = y_1, \ldots, f_k(x_k) = y_k$
+
+  На n-ом шагу подойдет многочлен $f_n(x) = F(x)$
+
+  $\newline$
+
+  В начале возьмем $f_1(x) = y_1$. Многочлен $f_k(x)$ определим по формуле:
+
+  $$f_k(x) = f_{k-1}(x) + A_{k-1} \cdot g_{k-1}(x) \text{, где } g_{k-1}$$
+
+  $$g_{k-1}(x) = (x - x_1) \cdot \ldots \cdot (x - x_{k-1}), \;\; A_{k-1} = \frac{y_k-f_{k-1}(x_k)}{g_{k-1}(x_k)}$$
+\end{algoritm}
+
+
+\begin{eg}
+  \begin{tabular}{c|c|c|c}
+    $x$ & $1$ & 2 & 3 \\
+    \hline
+    $F(x)$ & 1 & 4 & 9 \\
+  \end{tabular}
+  
+  $\newline$
+  \begin{itemize}
+    \item $f_1(x) = 1$
+
+    \item $f_2(X) = 1 + A(x-1)$. 
+    
+    Найдем А: $x = 2 \implies 4 = 1 + A(2 - 1) \implies A = 3$. Значит, $f_2(x) = 3x - 2$
+
+    \item $f_3(x) = (3x - 2) + A(x-1)(x-2)$
+
+    Найдем А: $x = 3 \implies 9 = (3 \cdot 3 - 2) + A(3 - 1)(3 - 2) \implies A = 1 \implies $
+    
+    $\implies f_3(x) = (3x - 2) + 1\cdot (x-1)(x-2) = x^2$. Значит, $F(x) = x^2$
+    \end{itemize}
+\end{eg}
+
+\begin{theorem}
+  Метод интерполяции Ньютона работает корректно определен и результат его применения --- нужный многочлен.
+\end{theorem}
+
+\begin{proof}
+  Имеем $g_{k-1} = (x_k - x_1) \cdot \ldots \cdot (x_k - x_{k-1}) \neq 0 \implies A_k$ --- определено.
+
+  Докажем по индукции, что $\deg f_k \leq k-1$:
+
+  База: $\deg f_1 = \left[\begin{gathered}
+    0 \\
+    -\infty 
+  \end{gathered}\right. \leq 1 - 1$
+
+  Переход $k - 1 \to k$: $\deg f_k \leq \max \{\underset{\leq k - 2}{\deg f_{k-1}}, \underset{=k-1}{\deg (A_k \cdot g_{k-1})}\} \leq k - 1$
+
+  $\newline$
+
+  Докажем по индукции, что $f_k(x_1) = y_1, \ldots, f_k(x_n) = y_n$:
+\end{proof}
+
+\section{Делимость в области целостности} (По учебнику Кострикина)
+
+\begin{definition}
+  Пусть $A$ --- область целостности, $a, b \in A$. a делится на b, если $\exists c \in A: a = bc$. Обозначается как $a \divby b$
+\end{definition}
+
+
+\begin{properties} (доказательство в качестве упражнения)
+  
+  \begin{enumerate}
+    \item $a, b \divby c \implies a + b \divby c, a - b \divby c$
+    \item $a \divby b \implies \forall k \in A: ak \divby b$
+    \item $a \divby b, b \divby c \implies a \divby c$
+  \end{enumerate}
+\end{properties}
+
+\begin{definition}
+  Пусть $A$ --- область целостности. Элементы $a, b$ называются ассоциированными, если $a \divby b, b \divby a$
+\end{definition}
+
+\begin{eg}
+  $\newline$
+
+  \begin{enumerate}
+    \item в $\Z:$ a ассоциировано с $a$ и с $-a$
+    \item в $\R[x]: P(x), Q(x)$ ассоциированы, если $P(x) = c \cdot Q(x), c \neq 0$
+  \end{enumerate}
+\end{eg}
+
+\begin{properties}
+  Пусть $A$ --- область целостности с единицей. Тогда:
+  \begin{enumerate}
+    \item a и b --- ассоциированы $\Leftrightarrow \exists u: $ u - обратим и $a = b \cdot u$
+    \item $\begin{cases}
+      a \divby b \\
+      a, a_1  \text{ --- ассоциированы} \\
+      b, b_1  \text{ --- ассоциированы} \\
+    \end{cases} \implies a_1 \divby b_1$
+  \end{enumerate}
+\end{properties}
+
+
+\begin{proof}
+  
+  $\newline$
+  
+  \begin{enumerate}
+    \item \begin{itemize}
+      \item[$\implies:$] $a = bc, b = ad \implies a = b \cdot c = (ad) \cdot c = a(dc) \implies 1 = dc \implies$ c --- обратим 
+      \item[$\Leftarrow:$] $a = bu \implies a \divby b$
+      
+      $\exists u^{-1}$, т.к. u обратим
+
+      $au^{-1} = b \cdot u \cdot u^{-1} = b \cdot 1 = b \implies b \divby a$
+    \end{itemize}
+    \item $a = bc, a = u\cdot a_1$, где u --- обратим и $b = v \cdot b_1$, где v --- обратим
+    
+    $a_1 = u^{-1} a = u^{-1} bc = u^{-1} vb_1c = (u^{-1}vc)b_1 \implies a_1 \divby b_1$
+    
+    
+  \end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+  Пусть $A$ --- область целостности с единицей. Элемент $p \in A$ называется неразложимим или простым, если его нельзя представить в виде $p = ab$, где a, b --- необратимы.
+\end{definition}
+
+\begin{eg}
+  \begin{enumerate}
+    \item в $\Z:$ $\pm p$, где p --- простое
+  \end{enumerate}
+\end{eg}
+
+\begin{definition}
+  Пусть $K$ --- поле, $A = K[x]$. неразложимый в $K[x]$ многочлен называется неприводимым над $K$ (или в $K[x]$)
+\end{definition}
+
+\begin{eg}
+  
+  $\newline$
+
+  \begin{enumerate}
+    \item $x^2 + 1$ приводим над $\mathbb{C}$, неприводим над $\R$
+    \item $x^2 - 2$ приводим над $\R$, неприводим над $\Q$
+  \end{enumerate}
+\end{eg}
+
+\begin{definition}
+  Пусть $A$ --- область целостности, $a, b \in A$. Элемент $d \in A$ называется НОД(a, b), если:
+
+  \begin{enumerate}
+    \item $a, b \divby d$
+    \item выполнено условие: $a, b \divby x \implies d \divby x$
+  \end{enumerate}
+\end{definition}
+
+\begin{properties}
+  
+  $\newline$
+
+  \begin{enumerate}
+    \item Если d является НОД(a, b) и $d_1$ ассоциировано с $d$, то $d_1$ является НОД(a, b)
+    \item Если $d_1, d_2$ являются НОД(a, b), то $d_1, d_2$ ассоциированы
+  \end{enumerate}
+\end{properties}
+
+
+\begin{proof}
+  
+  $\newline$
+  \begin{enumerate}
+    \item $a, b \divby d \implies a, b \divby d_1$
+    
+    $d \divby x \implies d_1 \divby x$
+
+    \item $a, b \divby d$
+    
+    $\begin{cases}
+      a, b \divby d_1 \\
+      d \text{ - НОД(a, b)}
+    \end{cases} \implies d \divby d_1$. Аналогично $d_1 \divby d$
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}
+  Пусть $A$ --- область целостности с единицей. Элементы $a, b$ называются взаимно простыми, если 1 является НОД(a, b)
+\end{definition}
+
+
+\begin{definition}
+  Кольцо $A$ называется факториальным, если $A$ --- область целостности с единицей и любой элемент $a \in A$ можно представить в виде произведения $a = u \cdot p_1 p_2 \ldots p_k$, где u обратим, $p_i$ неразложим
+
+  Такое представление единственно с точностью до замены сомжножителей на ассоциированные, т.е. если $a = v q_1 \ldots q_m$ --- другое представление, то $k = m$ и можно так перенумеровать Элементы, что $\forall i: q_i$ ассоциирован с $p_i$
+\end{definition}

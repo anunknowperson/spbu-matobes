@@ -1,0 +1,29 @@
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+
+\lesson{9}{3.11.2023}{}
+
+\begin{proof} (Возведение в степень)
+    \begin{itemize}
+        \item $n = 0: z^0 = 1$
+        \item $n > 0: $
+        $$z^n = r(\cos \varphi + i \sin \varphi) \cdot r(\cos \varphi + i \sin \varphi) \cdot \ldots \cdot r(\cos \varphi + i \sin \varphi) =$$
+        $$=r^n(\cos (n\varphi) + i \sin (n\varphi))$$
+        \item $n < 0$: Положим $k = -n, k > 0$:
+        $$z^n = \frac{1}{z^k} = \frac{1}{r^k(\cos (k\varphi) + i \sin (k\varphi))} = \frac{1}{r^k}(\cos (-k\varphi) + i \sin (-k\varphi)) = $$
+        $$= r^n(\cos (n\varphi) + i \sin (n\varphi))$$
+    \end{itemize}
+\end{proof}
+
+\begin{eg} Найти $(\sqrt{3} + i)^{10}$
+    
+    $z = -sqrt{3} + i, \;\; r = 2, \;\; \varphi = \frac{5\pi}{6} \implies$
+
+    $\implies \cos \varphi = -\frac{\sqrt{3}}{2}, \;\; \sin \varphi = \frac{1}{2}$
+
+    $\begin{aligned}
+        z &= 2(\cos )
+    \end{aligned}$
+\end{eg}

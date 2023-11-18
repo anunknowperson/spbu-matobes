@@ -1,0 +1,183 @@
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+
+\lesson{10}{10.11.2023}{}
+
+\section{Кольцо многочленов, деление многочленов с остатком}
+
+\begin{theorem}
+	$A[x]$ $-$ является кольцом\\
+\end{theorem}
+\begin{replacementproof}
+	Проверим дистрибутивность (остальное $-$ упр):\\
+	$(P+Q)R=PR+QR$ \\
+	$P=(a_0,a_1,\ldots); \quad Q=(b_0,b_1,\ldots)$ \\
+	$R=(c_0,c_1,\ldots)$ \\
+	$P+Q=(a_0+b_0,a_1+b_1,\ldots)$ \\
+	$(P+Q)R=(\ldots, (a_0+b_0)c_k+(a_1+b_1)c_{k-1}+\ldots+(a_k+b_k)c_0, \ldots)$\\
+	$PR=(\ldots,a_0c_k+a_1c_{k-1}+\ldots+a_kc_0,\ldots)$ \\
+	$QR=(\ldots,b_0c_k+b_1c_{k-1}+\ldots+b_kc_0,\ldots)$\\
+	$PR+QR=(\ldots,a_0c_k+a_1c_{k-1}+\ldots+a_kc_0+b_0c_k+\ldots+b_kc_0, \ldots)$
+\end{replacementproof}
+\textbf{Обозначение}: Пусть $a \in A$.  Элемент $a$ отождествляется $(a,0,0,\ldots)$ \\
+\textbf{Коррекстность}: $a,b \in A \implies a+b$ и $ab$ в  $A$ и в  $A[x]$ согласованны
+\begin{properties} Пусть $A$ $-$ ассоциативное кольцо с 1
+	\begin{enumerate}
+		\item Пусть $b \in A, P \in A[x]; \quad P=(a_0,a_1,\ldots)$ \\
+			Тогда $bP=(ba_0,ba_1,\ldots)$ 
+		\item Пусть $P \in A[x], P=(a_0,a_1,\ldots)$ \\
+			Тогда $xP=(0,a_0,a_1,\ldots)$ 
+		\item $x^{n}=(0,0,\ldots,1_{n},0,\ldots)$
+	\end{enumerate}
+\end{properties}
+\begin{replacementproof}
+	
+  $\newline$
+  
+  \begin{enumerate}
+		\item $b=(b,0,0,\ldots), P=(a_0,a_1,\ldots)$ \\
+			 Пусть $bP=(c_0,c_1,\ldots)$ \\
+			$c_k=ba_k+0a_{k-1}+\ldots+0a_0=ba_k$ 
+		\item Пусть $(0,1,0,\ldots)(a_0,a_1,\ldots)=(c_0,c_1,\ldots)$\\
+			$c_0=0, a_0=0$\\
+			При $k\ge 1: c_k=0a_k+1a_{k-1}+0a_{k-1}+\ldots=1a_{k-1}=a_{k-1}$ 
+		\item Из (2) (n раз применяем свойство 2)
+	\end{enumerate}
+\end{replacementproof}
+\textbf{Обозначение:} Будем использвать обозначение $P(x)=a_0+a_1x+\ldots+a_nx^{n}$ для $P=(a_0,a_1,\ldots,a_n,0,0,\ldots)$ 
+\begin{definition}
+	Пусть $P=(a_0,a_1,\ldots)$ $-$ многочлен не равный 0\\
+	Степенью $P$ называют  $\max\{k\mid a_k\neq 0\}$ \\
+	\textbf{Обозначение:} $\deg P$\\
+	Если  $P$ $-$ нулевой многочлен, считаем $\deg P=-\infty$
+\end{definition}
+\textbf{Напоминание:} Кольцо $A$ называется областью целостности, если оно aссоциативно, коммутативно и если  $ab=0$, то  $a=0$ или  $b=0$
+\begin{theorem}
+	Пусть $A$ $-$ область целостности\\
+	Тогда 
+	\begin{enumerate}
+		\item $\deg (P+Q) \le \max\{\deg P, \deg Q\}$ 
+		\item $\deg (PQ) = \deg P+\deg Q$ 
+		\item $A[x]$ $-$ область целостности
+	\end{enumerate}
+\end{theorem}
+\begin{replacementproof}
+	Пусть $P=(a_0,a_1,\ldots); \quad Q=(b_0,b_1,\ldots)$
+	\begin{enumerate}
+		\item Пусть $N=\max\{\deg P, \deg Q\}$ \\
+			При $k>N: \quad a_k=0, b_k=0 \implies a_k+b_k=0$
+		\item При $P=0$ или $Q=0: -\infty = -\infty +\ldots$\\
+			Считаем $P\neq 0, Q\neq 0$\\
+			Пусть $k=\deg P, m=\deg Q$\\
+			Пусть  $PQ=(c_0,c_1,\ldots)$ \\
+			$c_{k+m}=\displaystyle\sum_{i+j=k+m}^{} a_ib_i$ \\
+			При $i=k,j=m: \quad a_kb_k$\\
+			При $i<k, j>m: \quad a_i*0=0$\\
+			При  $i>k, j<m: \quad 0*b_i=0$\\
+			Пусть $N>k+m; \quad c_n=\displaystyle\sum_{i+j=N}^{} a_ib_i=0+0+\ldots=0$ \\
+			Для любого слагаемого $i>k$ или $j>m$
+		\item Коммутативность $-$ упражнение\\
+			Ассоциативность: $P=(a_0,a_1,\ldots); \quad Q=(b_0,b_1,\ldots); \quad R=(c_0,c_1,\ldots)$ \\
+			Пусть $T-PQ, T=(d_0,d_1,\ldots)$ \\
+			$S=(PQ)R=(e_0,e_1,\ldots)$ \\
+			$e_k=\displaystyle\sum_{i+j=k}^{} d_ic_i = \displaystyle\sum_{i+j=k, l+m=i}^{} a_lb_mc_j = \displaystyle\sum_{l+m+j=k}^{} a_lb_mc_j$ \\
+			$d_i=\displaystyle\sum_{l+m=i}^{} a_lb_m$ \\
+			Аналогично $P(QR)$ \\
+			Если $P \neq 0, Q \neq 0$, то $degPQ=degP+degQ \neq -\infty \implies PQ \neq 0$
+	\end{enumerate}
+\end{replacementproof}
+\begin{definition}
+	Пусть $A$ $-$ коммутативное, ассоциативное кольцо\\
+	$P\in A[x], P=(a_0,a_1,,a_2\ldots)$ и $c\in A$\\
+	Значением $P$ в $c$ (или при $x=c$) называется $a_0+a_1c+a_2c^2+\ldots \in A$\\
+	\textbf{Обозначение:} $P(c)$
+\end{definition}
+\begin{properties}
+	Пусть $P,Q \in A[x], F=P+Q, G=PQ$ \\
+	Тогда $F(c)=P(c)+Q(c); \quad G(c)=P(c)Q(c)$
+\end{properties}
+
+
+\subsection{Деление многочленов с остатком}
+\begin{definition}
+	Пусть $K$ $-$ поле, $F,G \in K[x], G\neq 0$ \\
+	Если для $Q,R \in K[x]$ выполнено $F=QG+R, \deg R < \deg G$,\\
+	то $Q$ и $R$ назвается неполным частным и остатком от деления $F$ на $G$
+\end{definition}
+\begin{theorem}
+	\textbf{(Деление многочленов с остатком)}\\
+	Пусть $K$ $-$ поле, $F,G \in K[x], G\neq 0$ \\
+	Тогда существует единственные $Q,R$, такие что  $F=QG+R, \deg R<\deg G$
+\end{theorem}
+\begin{replacementproof}
+	\begin{enumerate}
+		\item \textbf{Существование}\\
+			Положим, $A = \{F(x)-T(x)G(x)\mid T \in K[x]\}$\\
+			Пусть $R$ $-$ элемент $A$ имеет стпень $Q: R=F-QG$ \\
+			Докажем, что $\deg R<\deg G$\\
+			Пусть:  $$Q=a_nx^{n}+a_{n-1}x^{n-1}+\ldots, R(x)=b_mx^{m}+b_{m-1}x^{m-1}+\ldots$$ \\
+			$\implies m \ge n$\\
+			Положим $R_1(x)=R(x)-\displaystyle\frac{b_n}{a_n}x^{m-n}G(x)$ \\
+			Тогда $$R_1(x) \in A\\ R_1(x) = b_mx^{m}+b_{m-1}x^{m-1}+\ldots-\displaystyle\frac{b_m}{a_n}x^{m-n}a_nx^{n}-\displaystyle\frac{b_m}{a_n}x^{m-n}a_{n-1}x^{n-1}-\ldots$$ \\
+			$\deg R_1<m=\deg R$\\
+			Противоречие с выбором $R$
+		\item \textbf{Единственность}\\
+			Пусть: $F=GQ_1+R_1; \quad F=GQ_2+R_2; \quad degR_1,degR_2<degG$\\
+			$GQ_1+R_1=GQ_2+R_2$\\
+			$G(Q_1-Q_2)=R_2-R_1$ \\
+			$\deg (R_2-R_1)\le \max\{degR_1,degR_2\} < \deg G $ \\$\deg (G(Q_1-Q_2))=defG-\deg (Q_1-Q_2)$ \\
+			$\implies Q_1-Q_2=0 \implies Q_1=Q_2 \implies R_1=R_2$
+	\end{enumerate}
+\end{replacementproof}
+\begin{theorem}
+	\textbf{Безу}\\
+	Пусть $K$ $-$ поле, $F \in K[x], c \in K$,тогда \\
+	Тогда остаток от деления $F(c)$ на $x-c$ равен  $F(c)$
+\end{theorem}
+\begin{replacementproof}
+	Остаток $-$ многочлен степени $<1$\\
+	 $F(x)=(x-c)Q(x)+r$ Подставим $x=c:$ \\
+	 $F(c)=(c-c)Q(c)+r \implies F(c)=r$
+\end{replacementproof}
+\textbf{Следствие:} $c$ $-$ корень $F(x) \iff F(x) \divby x-c$
+\begin{replacementproof}
+	$F(x) \divby x-c \implies r=0 \implies F(c)=0$
+\end{replacementproof}
+\begin{theorem}
+	\textbf{(о количестве корней многочлена)}\\
+	Пусть $K$ $-$ поле, $F \in K[x], F\neq 0$ \\
+	Тoгда количество корней $F(x)$ не превосходит $\deg F$
+\end{theorem}
+\begin{replacementproof}
+	Докажем, что у многочлена степени $n$ не более $n$ корней:\\
+  
+  По индукции:
+  \begin{itemize} 
+    \item База: $n=0; \quad F(x)=a_0; \quad a_0\neq 0 \implies$ нет корней
+    
+    \item Переход $n \to n+1:$ Пусть $\deg F=n+1$\\
+    Если у $F$ нет корней $-$ верно\\
+    Пусть $c$ $-$ корень $F(x) \implies$ (теорема Безу) $F(x) \divby x-c \implies$ \\
+    $\implies F(x)=(x-c)Q(x)$ \\
+    $degF=\deg (x-c)+degQ \iff n+1 = 1 + degQ \implies$\\
+    $\implies degQ=n \implies$ у $Q(x)$ не более $n$ $-$ корней $(x_1,\ldots,x_k); \quad k$\\
+    Пусть $x_0$ $-$ корень $F \implies 0=F(x_0)=(x_0-c)Q(x_0) \implies$\\
+    $\implies x_0=c$ или $x_0$ $-$ корень $Q(x) \implies$ есть корень $(x_1,\ldots,x_k,c)$ 
+  \end{itemize}
+\end{replacementproof}
+\textbf{Следствие (формальное и функциональное равенство многочлена):}\\
+Пусть $K$ $-$ бесконечное поле, $F,G \in K[x]$ \\
+Если для любого $c \in K$ выполнено $F(c)=G(c)$ (функциональное), то $F=G$ (формальное)\\
+(функциональное) $\to$ (формальное) всегда. наоборот не всегда
+\begin{replacementproof}
+	Пусть $F \neq G, H=F-G \implies H \neq 0$\\
+	$\implies$ у $H$ не более чем  $degH$ корней  $\implies \exists c: H(c) \neq 0$ \\
+	$\implies F(c) -G(c) \neq 0 \implies F(c) \neq G(c)$ \\
+	\textbf{Замечание:} Верное не всегда\\
+	$K=\mathbb{Z}_p, p \in \mathbb{P}$\\
+	$F(x)=x^{p}-p, G(x)=0$ \\
+	$F(c)=G(c), F \neq G$
+\end{replacementproof}
+\end{document}
