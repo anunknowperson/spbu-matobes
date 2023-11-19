@@ -5,7 +5,7 @@ Materials on the "Technology Programming" direction at SPbU
 
 Информация о статусе лекций [здесь](https://github.com/anunknowperson/spbu-matobes/issues)
 
-За геометрию отедльная благодарность [старшекурсникам](https://wowaster.github.io/lecture-notes/). Большая часть конспектов по геометрии была взята оттуда.
+За геометрию отдельная благодарность [старшекурсникам](https://wowaster.github.io/lecture-notes/). Большая часть конспектов по геометрии была взята оттуда.
 
 ## Содержание
 ### Семестр 1
