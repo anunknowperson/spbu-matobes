@@ -1,0 +1,106 @@
+
+%\setcounter{chapter}{-1}
+
+
+
+\lesson{5}{11.10.2023}{Случайные величины, мат.ожидание, дисперсия}
+
+\section{Случайные величины}
+
+\begin{definition}
+    Пусть $\Omega$ --- множество элементарных событий, $p_\omega$ --- вероятность события $\omega$. Функция $\xi: \Omega \to \R^1$ называется случайной величиной.
+\end{definition}
+
+
+\begin{remark} Способ задать случайную величину (дискретный случай)
+    
+    $\xi:$ \begin{tabular}{c|c|c|c}
+        $a_1$ & $a_2$ & $\ldots$ & $a_n$ \\
+        \hline
+        $p_1$ & $p_2$ & $\ldots$ & $p_n$ \\
+    \end{tabular}
+
+    $p(\xi = a_i) = p_i$, где $\xi = a_i \Leftrightarrow \{\omega \in \Omega: \xi(\omega) = a_i\}$
+\end{remark}
+
+\begin{eg} Стрелок стреляет 3 раза, вероятность попадания --- $0,8$:
+    
+    \begin{tabular}{c|c|c|c}
+        $0$ & $1$ & $2$ & $3$ \\
+        \hline
+        $0,2^3$ & $3 \cdot 0,2^2 \cdot 0,8$ & $3 \cdot 0,8^2 \cdot 0,2$ & $0,8^3$ \\
+    \end{tabular}
+\end{eg}
+
+\section{Математическое ожидание}
+
+\begin{definition} математическим ожиданием случайной величины называется:
+    $$E_\xi = \sum_{i=1}^{n} a_i \cdot p(\xi = a_i)$$
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item Если $p(\xi = a) = 1$, то $E_\xi = a$
+        \item Если $\eta = c \cdot \xi, c$ --- константа, то $E_\eta = c \cdot E_\xi$
+        \item $E(\xi + \eta) = E_\xi + E_\eta$
+        \item $E(\xi \cdot \eta) = E_\xi \cdot E_\eta$ --- для независимых
+    \end{enumerate}
+\end{properties}
+
+\begin{definition} Случайные величины $\xi$ и $\eta$ --- независимы, если:
+
+    $$p(\xi=a_i \land \eta = b_j) = p(\xi=a_i) \cdot p(\eta = b_j)$$
+\end{definition}
+
+\begin{proof} (доказательство свойства 3 для независимых величин)
+    \[E(\xi + \eta) = \sum_{i = 1}^{n} \sum_{j=1}^{k}(a_i + b_j) \cdot p(\xi + \eta = a_i + b_j) = \]
+    \[= \sum_{i=1}^{n} \sum_{j=1}^{k} a_i p(\xi = a_i)p(\eta = b_j) + \sum_{i=1}^{n} \sum_{j=1}^{k} b_j p(\xi = a_i)p(\eta = b_j) =\]
+    \[= \sum_{i=1}^{n} \left( a_i p(\xi = a_i) \underbrace{\sum_{j=1}^{k} p(\eta = b_j)}_{=1} \right) + \sum_{j=1}^{k} \left( b_k p(\eta = b_j) \underbrace{\sum_{i=1}^{n} p(\xi = a_i)}_{=1} \right) =\]
+    \[= E_\xi + E_\eta\]
+\end{proof}
+
+\begin{proof} (доказательство свойства 4)
+    \[\sum_{i=1}^{n} \sum_{j=1}^{k} a_i b_j p(\xi \cdot \eta = a_i b_j) =  \sum_{i=1}^{n} \sum_{j=1}^{k} a_i b_j p(\xi = a_i)p(\eta = b_j) =\]
+    \[= \sum_{i=1}^{n} \left(a_i p(\xi = a_i) \sum_{j=1}^{k} b_j p(\eta = b_j) \right) = E_\xi \cdot E_\eta\]
+\end{proof}
+
+\section{Дисперсия}
+
+\begin{definition} Дисперией случайной величины называется:
+    $$D_\xi = E(\xi - E_\xi)^2 = E(\xi^2 - 2\xi E_\xi + (E_\xi)^2) = $$
+    $$= E_{\xi^2} - E(2\xi E_\xi) + E((E_\xi)^2) = E_{\xi^2} - 2E_\xi E_\xi + (E_\xi)^2 = $$
+    $$= E_{\xi^2} = (E_\xi)^2$$
+\end{definition}
+
+\begin{eg}
+    
+    $\newline$
+
+    $\xi: $ \begin{tabular}{c|c|c}
+        $-1$ & $0$ & $1$  \\
+        \hline
+        $\frac{1}{4}$ & $\frac{1}{2}$ & $\frac{1}{4}$ \\
+    \end{tabular} $\;\;\;  E_\xi = -\frac{1}{4} + \frac{1}{4} = 0$
+
+    $\xi^2:$ \begin{tabular}{c|c}
+        $0$ & $1$ \\
+        \hline
+        $\frac{1}{2}$ & $\frac{1}{2}$ \\
+    \end{tabular} $ \;\;\; E_{\xi^2} = \frac{1}{2}, D_\xi = \frac{1}{2} - 0 = \frac{1}{2}$
+\end{eg}
+
+\begin{properties}
+    
+    $\newline$
+
+    \begin{enumerate}
+        \item $p(\xi=a)=1 \implies D_\xi = 0$
+        \item $\eta = c \cdot \xi \implies D_\eta = c^2 D_\xi$
+        \item $D(\xi + \eta) = D_\xi + D_\eta$ --- независимы
+    \end{enumerate}
+\end{properties}
+
+\begin{proof} (свойство 3)
+    \[D(\xi + \eta) = E(\xi + \eta)^2 - (E(\xi + \eta))^2 = E(\xi^2 + 2\xi \eta + \eta^2) - (E_\xi + E_\eta)^2 =\]
+    \[=E_{\xi^2} + 2E_\xi E_\eta - (E_\xi)^2 - 2E_\xi E_\eta - (E_\eta)^2 = D_\xi + D_\eta\]
+\end{proof}
