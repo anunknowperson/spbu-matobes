@@ -1,0 +1,177 @@
+\lesson{4}{02.10.2023}{Ортонормированный базис и ориентация базиса}
+\section{Построение ортонормированного базиса}
+
+\begin{theorem}
+    Ортонормированный баис существует.
+\end{theorem}
+
+\begin{proof} (Ортогонализация Грама-Шмидта)
+    
+    Есть $\vv_1, \vv_2, ..., \vv_n$ -- ЛНЗ
+    \begin{gather*}
+        \vu_1 = \frac{\vv_1}{|\vv_1|} \qquad |\vu_1| = 1\\
+        \vw_2 = \vv_2 - \alpha \vu_1 \qquad \vw_2 \perp \vu_1 \qquad \vu_2 = \frac{\vw_2}{|\vw_2|}\\
+        |\vu_2|=1 \qquad \vu_2 \perp \vu_1\\
+        (\vu_1, \vw_2) = 0\\
+        (\vu_1, \vv_2 - \alpha \vu_ 1) = 0\\
+        (\vu_1, \vv_2) - \alpha (\vu_1, \vu_1)=0\\
+        \alpha = (\vu_1, \vv_2)
+    \end{gather*}
+    Пусть $\vu_1, \vu_2, ..., \vu_{k-1}$ построены
+    
+    Построим $\vu_k$
+    \begin{gather*}
+        \vw_k = \vv_k - \alpha_1 \vu_1 - \alpha_2 \vu_2 - ... - \alpha_{k-1} \vu_{k-1}\\
+        \vw_k \perp \vu_i \qquad (i \le k-1)\\
+        0 = (\vw_k, \vu_i) = (\vv_k, \vu_i) - \alpha_i (\vu_i, \vu_i)\\
+        \alpha_i = (\vv_k, \vu_i)\\
+        \vu_k = \frac{\vw_k}{|\vw_k|}
+    \end{gather*}
+    Строим $\vu_1, \vu_2, ..., \vu_n$ с помощью данного алгоритма.
+    \begin{remark}
+        $\vu_i$ -- ЛК $\vv_1, \vv_2, ..., \vv_i$
+    \end{remark}
+    
+    \begin{corollary}
+        Если $\vv_1, \vv_2, ..., \vv_n$ -- базис $\implies \vu_1, \vu_2, ..., \vu_n$ --- ОНБ,
+        т.е. если $\dim V = n$, то  $\exists$ ОНБ
+    \end{corollary}
+    
+    Пусть $V$ - евклидово пространство, $\dim V =n$, $\vu_1, \vu_2, ..., \vu_n$ -- ОНБ,
+    $\vw = a_1 \vu_1 +a_2 \vu_2 + ... + a_n \vu_n$, то можем записать $\vw = (a_1, ..., a_n)$,
+    соответственно $\vv = b_1 \vu_1 + b_2 \vu_2 + ... + b_n \vu_n$, тогда
+    \begin{multline*}
+        (\vw, \vv) = (a_1 \vu_1 + a_2 \vu_2 + ... + a_n \vu_n, b_1 \vu_1 + b_2 \vu_2 + ... + b_n \vu_n) = \\
+        = a_1 b_1 (\vu_1, \vu_1) + a_1 b_2 (\vu_1, \vu_2) + ... + a_1 b_n (\vu_1, \vu_n)+\\
+        + a_2 b_1 (\vu_2, \vu_2) + a_2 b_2 (\vu_2, \vu_2) + ... + a_2 b_n (\vu_2, \vu_n)+\\
+        + a_n b_1 (\vu_n, \vu_2) + a_n b_2 (\vu_n, \vu_2) + ... + a_n b_n (\vu_n, \vu_n)=\\
+        = a_1 b_1 + a_2 b_2 + ... + a_n b_n
+    \end{multline*}
+\end{proof}
+
+\section{Ориентация базиса}
+
+\begin{definition}[Неформальное]
+    На плоскости: $\va = (a_1, a_2); \vb = (b_1, b_2)$
+    \[\begin{vmatrix}
+            a_1 & a_2 \\
+            b_1 & b_2
+        \end{vmatrix}
+        =S_{\va, \vb}\text{ (ориентированная площадь)}\]
+
+    В пространстве: $\va = (a_1, a_2, a_3); \vb = (b_1, b_2, b_3); \vc = (c_1, c_2, c_3)$
+    \[\begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}
+        = V_{\va, \vb, \vc}\text{ (ориентированный объем)}\]
+\end{definition}
+\begin{definition}[Формальное]
+    \[\begin{vmatrix}
+            a_1 & a_2 \\
+            b_1 & b_2
+        \end{vmatrix}
+        =a_1 b_2-a_2 b_1\]
+    \[\begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}
+        =a_1 b_2 c_3 + a_2 b_3 c_1 + a_3 b_1 c_2 - a_1 b_3 c_2 - a_2 b_1 c_3 - a_3 b_2 c_1\]
+\end{definition}
+
+Мнемоническое правило:
+
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,left delimiter={|},right delimiter={|}]{
+        a_1 & a_2 & a_3 & a_1 & a_2 \\
+        b_1 & b_2 & b_3 & b_1 & b_2 \\
+        c_1 & c_2 & c_3 & c_1 & c_2 \\
+    };
+    \draw [-,red] (m-1-3.north east) -- (m-3-3.south east);
+    \draw [-Latex,green] (m-1-5.north east) -- (m-3-3.south west);
+    \draw [-Latex,green] (m-1-4.north east) -- (m-3-2.south west);
+    \draw [-Latex,green] (m-1-3.north east) -- (m-3-1.south west);
+    \draw [-Latex,cyan] (m-1-1.north west) -- (m-3-3.south east);
+    \draw [-Latex,cyan] (m-1-2.north west) -- (m-3-4.south east);
+    \draw [-Latex,cyan] (m-1-3.north west) -- (m-3-5.south east);
+\end{tikzpicture}
+
+По бирюзовой стрелке сложение, по зеленой -- вычитание.
+
+\begin{remark}
+    Данные свойства справедливы для матриц любого порядка.
+\end{remark}
+
+\begin{properties}
+
+    $\newline$
+    \begin{enumerate}
+        \item Если  строку или столбец умножить на $\alpha$, то определитель тоже
+            умножится на $\alpha$.
+        \item Если меняем 2 строки или столбца, то знак определителя меняется.
+        \item Если есть 2 одинаковых строки, то определитель равен 0.
+        \item Если к одному из векторов прибавить вектор кратный другому,
+            то определитель не поменяется.
+        \item Определитель единичной матрицы равен 1.
+    \end{enumerate}
+    \begin{multline*}
+        \begin{vmatrix}
+            a_1 + \alpha b_1 & a_2+ \alpha b_2 & a_3 + \alpha b_3 \\
+            b_1              & b_2             & b_3              \\
+            c_1              & c_2             & c_3
+        \end{vmatrix}=\\
+        =\begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}+ \alpha
+        \begin{vmatrix}
+            b_1 & b_2 & b_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}=
+        \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}
+    \end{multline*}
+\end{properties}
+
+\begin{theorem} (Доказательство будет на алгебре)
+    \[\exists! f: M_n(\R) \mapsto \R\]
+
+    такая, что, удовлетворяет свойствам 1-5.
+\end{theorem}
+
+\begin{theorem}
+    \[\det (AB) = \det A \cdot \det B\]
+\end{theorem}
+
+\begin{definition}[Ориентация]
+    $\vi, \vj, \vk$ -- ОНБ (<<правая тройка>>), $\va, \vb, \vc$ -- векторы.
+    \begin{gather*}
+        \va = a_1 \vi + a_2 \vj + a_3 \vk\\
+        \vb = b_1 \vi + b_2 \vj + b_3 \vk\\
+        \vc = c_1 \vi + c_2 \vj + c_3 \vk
+    \end{gather*}
+
+    Если $\begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix} > 0$, то $(\va, \vb, \vc)$ называется правой тройкой векторов.
+
+    Если $\det < 0$, то $(\va, \vb, \vc)$ называется левой тройкой векторов.
+
+    Если $\det = 0$, то $(\va, \vb, \vc)$ -- ЛЗ.
+\end{definition}
+
+Выводы:
+\begin{enumerate}
+    \item Ориентация бывает только у ЛНЗ троек -- у базисов.
+    \item Ориентаций бывает ровно 2.
+    \item Одинаковость ориентаций является эквивалентностью.
+\end{enumerate}

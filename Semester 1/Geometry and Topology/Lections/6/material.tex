@@ -1,0 +1,162 @@
+\lesson{6}{30.10.2023}{Смешанное произведение. Афинное пространство}
+
+\section{Смешанное произведение}
+
+\begin{definition}
+    $\va, \vb, \vc$ -- векторы в $\R^3$
+    \[(\va, \vb,\vc) = (\va\times\vb; \vc)\text{ -- смешанное произведение}\]
+    Геометрический смысл: $\pm V_{\text{параллелепипеда}}$
+\end{definition}
+\begin{proof}
+    \begin{gather*}
+        (\va, \vb, \vc ) = |\va \times \vb| |\vc|\cos\alpha = S_{\va,\vb}|\vc|\cos\alpha=\pm V_{\va, \vb, \vc}
+    \end{gather*}
+\end{proof}
+
+В координатах:
+\begin{multline*}
+    (\va \times \vb; \vc) = (a_2 b_3 - a_3 b_2; a_3 b_1 - a_1 b_3; a_1b_2 - a_2 b_1)(c_1, c_2, c_3)=\\
+    a_2 b_3 c_1 - a_3 b_2 c_1  + a_3 b_1 c_2 - a_1 b_3 c_2 + a_1 b_2 c_3 - a_2 b_1 c_3 =
+    \begin{vmatrix}
+        a_1 & a_2 & a_3 \\
+        b_1 & b_2 & b_3 \\
+        c_1 & c_2 & c_3
+    \end{vmatrix}
+\end{multline*}
+
+\section{Свойства смешанного произведения} 
+(по свойствам определителей)
+\begin{enumerate}
+    \item $(\ve+\vf, \vb, \vc) = (\ve, \vb, \vc) + (\vf, \vb, \vc)$ для каждого аргумента
+    \item $(\alpha \va, \vb, \vc) = (\va, \alpha \vb, \vc) =(\va, \vb, \alpha\vc) = \alpha (\va, \vb, \vc)$
+    \item $(\va, \vb, \vc) = 0 \Leftrightarrow \va, \vb, \vc$ -- ЛЗ
+    \item $(\va, \vb, \vc) = (\vb,\vc, \va) = (\vc, \va, \vb) = - (\vb, \va, \vc)=
+              -(\va, \vc, \vb) = - (\vc, \vb, \va)$
+    \item Знак смешанного произведения -- ориентация тройки.
+    
+\end{enumerate}
+
+
+\chapter{Афинное (точечное) пространство}
+\section{Определение}
+
+\begin{definition}
+    $V$ -- векторное пространство, $E$ -- множество. Назовем $E$ точечным (аффинным)
+    пространством , если определена операция $+: E\times V \to E$, т.е. $(e; \vv) \mapsto (e+\vv)$
+    со свойствами:
+    \begin{enumerate}
+        \item $(e+\vv_1) + \vv_2 = e + (\vv_1 + \vv_2)$
+        \item $e + 0 = e$
+        \item $\forall e_1, e_2 \in E \exists! \vv \in V: e_2 = e_1 + \vv$
+    \end{enumerate}
+    Такой вектор будем обозначать $\vv = \overrightarrow{e_1 e_2}$
+
+
+\end{definition}
+
+
+\begin{definition}[Построение точек]
+    
+    Если в $V$ есть базис $(\vv_1, \vv_2, \ldots, \vv_n)$ и мы зафиксируем
+    $e_0 \in E \implies \forall e \in E \exists! \vv:e_0 + \vw = e$, при этом:
+        $\exists! \alpha_1, \alpha_2, \ldots, \alpha_n: \vw = \alpha_ 1 \vv_1 + \alpha_2 \vv_2 + \ldots + \alpha_n \vv_n \implies e = (\alpha_1, \alpha_2, \ldots, \alpha_n)$ -- координаты $e$.
+    
+        Если имеем $\vv = \beta_1 \vv_1 + \ldots + \beta_n \vv_n$, то: $e + \vv = (\alpha_1 + \beta_1, \alpha_2 + \beta_2, \ldots, \alpha_n + \beta_n)$ 
+\end{definition}
+
+
+\begin{definition}[Расстояние]
+    Пусть $e_0$ -- начало координат, $\vv_1, \ldots, \vv_n$ -- ОНБ. $e_1 = e_0 + \vu = (\vu_1, \ldots, \vu_n), e_2 = e_0 + \vw = (\vw_1, \ldots, \vw_n)$
+
+    \[\dist (e_1, e_2) = |\vu - \vw| = |\vu_1 - \vw_1, \ldots, \vu_n - \vw_n| = \sqrt{(\vu_1 - \vw_1)^2 + \ldots +(\vu_n - \vw_n)^2}\]
+\end{definition}
+
+\begin{definition}[Преобразование начала координат](Если хотим перейти от начала координат $e_0$ к $e'_0$)
+    
+    Есть базис $\vv_1, \ldots, \vv_n$ и вектор $e'_0 - e_0 = \vw = (\vw_1, \ldots, \vw_n)$. И пусть точка $e = (e_1, \ldots, e_n)$ -- координаты с началом $e_0$ и $e = (e'_1, \ldots, e'_n)$ -- координаты с началом в $e'_0$. Тогда:
+
+    $$e = e_0 + e_1 \vv_1 + \ldots + e_n \vv_n$$
+    $$e'_0 = e_0 + e_1 \vw_1 + \ldots + e_n \vw_n \Leftrightarrow e_0 = e'_0  - \vw_1 \vv_1 - \ldots - \vw_n \vv_n$$
+    
+    \textbf{Упражнение:} почему равносильно?
+
+    $$\text{Имеем } e = e'_0 + (e_1 - \vw_1) \vv_1 + \ldots + (e_n - \vw_n) \vv_n$$
+    $$\text{Значит }(e'_1, \ldots e'_n) = (e_1 - \vw_1, \ldots, e_n - \vw_n)$$
+\end{definition}
+
+\chapter{Прямые на плоскости}
+
+\section{Определения}
+
+\begin{definition}
+    $E$ -- точечное пространство, $V$ -- векторное пространство, $\dim V = 2$.
+    Тогда прямая -- это подмножество $l \subset E$, если: $\forall e \in E, \vv \in V \setminus \{0\}:$
+
+    \[l = \{e + \alpha \vv : \alpha \in \R\}\]
+
+    $\vv$ -- направляющий вектор прямой.
+\end{definition}
+
+\begin{definition}[Параметрическое уравнение прямой]
+    $\newline$
+    Пусть $e = (e_1, e_2) \qquad \vv = (v_1, v_2)$\\
+    $e + t \vv = (e_1 + t v_1, e_2 + t v_2) = (x, y)$\\
+    $\begin{cases}
+        x = e_1 + t v_1\\
+        y = e_2 + t v_2
+    \end{cases}$ -- параметрическое уравнение прямой.
+\end{definition}
+
+\begin{definition}[Каноническое уравнение прямой]
+    Если выразить $t$ из параметрического уравнения, то получим каноническое уравнение прямой:
+
+    \[\frac{x - e_1}{v_1} = \frac{y - e_2}{v_2}\]
+
+    Если $v_1 \lor v_2 = 0$ то $x = e_1 \lor y = e_2$, но $v_1 \land v_2$ быть не может.
+\end{definition}
+
+\begin{definition}[Построение прямой по точкам]
+    Пусть $e = (x_0, y_0), e_1 = (x_1, y_1) \qquad \vec{ee_1} = (x_1 - x_0, y_1 - y_0)$ 
+    -- направляющий вектор. Пусть $e$ -- начало, тогда уравнение прямой:
+    \[\frac{x - x_0}{x_1-x_0} = \frac{y-y_0}{y_1-y_0}\]
+\end{definition}
+
+\begin{theorem}[Прямая в стандарнтных координатах]
+    
+    Из канонического уравнения прямой получаем:
+    \[x(v_2) - y(v_1) - e_1v_2 + e_2v_1 = 0 \Leftrightarrow \forall A, B, C: A^2 + B^2 \neq 0: Ax + By + C = 0\]
+\end{theorem}
+
+\begin{proof}
+    \[
+        Ax + C = -By \implies
+        \frac{x + \frac{C}{A}}{B} = \frac{y - 0}{-A}, \;\; A \neq 0
+    \]
+\end{proof}
+
+\begin{definition}[Уравнение в отрезках]
+    Если $A,B,C \neq 0$, то
+    \[\frac{x}{p} + \frac{y}{q}=1\]
+
+    $p = -\frac{C}{A}, q = -\frac{C}{B}$
+\end{definition}
+$(p,0)$ и $(0,q)$ -- подходят:
+\begin{center}
+    \begin{tikzpicture}[scale=3]
+        \draw[very thick, -Latex, name path=X] (-0.3, 0) -- (0.7, 0) node(xline) [right] {$x$};
+        \draw[very thick, -Latex, name path=Y] (0, -0.3) -- (0, 0.7) node(yline) [above] {$y$};
+        \draw[name path=L] (-0.1, 0.4) -- (0.5, -0.1);
+        \draw[name intersections={of=X and L, by=p}](p) node[above right] {$(p,0)$};
+        \draw[name intersections={of=Y and L, by=q}](q) node[right] {$(0,q)$};
+        \draw (0, 0.2) node[left] {$q$};
+        \draw (0.25, 0) node[below] {$p$};
+    \end{tikzpicture}
+\end{center}
+
+\begin{theorem}
+    Если $A, B$ -- коэффициенты уравнения прямой, то вектор (нормаль) $(A, B) \perp \vv$.
+\end{theorem}
+
+\begin{proof}
+    \[(A, B) = (v_2, -v_1) \perp (v_1, v_2) \text{, т.к. } (v_1, v_2) \cdot (v_2, -v_1) = 0\]
+\end{proof}

@@ -1,0 +1,164 @@
+\lesson{5}{09.10.2023}{Векторное произведение}
+\section{Векторное произведение}
+
+\begin{remark}
+    Векторное произведение существует, только если $\dim V = 3$~(т.е. пространство
+    трехмерное).
+\end{remark}
+
+\begin{definition}[Формальное]
+    Пусть $\va, \vb \in V$, $\va \times \vb = \vv$ -- вектор со свойствами:
+    \begin{enumerate}
+        \item $\vv \perp \va, \vv \perp \vb$
+        \item $|\vv| = |\va| |\vb| \sin \alpha$
+        \item $(\va, \vb, \va \times \vb)$ -- правая тройка векторов
+    \end{enumerate}
+\end{definition}
+
+Вопрос: что такое <<правая тройка?>> --- Ответ: нет <<правой>> или <<левой>> троек,
+но про любые две тройки мы можем сказать одинаково ли они ориентированы.
+
+\begin{definition}
+    Пусть $(\vi, \vj, \vk)$ -- фиксированный ортонормированный базис,
+    будем называть его правой тройкой векторов.
+
+    Введем определения:
+    \begin{center}
+        $\begin{array}{c|rrr}
+                    & \vi  & \vj  & \vk  \\ \hline
+                \vi & 0  & \vk  & -\vj \\
+                \vj & -\vk & 0  & \vi  \\
+                \vk & \vj  & -\vi & 0
+            \end{array}$
+        -- таблица умножения базисных векторов
+    \end{center}
+
+    Пусть
+    \begin{gather*}
+        \va = a_1 \vi + a_2 \vj + a_3 \vk = (a_1, a_2, a_3)\\
+        \vb = b_1 \vi + b_2 \vj + b_3 \vk = (b_1, b_2, b_3)
+    \end{gather*}
+    Тогда векторное произведение $\va$ и $\vb$:
+    \begin{multline*}
+        \va \times \vb =
+        (a_1 \vi + a_2 \vj + a_3 \vk) \times (b_1 \vi + b_2 \vj + b_3 \vk)=\\
+        a_1 b_1 \vi \times \vi + a_1 b_2 \vi \times \vj + a_1 b_3 \vi \times \vj+\\
+        +a_2 b_1 \vi \times \vi + a_2 b_2 \vi \times \vj + a_2 b_3 \vi \times \vj+\\
+        +a_3 b_1 \vi \times \vi + a_3 b_2 \vi \times \vj + a_3 b_3 \vi \times \vj=\\
+        = \vi (a_2 b_3 - a_3 b_2)+ \vj (a_3 b_1 - a_1 b_3) + \vk (a_1 b_2 - a_2 b_1)
+    \end{multline*}
+    \[\va \times \vb = \vi (a_2 b_3 - a_3 b_2)+ \vj (a_3 b_1 - a_1 b_3) + \vk (a_1 b_2 - a_2 b_1)\]
+\end{definition}
+
+\begin{theorem}
+    Векторное произведение обладает свойствами:
+    \begin{enumerate}
+        \item $\va \times (\vb + \vc) = \va \times \vb + \va \times \vc$
+        \item $\va \times \vb = -\vb \times \va$
+        \item $\va \times \vb \perp \va, \va \times \vb \perp \vb$
+        \item $|\va \times \vb| = |\va||\vb|\sin\alpha$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        \va = a_1 \vi + a_2 \vj + a_3 \vk\\
+        \vb = b_1 \vi + b_2 \vj + b_3 \vk\\
+        \vc = c_1 \vi + c_2 \vj + c_3 \vk
+    \end{gather*}
+    \begin{gather*}
+        1. \qquad \vb+\vc = (b_1 + c_1) \vi + (b_2+c_2) \vj + (b_3+c_3)\vk\\
+        \va \times (\vb+\vc) = \vi (a_2(b_3+c_3) - a_3 (b_2+c_2))+\vj(...)+\vk(...)\\
+        \begin{multlined}
+            \va \times \vb + \va \times \vc = \vi (a_2 b_3 - a_3 b_2)+\vj(...)+\vk(...)+\\
+            +\vi (a_2 c_3 - a_3 c_2)+\vj(...)+\vk(...)
+        \end{multlined}
+    \end{gather*}
+    После преобразований получим то же самое.
+
+    2. Аналогично
+    \begin{multline*}
+        3. \qquad (\va\times\vb; \va) = \\
+        = (\vi (a_2 b_3 - a_3 b_2)+ \vj (a_3 b_1 - a_1 b_3) + \vk (a_1 b_2 - a_2 b_1);
+        a_1 \vi + a_2 \vj + a_3 \vk) = \\
+        =a_1 (a_2 b_3 - a_3 b_2)+ a_2 (a_3 b_1 - a_1 b_3) + a_3 (a_1 b_2 - a_2 b_1) = 0
+    \end{multline*}
+
+    4. Будем доказывать
+    $|\va \times \vb|^2 = |\va|^2 |\vb|^2 \sin^2 \alpha = |\va|^2 |\vb|^2 (1 - \cos^2 \alpha)$
+    \begin{multline*}
+        (a_2 b_3 - a_3 b_2)^2+(a_3 b_1 - a_1 b_3)^2+(a_1 b_2 - a_2 b_1)^2 =\\
+        (a_1^2 + a_2^2 + a_3^2)(b_1^2 + b_2^2 + b_3^2)\left(1 -
+        \frac{(a_1 b_1 + a_2 b_2 + a_3 b_3)^2}{(a_1^2 + a_2^2 + a_3^2)(b_1^2 + b_2^2 + b_3^2)}\right)=\\
+        (a_1^2 + a_2^2 + a_3^2)(b_1^2 + b_2^2 + b_3^2) - (a_1 b_1 + a_2 b_2 + a_3 b_3)^2
+    \end{multline*}
+    Чтобы не расписывать слагаемые перепишем в другом виде:
+    \[\sum_{i\neq j} a_i^2 b_j^2 - 2 \sum_{i<j} a_i b_i a_j b_j =
+        \sum_i a_i^2 b_i^2 + \sum_{i \neq j} a_i^2 b_j^2
+        - \sum_{i=1}^3 a_i^2 b_i^2 - 2 \sum_{i<j} a_i b_i a_j b_j\]
+\end{proof}
+
+
+\begin{remark}
+    \[\va \times \vb =
+        \begin{vmatrix}
+            \vi & \vj & \vk \\
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+        \end{vmatrix}\]
+\end{remark}
+
+\begin{theorem}
+    $(\va, \vb, \va \times\vb)$ -- правая тройка
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        \va = (a_1, a_2, a_3) \qquad \vb = (b_1, b_2,b_3)\\
+        \va \times \vb =(a_2 b_3 - a_3 b_2) + (a_3 b_1 - a_1 b_3) + (a_1b_2 - a_2 b_1) =\\
+        =\left(
+        \begin{vmatrix}
+            a_2 & a_3 \\
+            b_2 & b_3
+        \end{vmatrix};
+        \begin{vmatrix}
+            a_3 & a_1 \\
+            b_3 & b_1
+        \end{vmatrix};
+        \begin{vmatrix}
+            a_1 & b_1 \\
+            a_2 & b_2
+        \end{vmatrix}
+        \right)
+        = \begin{vmatrix}
+            a_1             & a_2 & a_3 \\
+            b_1             & b_2 & b_3 \\
+            \begin{vmatrix}
+                a_2 & a_3 \\
+                b_2 & b_3
+            \end{vmatrix} &
+            \begin{vmatrix}
+                a_3 & a_1 \\
+                b_3 & b_1
+            \end{vmatrix} &
+            \begin{vmatrix}
+                a_1 & a_2 \\
+                b_1 & b_2
+            \end{vmatrix}
+        \end{vmatrix} \\
+        = \begin{vmatrix}
+            a_2 & a_3 \\
+            b_2 & b_3
+        \end{vmatrix}
+        \left(a_2b_3-a_3b_2\right) -
+        \begin{vmatrix}
+            a_3 & a_1 \\
+            b_3 & b_1
+        \end{vmatrix}
+        \left(a_1b_3-a_3b_1\right) +
+        \begin{vmatrix}
+            a_1 & a_2 \\
+            b_1 & b_2
+        \end{vmatrix}
+        \left(a_1b_2-a_2b_1\right)\\
+        =(a_2 b_3 - a_3 b_1)^2 + (a_3 b_1 - a_1 b_3)^2 + (a_1b_2 - a_2 b_1)^2 >0
+    \end{gather*}
+\end{proof}
