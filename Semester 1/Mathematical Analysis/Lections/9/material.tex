@@ -1,0 +1,221 @@
+
+
+\lesson{9}{02.11.2023}{Непрерывность и производная.}
+
+
+\section{Непрерывность и существование предела обратной функции}
+\begin{theorem}
+	$\newline$
+    $\begin{cases}
+		f \in C([a,b])\\
+		f \text{-- строго монотонна}\\
+        [p, q] = f([a, b])
+	\end{cases} \implies \exists g: [p,q] \to \mathbb{R}, g \in C([p,q])$\\
+	И $g$ -- обратная функция к $f$, то есть:\\
+    $\forall x \in [a,b]: \quad g(f(x))=x$\\
+	$\forall y \in [p,q]: \quad f(g(y))=y$\\
+	если $f$ возрастает, то $g$ возрастает  (убывание аналогично)
+\end{theorem}
+\begin{replacementproof}
+	Возьмем $\forall y \in (p,q) \implies \exists x \in (a,b): f(x)=y$\\
+	$\begin{cases}
+		\text{если } x_1 < x \implies f(x_1)<f(x)=y \\
+		\text{если } x_2>x \implies f(x_2)>f(x)
+	\end{cases}$\\
+	Значит $\implies \forall y \in [p,q] \exists ! x: f(x)=y$\\
+	$\newline$
+    Определим $g(y)$ как $g(y) := x: f(x) = y$. Значит, у $f$ существовует обратная $g$.\\
+    $\newline$
+    Проверим, что $g$, при возрастающем  $f$, будет возрастать:\\
+	 $y_1<y_2; \quad g(y_1)=x_1, g(y_2)=x_2$, где $g(y_1)\neq g(y_2) \quad (x_1\neq x_2)$ \\
+	 Если $x_1>x_2$, то $f(x_1)=y_1>f(x_2)=y_2 \implies$ противоречие\\
+	 $\implies x_1<x_2 \implies g(y)$ строго возрастает\\
+	 $\forall x_0 \in [a,b], g([p,q]) \subset [a,b]$ в силу определения $g$\\
+	 $\forall x_0 \in [a,b]$ пусть $y_0=f(x_0)$ \\
+	 $y_0 \in [p,q]$, значит $g(y_0)=x_0 \implies g([p,q])=[a,b] $\\
+	 А значит, в силу возрастания $g$: $g \in C([p,q])$
+\end{replacementproof}
+
+
+\begin{properties} (Из теоремы следуют свойства:)
+	
+	\begin{enumerate}
+		\item $f(x) = \sin x, f$ определена на $[-\frac{\pi}{2}, \frac{\pi}{2}], f$ -- строго возрастает.
+		Тогда обратной к $f$ будет функция $g(f(x)) = \arcsin (f(x)), f(x) \in [-1, 1]$
+
+		\item $f(x) = \cos x, f$ определена на $[0, \pi], f$ -- строго возрастает.
+		Тогда обратной к $f$ будет функция $g(f(x)) = \arccos (f(x)), f(x) \in [-1, 1]$ 
+	
+		\item Возьмем $a_n = -\frac{\pi}{2} + \frac{\pi}{4n}, b_n = \frac{\pi}{2} + \frac{\pi}{4n}$
+		$\forall n: [a_n, b_n] \subset [a_{n+1}, b_{n+1}]$
+		$f(x) = \tan x, f: [a_n, b_n] \to [p_n, q_n], p_n = \tan a_n, q_n = \tan b_n$
+		Обратной к $f$ будет функция $g(f(x)) = \arctan (f(x))$ причем $g$ определена на $\bigcup_{n=1}^{\infty} [p_n, q_n] = \R$
+
+		\item Аналогично пункту выше, возьмем $a_n = \frac{\pi}{4n}, b_n = \pi - \frac{\pi}{4n}, f(x) = \cot x, f$ определена на $[a_n, b_n]$ и получим
+		обратную к $f$ функцию $g = \arccot (f(x))$, опрделенная на $\bigcup_{n=1}^{\infty} [p_n, q_n] = \R$
+	\end{enumerate}
+\end{properties}
+
+
+\section{Теоремы Вейерштрасса и Кантора}
+\begin{theorem}[I Теорема Вейерштрасса]
+	\label{theorem:weierstrass1}
+	Пусть $f \in C([a,b])$, тогда $\exists M,L: \forall x \in [a,b]:$ 
+	\[L \le f(x) \le M\] 
+\end{theorem}
+\begin{replacementproof}
+	Пусть $\cancel{\exists} M: f(x)\le M; \quad \forall x \in [a,b]$, тогда:\\
+	$\begin{aligned}
+		\exists x_1 \in [a,b]: f(x_1) & >1 \\ 
+        \exists x_2 \in [a,b]: f(x_2) &>f(x_1)+2 \\ 
+        \vdots\\ 
+        \exists x_n \in [a,b]: f(x_n) &>f(x_{n-1})+n 
+	\end{aligned}\implies $\\
+	$\implies f(x_n) \to +\infty \implies \exists x^* \in [a,b]$ и $\exists \{x_{n_k}\}^{\infty}_{k=1}: x_{n_k}\to x^* (k\to \infty)$ по принципу выбора Больцано-Вейерштрасса\\
+	$f$ непрерывна в $x^*$ по определению, а значит:\\
+	$\implies f(x_{n_k}) \to f(x^*) \quad (k\to \infty) \implies \exists A: |f(x_{n_k})|\le A; \quad \forall k$\\
+	из выбора $x_1, \ldots, x_n$ в начале следует, что: $f(x_{n_k})>n_k\ge k $
+	$\implies k < A; \quad  \forall k$ --- противоречие.\\
+
+	Для $L$ доказательство аналогично.
+\end{replacementproof}
+
+
+\begin{theorem}[II Теорема Вейерштрасса]
+	Пусть $f \in C([a,b])$ тогда $\exists x_- \in [a,b]$ и $\exists x_{+} \in [a,b]$ такие, что:\\
+	$$f(x_{-})\le f(x) \le f(x_{+}); \quad \forall x \in [a,b]$$\\
+\end{theorem}
+
+\begin{proof}
+	Пусть  $\cancel{\exists} x_{+} \in [a,b]$: $f(x)\le f(x_{+}); \quad \forall x \in [a,b]$\\
+	Возьем $E = f([a,b])=\{y \in \mathbb{R}: \exists x \in [a,b], f(x)=y\}$ \\
+	По \ref{theorem:weierstrass1}: $\exists M: f(x)\le M; \quad \forall x \in [a,b] \implies E$ ограничено сверху\\
+	Путсь $y_0=\sup E$, тогда $\forall x \in [a, b]: f(x) \leq y_0$\\
+	Т.к. мы предположили в начале, что $\cancel{\exists} x_{+}$, то: $f(x)<y_0; \quad \forall x \in [a,b]$\\
+	Возьмем $\phi$: $\varphi(x)=y_0-f(x) > 0 \quad \forall x \in [a,b] \implies \varphi \in C([a,b])$\\
+	Значит, $\phi^{-1}(x) = \frac{1}{\phi(x)} \in C([a,b])$\\
+	По \ref{theorem:weierstrass1}: $\exists Q > 0: \displaystyle\frac{1}{\varphi(x)}\le Q; \quad \forall x \in [a,b]$, т.е.\\
+	\[\frac{1}{Q} \leq \phi(x) \iff \forall x \in [a, b]: \frac{1}{Q} \leq y_0 - f(x)\]
+	Значит, $y_0 - \frac{1}{Q}$ --- верхняя граница $E$, но это противоречит, тому, что $y_0 = \sup E$.
+
+	Для $x_-$ доказательство аналогично.
+\end{proof}
+
+
+\section{Теорема Кантора}
+\begin{definition}
+	$E \subset \mathbb{R}; \quad  f: E \to \mathbb{R}$\\
+	$f$ равномерно непрерывна на  $E$, если\\
+	$$\forall \varepsilon >0, \exists \delta >0: \forall x_1,x_2 \in E: |x_2-x_1|<\delta \implies |f(x_2)-f(x_1)|<\varepsilon$$\\
+\end{definition}
+
+\begin{theorem}
+	Если $f \in C([a,b])$, то $f$ равномерно непрерывна на $[a,b]$
+\end{theorem}
+
+\begin{proof}
+	пусть $f(x)$ неравномерно непрерывна на $[a,b]$, тогда $\exists \epsilon_0$ и последовательности
+	$\{x'_n\}_{n=1}^{\infty}, \{x''_n\}_{n=1}^{\infty}, \forall n: x'_n, x''_n \in [a, b]$ такие, что:
+	$$\forall n: |x''_n - x'_n| \underset{n \to \infty}{\to} 0, \qquad f(x''_n) - f(x'_n)| \geq \epsilon_0$$
+	По принципу выбора Больцано-Вейерштрасса $\exists x^* \in [a,b]$ и $\exists \{x'_{n_k}\}^{\infty}_{k=1}: x'_{n_k} \underset{k \to \infty}{\to} x^*$. Поскольку $\forall k: a \leq x'_{n_k} \leq b$, то $a \leq x^* \leq b$. Поскольку $|x''_n - x'_n| \underset{n \to \infty}{\to} 0$, то
+	$x''_{n_k} \underset{k \to \infty}{\to} x^*$. Так как $f$ непрерывна в $x^*$, то:
+	$$\exists \delta_0 > 0: \forall x \in \omega_{\delta_0}(x^*) \cap [a, b]: |f(x) - f(x^*)| < \frac{\epsilon_0}{4}$$
+	Тогда $\forall x_1, x_2 \in \omega_{\delta_0}(x^*) \cap [a, b]$ имеем:
+	$$|f(x_2) - f(x_1)| \leq |f(x_2) - f(x^*)| + |f(x_1) - f(x^*)| < \frac{\epsilon_0}{4} + \frac{\epsilon_0}{4} = \frac{\epsilon_0}{2}$$
+	Поскольку $x'_{n_k} \underset{k \to \infty}{\to} x^*$ и $x''_{n_k} \underset{k \to \infty}{\to} x^*$, то:
+	$$\exists N: \forall k > N: x'_{n_k}, x''_{n_k} \in \omega_{\delta_0}(x^*) \cap [a, b] \implies |f(x'_{n_k}) - f(x''_{n_k})| < \frac{\epsilon_0}{2}$$
+	Противоречие.
+\end{proof}
+
+
+\chapter{Производная}
+\section{Дифференцируемость функции}
+\begin{definition}
+$f: (a,b) \to \mathbb{R}; \quad x_0 \in (a,b)$ \\
+$f$ имеет производную в точке  $x_0$
+\[
+\exists \displaystyle\lim_{h \to 0} \displaystyle\frac{f(x_0+h)-f(x_0)}{h} \in \mathbb{R}\quad 
+\]
+
+\end{definition}
+
+\begin{definition}	
+$f: [a,b) \to \mathbb{R}$  имеет правую производную в $a$, если
+ \[
+\exists \displaystyle\lim_{h \to 0} \displaystyle\frac{f(a+h)-f(a)}{h} \in \mathbb{R}\quad 
+\] 
+	
+\end{definition}
+
+\begin{definition}
+	$f: (a,b] \to \mathbb{R}$  имеет левую производную в $b$, если
+ \[
+\exists \displaystyle\lim_{h \to 0} \displaystyle\frac{f(b+h)-f(b)}{h} \in \mathbb{R}\quad 
+\] 
+\end{definition}
+
+
+\begin{theorem}
+	Пусть $f$ имеет производную, тогда $\exists \delta >0$ и $M>0:$ при $x\neq x_0: |x-x_0|<\delta$ и $|f(x)-f(x_0)|<M|x-x_0|$.
+\end{theorem}
+
+\begin{proof}
+	По определению производной: $\implies \exists \delta>0: h\neq 0, |h|<\delta$ имеем:\\
+	$$|\displaystyle\frac{f(x_0+h)-f(x_0)}{h}-f'(x_0)|<1 \implies$$
+	$$\implies |f(x_0+h)-f(x_0)-f'(x_0)h|<|h| \implies$$ 
+	$$\implies |f(x_0+h)-f(x_0)|\le |f(x_0+h)-f(x_0)-f'(x_0)h|+$$
+	$$+|f'(x_0)h| < |h|+|f'(x_0)|h|=(1+f'(x_0))|h|$$
+	Выберем $M=1+|f'(x_0)|$ и $x - x_0 = h: \quad |x-x_0|<\delta \iff |h| < \delta$\\
+\end{proof}
+
+\begin{impl}
+	$f$ непрерывна в $x_0$.
+\end{impl}
+
+\begin{definition}
+	$f:(a,b) \to \mathbb{R}; \quad x_0 \in (a,b)$ \\
+	$f$ дифференцируема в  $x_0$, если:
+
+	$$\exists A \in \mathbb{R}, r: (a,b) \to \mathbb{R}: f(x)-f(x_0)=A(x-x_0)+r(x) \text{ и } \displaystyle\frac{r(x)}{x-x_0}\to 0 (x\to x_0)$$
+
+\end{definition}
+\begin{theorem}
+	$f$ дифференцируема в $x_0 \iff \exists f'(x_0)$, при этом для $A$ из (8)(8') имеем $A=f'(x_0)$ (10)\\
+\end{theorem}
+\begin{proof}
+	$\exists f'(x_0) \implies \delta(h)=\displaystyle\frac{f(x_0+h)-f(x_0)}{h}-f'(x_0)\to 0 (h\to 0)$ (11)\\
+	$\rho(h)=h\delta(h)$ (12)\\
+	(11)(12) $\implies f(x_0+h)-f(x_0)-f'(x_0)h=h\delta(h)=\rho(h)$ (13)\\
+	(13'): $f(x_0+h)-f(x_0)=f'(x_0)h+\rho(h)$ \\
+	$\displaystyle\frac{\rho(h)}{h}=\delta(h)\to 0(h\to 0)$ (14)\\
+	$A=f'(x_0)$ \\
+	Доказали, что если $f$ имеет  $f'(x)$, то она дифференцируема и $A=f'(x_0)$
+\end{proof}
+\begin{proof}
+	Докажем в обратную сторону\\
+	Пусть $f$ дифференцируема в  $x_0, h\neq 0$\\
+	(8') $\implies \displaystyle\frac{f(x_0+h)-f(x_0)}{h}=A+\displaystyle\frac{\rho(h)}{h} \to A \in \mathbb{R} (h \to 0)$ (15)\\
+	$(15) \implies \exists f'(x_0)=A$
+\end{proof}
+
+
+\subsection{Свойства дифференцируемых функций}
+\begin{properties}
+	\begin{enumerate}
+		\item $(a,b); \quad x_0 \in (a,b)$ \\
+			$f$ дифференцируема в $x_0 \implies cf$ дифферованна в $x_0$
+			\[
+				(cf)'(x_0)=cf'(x_0)
+			\]
+			\[
+			\displaystyle\frac{cf(x_0+h)-cf(x_0)}{h}=cf'(x_0)
+			\]
+		\item $f,g$ дифференцированны в  $x_0 \implies f+g$ дифференцированна в $x_0$
+			\[
+				(f+g)'(x_0)=f'(x_0)+g'(x_0)
+			\]
+			\[
+			\displaystyle\frac{f(x_0+h)+g(x_0+h)-(f(x_0)+g(x_0))}{h}=f'(x_0)+g'(x_0)
+			\] 
+	\end{enumerate}
+\end{properties}
