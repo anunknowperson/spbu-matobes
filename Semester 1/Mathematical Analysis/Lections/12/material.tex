@@ -1,0 +1,179 @@
+
+
+\lesson{12}{23.11.2023}{Формула Тейлора.}
+
+
+\begin{properties} ""\\
+	$(e^{x})'=e^{x}; \quad (e^{x})''=((e^{x})')'=(e^{x})'=e^{x}$ \\
+		$(e^{x})^{(n)}=e^{x}; \quad (e^{x})^{(n+1)}=((e^{x})^{n})'=(e^{x})'=e^{x}$ 
+\end{properties}
+\begin{properties} ""\\
+	$(\sin (x))'=\cos (x); \quad (\sin (x))''=((\sin (x))')'=(\cos (x))'=-\sin (x)$\\
+		$(\sin (x))'''=((\sin (x))'')'=(-\sin (x))'=-\cos (x)$ \\
+		$(\sin (x))^{(4)}=((\sin (x))''')'=(-\cos (x))'=\sin (x)$ \\
+		$(\sin (x))^{(4n)}=\sin (x); \quad (\sin (x))^{(4n+r)}=(\sin (x))^{(r)}, 1\le r \le 3$ 
+\end{properties}
+\begin{properties} ""\\
+	$(\cos (x))'=-\sin (x); \quad (\cos (x))''=((\cos (x))')'=(-\sin (x))'=-\cos (x)$ \\
+		$(\cos (x))'''=((\cos (x))'')'=(-\cos (x))'=\sin (x)$ \\
+		$(\cos (x))^{(4)}=((\cos (x))''')'=(\sin (x))'=\cos (x)$ \\
+		$(\cos (x))^{(4n)}=\cos (x); \quad (\cos (x))^{(4n+r)}=(\cos (x))^{(r)}, 1\le r\le 3$
+\end{properties}
+\begin{properties} ""\\
+	$(x+a)^{r}, r \not\in \mathbb{N}$ \\
+		если $r \not\in \mathbb{Z}$, то $x > -a$\\
+		если  $r \in \mathbb{Z}$, то $x \neq -a$\\
+		$((x+a)^{(r)})'=r(x+a)^{r-1}$ \\
+		$((x+a)^{r})''=(r(x+a)^{r-1})'=r(r-1)(x-a)^{r-2}$ \\
+		$((x+a)^{r})'''=(r(r-1)(x+a)^{r-2})'=r(r-1)(r-2)(x+a)^{r-3}$\\
+		$r-1\neq 0, r-2 \neq 0$\\
+		$((x+a)^{r})^{(n)}=r(r-1)\ldots(r-n+1)(x+a)^{r-n}, r-k\neq 0, \forall k \in \mathbb{N}$ 
+\end{properties}
+\begin{properties} ""\\
+	$(\ln {(x+a)})'=\displaystyle\frac{1}{x+a}=(x+a)^{-1}, x>-a$\\
+	$(\ln {(x+a)})^{(n)}=((x+a)^{-1})^{(n-1)}=(-1)(-2)\ldots(-1-(n-1)+1)(x+a)^{-n}=\\=(-1)^{n-1}(n-1)!(x+a)^{-n}$ 
+\end{properties}
+\begin{properties} ""\\
+	$(x+a)'=1; \quad (x+a)''=1'=0, (x+a)^{(n)}=0, n\ge 2$ \\
+		$((x+a)^2)'=2(x+a), ((x+a)^2)''=(2(x+a))'=2$ \\
+		$((x+a)^2)'''=0; \quad  ((x+a)^2)^{(n)}=0, n\ge 3$ \\
+		\\
+		$k\ge 3: \quad ((x+a)^{k})'=k(x+a)^{k-1}\\((x+a)^{k})''=(k(x+a)^{k-1})'=k(k-1)(x+a)^{k-2}\\ ((x+a)^{k})'''=k(k-1)(k-2)(x+a)^{k-3}$ \\
+		\\
+		$l<k-1 \quad ((x+a)^{k})^{(l)}=k(k-1)\ldots(k-l+1)(x+a)^{k-l}$ \\
+		\\
+		$((x+a)^{k})^{(k-1)}=k(k-1)\ldots 2(x+a)$ \\
+		$((x+a)^{k})^{(k)}=k!(x-a)'=k!$ \\
+		$((x+a)^{k})^{(k+1)}=0; \quad ((x+a)^{k})^{(n)}=0, n\ge k+1$\\
+		\\
+		при $l<k: ((x+a)^{k})^{(l)}\mid_{x=-a}=0$ \\
+		при $l>k: ((x+a)^{k})^{(l)}\mid_{x=-a}=0$ \\
+		при $l=k: ((x+a)^{k})^{(k)}\mid_{x=-a}=k!$ \\
+		\\
+		$(\displaystyle\frac{1}{k!}(x\pm a)^{k})^{(l)}\mid_{x=\mp a}=$ 
+		$\begin{cases}
+			0, l \neq k\\
+			1, l = k\\
+		\end{cases}$\\
+\end{properties}
+
+
+\section{Формула Тейлора}
+\begin{definition}
+	$b_0, \ldots, b_n \in \mathbb{R}, a \in \mathbb{R}$\\
+	$p(x)=b_0+b_1(x-a)+\displaystyle\frac{b_2}{2!}(x-a)^2+\ldots+\displaystyle\frac{b_n}{n!}(x-a)^{n}$ \\
+	$p(a)=b_0$ \\
+	$p'(a)=b_0'+(b_1(x-a))'\mid_{x=a}+\ldots+(\displaystyle\frac{b_n}{n!}(x-a)^{n})'\mid_{x=a}=b_1$ \\
+	\\
+	$1\le k\le n: \quad p^{(k)}(a)=b_0^{(k)}+(b_1(x-a))^{(k)}\mid_{x=a}+\ldots+(\displaystyle\frac{b_k}{k!}(x-a)^{k})^{(k)}\mid_{x=a}+\ldots+(\displaystyle\frac{b_n}{n!}(x-a)^{n})^{(k)}\mid_{x=a}=b_k$
+	\[
+	p(x)=p(a)+p'(a)(x-a)+\ldots+\displaystyle\frac{p^{(n)}(a)}{n!}(x-a)^{n} \quad (1)
+	\]
+\end{definition}
+
+
+\begin{lemma}
+	$g \in C((p,q))$ \\
+	$g$ если  $n=1: g'(x)=0, g(a)=0$ \\
+	если $n>1$, то $\forall x \in (p,q), \exists g^{(n-1)}(x)$ и $\exists g^{(n)}(a)$, при этом \\
+	$g(a)=0, g'(a)=0, \ldots, g^{(n-1)}(a)=0, g^{(n)}(a)=0 \implies$ \\
+	\[
+	\displaystyle\frac{g(x)}{(x-a)^{n}}\to_{x \to a} 0 \quad (4)
+	\] 
+\end{lemma}
+\begin{replacementproof}
+	По индукции:\\
+	$n = 1: \quad g(x)=g(a)+g'(a)(x-a)+r(x)=r(x)$ (5)\\
+	$\displaystyle\frac{r(x)}{(x-a)^{n}} \to_{x \to a} 0$\\
+	\\
+	Индукционное предположение: $n-1\ge 1:\\ h(a)=0,\ldots,h^{(n-1)}(a)=0$ и $\forall x \in (p,q), \exists h^{(n-2)}(x)$, то\\
+	$\implies \displaystyle\frac{h(x)}{(x-a)^{n-1}}\to_{x\to a} 0$ (6)\\
+	\\
+	$h(x)=g'(x); \quad (g')^{(n-1)}(x)=g^{(n)}(x)$ \\
+	$\delta(x)=\displaystyle\frac{g'(x)}{(x-a)^{n-1}}; \quad  \delta(a)=^{def}0$; \quad $\delta$ неопределена на точке $a$ \\
+	(6) $\implies \delta(x) \to_{x\to a} 0$\\
+	$g(x)=g(x)-g(a)=g'(c)(x-a)$ (7)\\
+	$\exists c = c(x)$ ($c$ зависит от $x$), $c$ междy $x$ и $a$ (Теорема Лагранжа)\\
+	$|c-a|<|x-a|$\\
+	$g'(x)=\delta(x)(x-a)^{n-1}$ \\
+	$c(x) \to_{x\to a} 0$
+	$(7) \implies g(x)=\delta(c)(c-a)^{n-1}(x-a)$ (8)\\
+	$(8) \implies \displaystyle\frac{g(x)}{(x-a)^{n}}=\delta(c(x))\displaystyle\frac{(c(x)-a)^{n-1}}{(x-a)^{n-1}} \implies$\\
+	$\implies |\displaystyle\frac{g(x)}{(x-a)^{n}}|\le |\delta(c(x))| \to_{x\to a} 0 \iff \displaystyle\frac{g(x)}{(x-a)^{n}} \to_{x\to a} 0$
+\end{replacementproof}
+\begin{theorem}[Формула Тейлора с остатком в форме Пеано]
+	$f \in C((p,q)), a \in (p,q)$ \\
+	если $n=1$, то $\exists f'(a)$ \\
+	если $n>1$, то  $\forall x \in (p,q), \exists f^{(n-1)}(x)$ и $\exists f^{(n)}(a)$ \\
+	\[
+	f(x)=f(a)+f'(a)(x-a)+\ldots+\displaystyle\frac{f^{(n)}(a)}{n!}(x-a)^{n}+r(x) \quad (2)
+	\] 
+	\[
+	\displaystyle\frac{r(x)}{(x-a)^{n}} \displaystyle\to_{x\to a} 0 \quad (3)
+	\] 
+\end{theorem}
+\begin{replacementproof}
+	$p(x)=f(a)+f'(a)(x-a)+\ldots+\displaystyle\frac{f^{(n)}(a)}{n!}(x-a)^{n}$ (9)\\
+	(9) $\implies p(a)=f(a)$ (10) \\$p^{(k)}(a)=f^{(k)}(a)$ (11)\\
+	$g(x)=f(x)-p(x)$ (12)\\
+	$\forall x \in (p,q), \exists g^{(n-1)}(x), \exists g^{(n)}(a)$ \\
+	(10)(11)(12) $\implies g(a)=0, g'(a)=0,\ldots,g^{(n)}(a)=0$\\
+	$\displaystyle\frac{g(x)}{(x-a)^{n}} \to_{x\to a} 0$ \\
+	(2)(12) $\implies r(x)=g(x)$
+\end{replacementproof}
+
+
+\begin{theorem}[Формула Тейлора с остатком в форме Лагранжа]
+	$f:(p,q) \to \mathbb{R}; \quad n\ge 1, \forall x \in (p,q), \exists f^{(n+1)}(x)$\\
+	$a \in (p,q), x \in (p,q), x \neq a$ \\
+	$\implies \exists c$ между $x$ и $a:$
+	 \[
+	f(x)=f(a)+f'(a)(x-a)+\ldots+\displaystyle\frac{f^{(n)}(a)}{n!}(x-a)^{n}+\displaystyle\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} \quad (1)
+	\] 
+\end{theorem}
+\begin{replacementproof}
+	фиксируем $x$, рассмотрим функцию от $y$:
+	$\varphi(y)=f(x)-f(y)-f'(y)(x-y)-\displaystyle\frac{f''(y)}{2!}(x-y)^2-\ldots-\displaystyle\frac{f^{(n)}(y)}{n!}(x-y)^{n}$ (2)\\
+	$\varphi: (p,q) \to \mathbb{R}$\\
+	(2) $\implies \forall y \in (p,q), \exists \varphi'(y)$ \\
+	(2) $\implies \varphi '(y)=(f(x))'_{y}-f'(y)-(f'(y)(x-y))'-(\displaystyle\frac{f''(y)}{2!}(x-y)^2)'-\ldots-(\displaystyle\frac{f^{(n)}(y)}{n!}(x-y)^{n})'=\\$ 
+	$= 0-f'(y)-(f''(y)(x-y)-f'(y)*1)-(\displaystyle\frac{f'''(y)}{2!}(x-y)^2-2\displaystyle\frac{f''(y)}{2!}(x-y))-\\
+	-\ldots-(\displaystyle\frac{f^{(n+1)}(y)}{n!}(x-y^{n})-\displaystyle\frac{n}{n!}f^{(n)}(y)(x-y)^{n-1})=-\displaystyle\frac{f^{(n+1)}(y)}{n!}(x-y)^{n}$ (3)\\
+	$\varphi(x)=0; \quad \varphi(a)=^{def}r$ \\
+	$\psi(y)=(x-y)^{n+1}$, $y \in [min(a,x), max(a,x)]$ \\
+	$\psi(x)=0; \quad \psi(a)=(x-a)^{n+1}$ \\
+	$\psi '(y)=-(n+1)(x-y)^{n}, \psi(y)\neq 0; \quad y \in (min(a,x), max(a,x))$\\
+	$\exists c$ между $a$ и  $x$, такое что\\
+	$\displaystyle\frac{\varphi(a)-\varphi(x)}{\psi(a)-\psi(x)}=\displaystyle\frac{\varphi '(c)}{\psi ' (c)}$ (4)\\
+	$\displaystyle\frac{r-0}{(x-a)^{n+1}-0}=\displaystyle\frac{-\displaystyle\frac{f^{(n+1)}(c)}{n!}(x-c)^{n}}{-(n+1)(x-c)^{n}}=\displaystyle\frac{f^{(n+1)}(c)}{(n+1)!} \implies$\\
+	$\implies r = \displaystyle\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ (5)\\
+	(2)(5) $\implies (1)$
+\end{replacementproof}
+
+
+\section{Применение формулы Тейлора к элементарным функциям (a=0)}
+\begin{properties}
+	$e^{x}: \quad (e^{x})^{(n)}\mid_{x=0}=1$ \\
+	$e^{x}=1+\displaystyle\frac{x}{1!}+\displaystyle\frac{x^2}{2!}+\ldots+\displaystyle\frac{x^{n}}{n!}+\displaystyle\frac{e^{c}x^{n+1}}{(n+1)!}; \quad (cx>0, |c|<|x|)$
+\end{properties}
+\begin{properties}
+	$\sin (x): \quad (\sin (x))^{(2n)}\mid_{x=0}=0; \quad (\sin (x))^{(2n-1)}\mid_{x=0}=(-1)^{n-1}$ \\
+	$\sin (x)=x-\displaystyle\frac{x^{3}}{3!}+\displaystyle\frac{x^{5}}{5!}+\ldots+ (-1)^{n-1}\displaystyle\frac{x^{2n-1}}{(2n-1)!}\pm \sin (c)\displaystyle\frac{x^{2n}}{(2n)!}$
+\end{properties}
+\begin{properties}
+	$\cos (x): \quad (\cos (x))^{(2n-1)}\mid_{x=0}=0; \quad (\cos (x))^{(2n)}\mid_{x=0}=(-1)^{n}$ \\
+	$\cos (x)=1-\displaystyle\frac{x^2}{2!}+\displaystyle\frac{x^{4}}{4!}-\ldots+(-1)^{n}\displaystyle\frac{x^{2n}}{(2n)!} \pm \sin (c)\displaystyle\frac{x^{2n+1}}{(2n+1)!}$
+\end{properties}
+\begin{properties}
+	$r \neq 0; \quad r \not\in \mathbb{N}; \quad x \in (-1,1)$\\
+	$((1+x)^{r})^{(n)}\mid_{x=0}=r(r-1)\ldots(r-n+1)$\\
+	$(1+x)^{r}=1+rx+\displaystyle\frac{r(r-1)}{2!}x^2+\ldots+\displaystyle\frac{r(r-1)\ldots(r-n+1)}{n!}x^{n}+\displaystyle\frac{r(r-1)\ldots(r-n+1)(r-n)}{(n+1)!}(1+c)^{r-n-1}x^{n+1}$
+\end{properties}
+\begin{properties}
+	$\ln (1+x); \quad x \in (-1,1)$ \\
+	$(\ln (1+x))'\mid_{x=0}=1$\\
+	$n\ge 2: \quad (\ln {(1+x)})^{(n)}\mid_{x=0}=(-1)^{n-1}(n-1)!$ \\
+	\textbf{Замечание:} $\displaystyle\frac{(n-1)!}{n!}=\displaystyle\frac{1}{n}$ \\
+	 $\ln {(1+x)}=x-\displaystyle\frac{x^2}{2!}+\displaystyle\frac{x^{3}}{3!}-\displaystyle\frac{x^{4}}{4!}+\ldots+(-1)^{n-1}\displaystyle\frac{x^{n}}{n!}+(-1)^{n}\displaystyle\frac{1}{n+1}(1+x)^{-n-1}x^{n+1}$ \\
+	 т.к. $(\ln {(1+x)})^{(n+1)}=(-1)^{n}n!(1+x)^{-n-1}$
+\end{properties}
