@@ -11,6 +11,9 @@
 6. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/6/master.pdf
 7. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/7/master.pdf
 8. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/8/master.pdf
-9. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/8/master.pdf
-10. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/8/master.pdf
+9. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/9/master.pdf
+10. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/10/master.pdf
+11. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/11/master.pdf
+12. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Mathematical%20Analysis/Lections/12/master.pdf
+
 
