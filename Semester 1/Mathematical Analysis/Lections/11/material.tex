@@ -1,0 +1,222 @@
+
+
+\lesson{11}{16.11.2023}{Таблица производных, экстремум, производные высших порядков.}
+
+\section{Таблица производных}
+\begin{properties}
+    \begin{enumerate}
+        \item $c; \quad \mathbb{R}$\\
+            $c'=\displaystyle\lim_{h \to 0} \displaystyle\frac{c-c}{h} = 0$ 
+        \item $x; \quad  \mathbb{R}$\\
+            $x'=\displaystyle\lim_{h \to 0} \displaystyle\frac{x+h-x}{h}=1$ \\
+            \textbf{Следствие:} $(f(ax+b))'=f'(ax+b)(ax+b)'=af'(ax+b)$
+        \item $x^2; \quad  \mathbb{R}$\\
+            $(x^2)'=(x*x)'=x'*x+x*x'=2x$ \\
+            $n\ge 2: \quad (x^{n})'=nx^{n-1}, x \in \mathbb{R}$ \\
+            $(x^{n+1})'=(x*x^{n})'=x'x^n+x(x^n)'=x^{n}+xnx^{n-1}=(n-1)x^n$ 
+        \item $n \in \mathbb{N}; \quad  x^{-n}; \quad  \mathbb{R} \setminus \{0\}$\\
+            $(x^{-n})'=(\displaystyle\frac{1}{x^n})'=-\displaystyle\frac{(x^n)'}{x^{2n}}=-\displaystyle\frac{nx^{n-1}}{x^{2n}}=-nx^{-n-1}$ 
+        \item $e^{x}; \quad  \mathbb{R}$ \\
+            $(e^{x})'=\displaystyle\lim_{h \to 0}\displaystyle\frac{e^{x+h}-e^{x}}{h}=e^{x}\displaystyle\lim_{h \to 0} \displaystyle\frac{e^{h}-1}{h}=e^{x}$
+        \item $\ln {x}; \quad x>0$ \\
+            $(\ln {x})'=\displaystyle\lim_{h \to 0} \displaystyle\frac{\ln {x+h}-\ln {x}}{h}=\displaystyle\lim_{h \to 0} \displaystyle\frac{\ln {\displaystyle\frac{x+h}{x}}}{h}=\displaystyle\lim_{h \to 0} \displaystyle\frac{\ln {1+\displaystyle\frac{h}{x}} }{h}=\displaystyle\frac{1}{x}\displaystyle\lim_{h \to 0} \displaystyle\frac{\ln {1+\displaystyle\frac{h}{x}} }{\displaystyle\frac{h}{x}}=\displaystyle\frac{1}{x}$ 
+        \item $r \not\in \mathbb{Z}; \quad  x > 0$\\
+            $(x^{r})'=(e^{r\ln {x}})'=(e^{y})'(r\ln {x})'\mid_{y=r\ln {x}}=e^{x\ln {x}}\displaystyle\frac{r}{x}=rx^{r-1}$ 
+        \item $sinx; \quad  \mathbb{R}$\\
+            $(sinx)'=\displaystyle\lim_{} \displaystyle\frac{sin(x+h)-sinx}{h}=\displaystyle\lim_{} \displaystyle\frac{2sin\displaystyle\frac{h}{2}cos(x+\displaystyle\frac{h}{2})}{h}=\displaystyle\lim_{h \to 0} cos(x+\displaystyle\frac{h}{2})*\displaystyle\lim_{h \to 0} \displaystyle\frac{sin\displaystyle\frac{h}{2}}{\displaystyle\frac{h}{2}}=cosx$ 
+        \item $cosx; \quad  \mathbb{R}$\\
+            $cosx=sin(x+\displaystyle\frac{\pi}{2})$ \\
+            $(cosx)'=(sin(x+\displaystyle\frac{\pi}{2}))'=(siny)'\mid_{y=x+\displaystyle\frac{\pi}{2}}*1=cos(x+\displaystyle\frac{\pi}{2})=-sinx$ 
+        \item $tgx; \quad  \mathbb{R} \setminus \cup_{n \in \mathbb{Z}} \{\displaystyle\frac{\pi}{2}+\pi n\}$ \\
+            $(tgx)'=(\displaystyle\frac{sinx}{cosx})'=\displaystyle\frac{(sinx)'cosx-sinx(cosx)}{cos^2x}=\displaystyle\frac{cos^2x+sin^2x}{cos^2x}=\displaystyle\frac{1}{cos^2x}$ 
+        \item $ctgx; \quad  \mathbb{R} \setminus \cup_{n \in \mathbb{Z}}\{\pi n\}$ \\
+            $(ctg)'=(\displaystyle\frac{cosx}{sinx})'=\displaystyle\frac{(cosx)'sinx-cosx(sinx)'}{sin^2x}=\displaystyle\frac{-sin^2x-cos^2x}{sin^2x}=-\displaystyle\frac{1}{sin^2x}$ 
+        \item $arcsinx; \quad  (-1, 1)$ \\
+        $f(x)=arcsinx; \quad g(y)=siny\mid_{[-\displaystyle\frac{\pi}{2}, \displaystyle\frac{\pi}{2}]}$ \\
+                $x \in (-1, 1); \quad arcsinx=y \iff x=siny$ \\
+                $(arcsinx)'=\displaystyle\frac{1}{(sint)'\mid_{t=y}}=\displaystyle\frac{1}{cosy}=\displaystyle\frac{1}{\sqrt[]{1-sin^2y}}=\displaystyle\frac{1}{\sqrt[]{1-x^2}}$
+            \item $arccosx; \quad (-1,1)$ \\
+                $f(x)=arccosx; \quad g(y)=cosy\mid_{[0,\pi]}$ \\
+                $y=arccosx \iff x=cosy$\\
+                $(arccosx)'=\displaystyle\frac{1}{(cost)'\mid_{t=y}}=-\displaystyle\frac{1}{siny}=-\displaystyle\frac{1}{\sqrt[]{1-cos^2y}}=-\displaystyle\frac{1}{\sqrt[]{1-x^2}}$ 
+            \item $arctgx; \quad  \mathbb{R}$\\
+                $f(x)=arctgx; \quad g(y)=tgy\mid_{(-\displaystyle\frac{\pi}{2},\displaystyle\frac{\pi}{2})}$ \\
+                $y=arctgx \iff x=tgy$\\
+                $(arctgx)'=\displaystyle\frac{1}{(tgt)'\mid_{t=y}}=\displaystyle\frac{1}{\displaystyle\frac{1}{cos^2y}}=cos^2y$ \\
+                $x^2+1=tg^2y+1=\displaystyle\frac{sin^2y}{cos^2y}+1=\displaystyle\frac{1}{cos^2y}$ \\
+                $cos^2y=\displaystyle\frac{1}{1+x^2}$\\
+                $(arctgx)'=\displaystyle\frac{1}{1+x^2}$
+            \item $arcctgx; \quad  \mathbb{R}$\\
+                $f(x)=arcctgx; \quad g(y)=ctgy\mid_{(0,\pi)}$ \\
+                $y=arcctgx; \quad x=ctgy$
+                $(arcctgx)'=\displaystyle\frac{1}{(ctgt)\mid_{t=y}}=-\displaystyle\frac{1}{\displaystyle\frac{1}{sin^2y}}=-sin^2y$ \\
+                $x^2+1=ctg^2y+1=\displaystyle\frac{cos^2y}{sin^2y}+1=\displaystyle\frac{1}{sin^2x}$ \\
+                $sin^2y=\displaystyle\frac{1}{1+x^2}$ \\
+                $\implies (arcctgx)'=-\displaystyle\frac{1}{1+x^2}$
+    \end{enumerate}
+    \end{properties}
+    \begin{definition}
+        $f: [a,b] \to \mathbb{R}$ \\
+        $x_0 \in [a,b]$ \\
+        $x_0$ $-$ точка локального максимума $f$, если $\exists \omega(x_0)\mid \forall x in \omega(x_0)\cap [a,b]$ \\
+        $f(x) \le f(x_0)$\\
+    \end{definition}
+    \begin{definition}
+        $x_0$ $-$ точка строгого локального максимума, если $\forall x \neq x_0, x \in \omega(x_0) \cap [a,b]; \quad f(x) < f(x_0)$
+    \end{definition}
+    
+    \begin{definition}
+        $g: [a,b] \to \mathbb{R}$ \\
+        $x_1 \in [a,b]$ \\
+        $x_1$ $-$ точка локального минимума, если $\exists \omega_1(x_1)\mid \forall x \in \omega_1(x_1)\cap [a,b]$ \\
+        $g(x)\ge g(x_1)$
+    \end{definition}
+    \begin{definition}
+        $x_1$ $-$ точка строгого локального минимума, если \\
+        $\forall x\neq x_1, x \in \omega_1(x_1)\cap [a,b]\mid g(x)>g(x_1)$
+    \end{definition}
+    \begin{definition}
+        $h: [a,b] \to \mathbb{R}$ \\
+        $x_2 \in [a,b]$ \\
+        $x_2$ $-$ точка (строгого)локального экстренума (либо точка (строгого) локального минимума либо точка (строгого) локального максимума)
+    \end{definition}
+    
+    
+    \section{Теоремы Ферма, Ролля, Лагранжа и Коши}
+    \begin{theorem}
+    $f: (a,b) \to \mathbb{R}$ \\
+    $x_0 \in (a,b)$ \\
+    $x_0$ $-$ локальный экстренум $f$\\
+    $\exists f'(x_0) \implies f'(x_0)=0$ (1)
+    \end{theorem}
+    \begin{replacementproof}
+        \textbf{$x_0$ $-$ локальный максимум}\\
+        $f \implies \exists \varepsilon >0:$ при $x \in (x_0-\varepsilon, x_0+\varepsilon)\cap (a,b)$ \\
+        $f(x)\le f(x_0)$ (2)\\
+        \textbf{Пояснение:} Пусть $(x_0-\varepsilon, x_0+\varepsilon) \subset (a,b)$ \\
+        $0< h <\varepsilon \\ (2)\implies f(x_0+h) \le f(x_0) \implies \displaystyle\frac{f(x_0+h)-f(x_0)}{h}\le 0 \implies$\\
+        $\implies \displaystyle\lim_{h \to +0} \displaystyle\frac{f(x_0+h)-f(x_0)}{h}\le 0$ (3)\\
+        $-\varepsilon<h<0$\\
+        (2) $\implies f(x_0+h)\le f(x_0) \implies \displaystyle\frac{f(x_0+h)-f(x_0)}{h}\ge 0 \implies$\\
+        $\implies \displaystyle\lim_{h \to -0} \displaystyle\frac{f(x_0+h)-f(x_0)}{h}\ge 0$ (4)\\
+        $(3),(4) \implies (1)$\\
+    
+        \textbf{$x_0$ $-$ локальный минимум $f$}\\
+         $g(x)=-f(x)$ \\
+         $f(x) \ge f(x_0) \iff -f(x) \le f(x_0); \quad g(x) \le g(x_0)$ \\
+         $x_0$ $-$ локальный максимум $g$\\
+          $\exists g'(x_0)=-f'(x_0)$ \\
+          Только что доказано, что $g'(x_0)=0$ \\
+          $f'(x_0)=-g'(x_0)=0$
+    \end{replacementproof}
+    
+    
+
+    \begin{theorem}
+        $f \in C([a,b])$ \\
+        $\forall x \in (a,b); \quad  \exists f'(x)$ \\
+        $f(a)=f(b) \implies \exists x_0 \in (a,b): f'(x_0)=0$ (5)
+    \end{theorem}
+    \begin{replacementproof}
+        \begin{enumerate}
+            \item $f(x)=f(a) \forall x \in [a,b] \implies \forall x \in (a,b): f'(x)=0$
+            \item $f(x) \not\equiv f(a) \implies x_1 \in (a,b): f(x_1) \neq f(a)$ \\
+                 $\not\equiv$ $-$ нетождевственна\\
+                 либо $f(x_1) > f(a)$ либо $f(x_1) < f(a)$ 
+    
+                 \textbf{Рассмотрим} $f(x_1)>f(a)$ \\
+                 Теорема 2 Вейерштрасса:  $\exists x_0 \in [a,b]: \forall x \in [a,b]: f(x) \le f(x_0)$ (6)\\
+                 в частности (6) $\implies f(x_1)\le f(x_0)$ (7)\\
+                 (7) $\implies f(x_0) > f(a), f(x_0) > f(b) \implies x_0 (a,b)$ (7')\\
+                 $\exists f'(x_0)$ (8)\\
+                 По теореме Ферма: (6)(7')(8) $\implies f'(x_0)=0$
+        \end{enumerate}
+    \end{replacementproof}
+    
+    
+
+    \begin{theorem}
+        $f \in C([a,b])$ \\
+        $\forall x \in (a,b); \quad  \exists f'(x)$ \\
+        $\implies \exists x_0 \in (a, b): f(b) -f(a)=f'(x_0)(b-a)$ (1)
+    \end{theorem}
+    \begin{replacementproof}
+        $g(x) = (f(x)-f(a))(b-a)-(f(b)-f(a))(x-a)$ (2)\\
+        $(2) \implies g \in C([a,b])$ (2') \\
+        $(2) \implies \forall x \in (a,b); \quad  \exists g'(x) \\
+        g'(x) =(b-a)f'(x) -(f(b)-f(a))(x-a)'=(b-a)f'(x)-(f(b)-f(a))$ (3)\\
+        $g(a) = 0, g(b)=0 \implies g(a)=g(b)=0$ (4)\\
+        Применяя теоремe Ролля: (2')(3)(4) $\implies \exists x_0 \in (a,b): g'(x_0)=0$ (5)\\
+        (3)(5) $\implies (b-a)f'(x_0)-(f(b)-f(a))=0 \implies (1)$
+    \end{replacementproof}
+    \begin{properties}
+        \textbf{Из теоремы Лангранжа}\\
+        Пусть $f \in C([a,b]), \forall x \in (a,b) \exists f'(x)$ и $f'(x) \neq 0, \forall x \in (a,b)$
+        $\implies f(b) \neq f(a)$
+    \end{properties}
+    \begin{replacementproof}
+        Из теоремы Лагранжа $\exists x_0 \in (a,b): f(b) - f(a) = f'(x_0)(b-a)$ \\
+        $f'(x_0) \neq 0 \implies f(b) \neq f(a)$
+    \end{replacementproof}
+    
+    
+
+    \begin{theorem}
+        $f \in C([a,b]), g \in C([a,b])$ \\
+        $\forall x \in (a,b), \exists f'(x), \exists g'(x)$ \\
+        $g'(x) \neq 0, \forall x \in (a,b)$ \\
+        $\implies \exists x_0 \in (a,b): \displaystyle\frac{f(b)-f(a)}{g(b)-g(a)}=\displaystyle\frac{f'(x_0)}{g'(x_0)}$ (6)
+    \end{theorem}
+    \begin{replacementproof}
+        $h(x) = (g(x) - g(a))(f(b)-f(a)) - (f(x)-f(a))(g(b)-g(a))$ (7)\\
+        (7) $\implies h \in C([q,b])$ (8)\\
+        $(7) \implies \forall x \in (a,b), \exists h'(x)=(f(b)-f(a))g'(x)-(g(b) - g(a))f'(x)$ (9)\\
+        $(7) \implies h(a) = 0, h(b)=0 \implies h(a)=h(b)=0$ \\
+        По теореме Ролля $(8)(9)(10) \implies \exists x_0 \in (a,b): h'(x_0)=0$ (11)\\
+        (9)(11) $\implies (f(b) - f(a))g'(x_0) - (g(b) - g(a))f'(x_0)=0$ (12)\\
+        (12) $\iff$ (6)
+    \end{replacementproof}
+    
+    
+    \section{Производнае второго и более порядка}
+    \begin{definition}
+        $f: (a,b) \to \mathbb{R}$ \\
+        $\forall x \in (a,b), \exists f'(x)$ \\
+        $x_0 \in (a,b)$ \\
+        $f': (a,b) \to \mathbb{R}$ \\
+        \\
+        Пусть $\exists (f')'(x_0)$ \\
+        тогда $\exists f''(x_0)=^{def}(f')'(x_0)$ \\
+        Пусть $\exists x \in (a,b), \exists f''(x)$ \\
+        $f'' : (a,b) \to \mathbb{R}$ \\
+        Пусть $\exists (f'')'(x_0) \implies f'''(x_0)=^{def}(f'')'(x_0)$\\
+        \textbf{Обозначение:} $f^{(2)}(x)=f''(x); \quad f^{(1)}(x)=f'(x); \quad f^{(3)}(x)=f'''(x)$ \\
+        \\
+        $f^{(n)}(x)$ \\
+        $\forall x \in (a,b), \exists f^{(n)}(x)$ \\
+        Пусть $\exists (f^{(n)})'(x_0) \implies f^{(n)}: (a,b) \to \mathbb{R}$ \\
+        $\exists f^{(n+1)}(x_0)=^{def}(f^{(n)})'(x)$
+    \end{definition}
+    \begin{theorem}
+        \textbf{О линейности и аддитивности $n$нных производных}\\
+        $f,g: (a,b) \to \mathbb{R}$ \\
+        $\forall x \in (a,b), \exists f'(x), f^{(2)}(x), \ldots, f^{(n-1)}(x)$ \\
+        $\exists g'(x), g^{(2)}(x),\ldots,g^{(n-1)}(x)$ \\
+        $x_0\in (a,b), \exists f^{(n)}(x_0), \exists g^{(n)}(x_0)$ \\
+        $\implies (f+g)^{(n)}(x_0)=f^{(n)}(x_0)+g^{(n)}(x_0)$\\
+        $c \in \mathbb{R}; \quad \exists (cf)^{(n)}(x_0)=cf^{(n)}(x_0)$
+    \end{theorem}
+    \begin{replacementproof}
+        Индукция\\
+        База $n=1: \quad (f+g)'(x_0)=f'(x_0)+g'(x_0)$\\
+        $(cf)'(x_0)=cf'(x_0)$\\
+        $\forall x \in (a,b), \exists f'(x), f^{(2)}(x), \ldots, f^{(n)}(x)$ \\
+        $\exists g'(x), g^{(2)}(x),\ldots,g^{(n)}(x)$ \\
+        $\exists f^{(n+1)}(x_0), \exists g^{(n+1)}(x_0)$ \\
+        $(f+g)^{(n)}(x)=f^{(n)}(x)+g^{(n)}(x), x \in (a,b)$ \\
+        $(f+g)^{(n+1)}(x_0)=((f+g)^{(n)})'(x_0)=(f^{(n)}+g^{(n)})'(x_0)=(f^{(n)})'(x_0)+(g^{(n)})'(x_0)=f^{(n+1)}(x_0)+g^{(n+1)}(x_0)$\\
+        \\
+        $n=1; \quad (cf)'(x_0)=cf'(x_0)$ \\
+        $n \quad \forall x \in (a,b): \quad (cf)^{(n)}(x)=cf^{(n)}(x)$ \\
+        $(cf)^{(n+1)}(x_0)=((cf)^{(n)})'(x_0)=(cf^{(n)})'(x_0)=c(f^{(n)})'(x_0)=cf^{(n+1)}(x_0)$
+    \end{replacementproof}
