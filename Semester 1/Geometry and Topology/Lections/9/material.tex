@@ -1,0 +1,241 @@
+\lesson{9}{27.11.2023}{Эллипс. Гипербола. Парабола.}
+
+\begin{theorem}
+    Если $(x_0, y_0)$  -- точка на эллипсе, тогда касательная
+    \[\frac{xx_0}{a^2} + \frac{yy_0}{b^2}=1\]
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        A = \frac{x_0}{a^2} \qquad B = \frac{y_0}{b^2} \qquad C = -1\\
+        a^2 A^2 + b^2B^2 = C^2\\
+        a^2 \frac{x_0^2}{a^4} + b^2 \frac{y_0^2}{b^4} = 1\\
+        \frac{x_0^2}{a^2} + \frac{y_0^2}{b^2} = 1
+    \end{gather*}
+    Отсюда $(x_0, y_0)$ -- точка на эллипсе.
+\end{proof}
+
+\begin{theorem}[Оптическое свойство эллипса]
+    $l$ --касательная к эллипсу в точке $M \implies \angle(l, F_1M) = \angle(l, F_2M)$
+\end{theorem}
+
+\begin{proof} (Аналитически)
+    \
+
+    \begin{minipage}{0.45\textwidth}
+        \begin{tikzpicture}
+            \pgfmathsetmacro{\a}{2}
+            \pgfmathsetmacro{\b}{1.5}
+            \pgfmathsetmacro{\angleO}{60}
+            \pgfmathsetmacro{\angleL}{90}
+            \pgfmathsetmacro{\angleP}{120}
+
+            
+            \draw[axis] (-2.5, 0) -- (2.5, 0) node [right, color=blue!50] {$x$};
+            \draw[axis] (0, -2.5) -- (0, 2.5) node [above, color=blue!50] {$y$};
+
+            \draw (0, 0) ellipse [x radius = \a, y radius = \b];
+            \node[dot, label={below:$F_1$}] (F1) at ({-sqrt(\a*\a-\b*\b)},0) {};
+            \node[dot, label={below:$F_2$}] (F2) at ({sqrt(\a*\a-\b*\b)},0) {};
+            \node[dot, label={\angleO:$O$}] (O) at (\angleO:{\a} and {\b}) {};
+            \draw (F1) -- (O) -- (F2);
+            \node[dot, label={\angleL:$L$}] (L) at (\angleL:{\a} and {\b}) {};
+            \draw (F1) -- (L) -- (F2);
+            \node[dot, label={\angleP:$M$}] (P) at (\angleP:{\a} and {\b}) {};
+            \draw (F1) -- (P) -- (F2);
+            \draw (-2.3, 0.74) -- (1.5, 2.4);
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{gather*}
+            l: \frac{xx_0}{a^2} + \frac{yy_0}{b^2} = 1 \\
+            \vn = \left(\frac{x_0}{a^2}; \frac{y_0}{b^2}\right)
+            \intertext{Надо доказать:}
+            \cos\angle(\vn; \overrightarrow{F_1M}) = \cos\angle(\vn; \overrightarrow{F_2M})\\
+            \Leftrightarrow \frac{\vn \overrightarrow{F_1M}}{|\vn||\overrightarrow{F_1M}|} = \frac{\vn \overrightarrow{F_2M}}{|\vn||\overrightarrow{F_2M}|}
+        \end{gather*}
+    \end{minipage}
+    \begin{gather*}
+        \overrightarrow{F_1M} (x_0+c;y_0) \qquad \overrightarrow{F_2M}(x_0-c;y_0)
+        \intertext{Вспомним:}
+        |\overrightarrow{F_1M}|=a+ex \qquad |\overrightarrow{F_2M}|=a-ex\\
+        \frac{\frac{x_0}{a^2}(x_0+c) + \frac{y_0}{b^2}y_0}{a+ex}=
+        \frac{\frac{x_0}{a^2}(x_0-c) + \frac{y_0}{b^2}y_0}{a-ex}\\
+        \left(\frac{x_0^2}{a^2} + \frac{x_0c}{a^2} + \frac{y_0^2}{b^2}\right)(a-ex)=
+        \left(\frac{x_0^2}{a^2} - \frac{x_0c}{a^2} + \frac{y_0^2}{b^2}\right)(a+ex)\\
+        \frac{x_0c}{a^2}= \frac{x_0e}{a}\\
+        \left(1 + \frac{x_0e}{a}\right)(a-ex)=\left(1 - \frac{x_0e}{a}\right)(a+ex)\\
+        \frac{1}{a}(a+x_0e)(a-x_0e)=\frac{1}{a}(a-x_0e)(a+x_0e)
+    \end{gather*}
+\end{proof}
+
+\begin{lemma} 
+    Если выбрать точку $M$ на прямой $l$, такую, что $AM + BM = \min$, то $\angle(AM, l) = \angle(BM, l)$
+\end{lemma}
+
+\begin{proof}
+    
+    \
+    
+    TODO: рисунок
+
+    
+    \begin{gather*}
+        AM+MB \to \min\\
+        M_0 \text{ точка, реализующая } \min\\
+        A' \text{ -- отражение } A \text{ относительно } l\\
+        \min(AM+MB) = \min(A'M+MB)\\
+        A'M+MB \ge A'B
+    \end{gather*}
+
+\end{proof}
+
+
+\begin{proof} (Геометрически)
+    \
+
+    TODO: рисунок
+
+
+    \begin{gather*}
+        \underbrace{F_1M_0 + F_2M_0}_{=2a} < \underbrace{F_1M + F_2M}_{>2a}\\
+        M_0 \text{ -- искомая точка из леммы}
+    \end{gather*}
+\end{proof}
+
+\section{Гипербола}
+
+\begin{definition}
+    Гипербола -- фигура, которая в подходящих координатах задается уравнением:
+    \[\frac{x^2}{a^2} - \frac{y^2}{b^2}=1\]
+\end{definition}
+\begin{definition}
+    Гипербола -- ГМТ $M:$
+    \begin{gather*}
+        |F_1 M - F_2M|=2a\\
+        F_1 F_2 = 2c > 2a\\
+        (|F_2 M - F_2 M| \le F_1 F_2)
+    \end{gather*}
+\end{definition}
+\begin{definition}
+    $F_1$ -- точка, $l_1$ -- прямая. Гипербола -- ГМТ $M$:
+    \[\frac{F_1 M}{\dist(M,l_1)} = e > 1\]
+\end{definition}
+
+\begin{theorem}
+    Определения равносильны
+\end{theorem}
+\begin{proof}
+    Доказательство аналогично эллипсу, например т.к.
+    \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = \frac{x^2}{a^2} + \frac{y^2}{(ib)^2}\]
+\end{proof}
+
+Параметры гиперболы
+
+
+TODO: рисунок
+
+\begin{enumerate}
+    \item $a$ -- вещественная полуось
+    \item $b$ -- мнимая полуось
+    \item $c$ -- фокальный параметр (по определению $c>a$)
+    \item $e = \frac{c}{a}>1$ -- эксцентриситет
+\end{enumerate}
+\[a^2+b^2=c^2\]
+
+\begin{theorem}
+    Пусть $y=f(x)$ -- функция, $y=kx+b$ -- прямая. Говорим, что прямая $y=kx+b$ --
+    асимптота функции $y=f(x)$ при $x \to \pm \infty$, если
+    $\lim_{x \to \pm \infty} |f(x) - f(kx+b)|=0$.
+\end{theorem}
+
+\begin{proof}
+    \begin{gather*}
+        \lim_{x \to + \infty} \frac{f(x)}{kx+b} =  \lim_{x\to + \infty} \frac{kx+b+g(x)}{kx+b}= \text{ если } g(x) \to 0, x\to \infty\\
+        \lim_{x \to + \infty} \left(1 + \frac{g(x)}{kx+b}\right) = 1  \text{ если } k\neq 0 \text{ или } b \neq 0\\
+        1 = \lim_{x\to + \infty} \frac{f(x)}{kx+b} = \lim_{x\to + \infty} \frac{f(x)}{kx} \cdot \frac{kx}{kx+b} = \frac{1}{k} \lim_{x\to + \infty} \frac{f(x)}{x}\\
+        \lim_{x\to +\infty} \frac{f(x)}{x} = k \qquad b = \lim_{x\to + \infty} \left(f(x) - kx\right)
+    \end{gather*}
+\end{proof}
+
+\begin{theorem}
+    Асимптоты гиперболы:
+    \[y= \pm \frac{b}{a}x\]
+\end{theorem}
+
+\begin{proof}
+    \begin{gather*}
+        \frac{x^2}{a^2} - \frac{y^2}{b^2}=1 \Leftrightarrow y = \pm b \sqrt{\frac{x^2}{a^2}-1} (\implies x \ge a)\\
+        y = \pm \frac{b}{a} \sqrt{x^2 - a^2}\\
+        k = \lim_{x \to + \infty} \frac{\pm\frac{b}{a}\sqrt{x^2-a^2}}{x} =
+        \pm \frac{b}{a} \lim_{x \to + \infty} \sqrt{1 - \frac{a^2}{x^2}}\\
+        k = \pm \frac{b}{a}\\
+        \mathfrak{b}= \lim_{x \to + \infty} \left(\frac{b}{a} \sqrt{x^2 - a^2} - \frac{b}{a}x \right)=
+        \frac{b}{a} \lim_{x \to + \infty} \frac{x^2 - a^2 - x^2}{\sqrt{x^2-a^2}+\sqrt{x^2}} = \frac{b}{a}\cdot 0
+        \intertext{$\mathfrak{b}$ -- коэффициент прямой}
+        y= \pm \frac{b}{a}x
+    \end{gather*}
+
+\end{proof}
+
+\begin{theorem}
+    Прямая $Ax + By + C = 0$ касается гиперболы:
+    \[\frac{x^2}{a^2} - \frac{y^2}{b^2}=1 \Leftrightarrow a^2A^2-b^2B^2=C^2\]
+\end{theorem}
+\begin{proof}
+    Аналогично эллипсу
+\end{proof}
+\begin{theorem}
+    Если точка $(x_0, y_0)$ лежит на гиперболе $\frac{x^2}{a^2} - \frac{y^2}{b^2}=1$,
+    то касательная к этой точке:
+    \[\frac{x x_0}{a^2} - \frac{y y_0}{b^2}=1\]
+\end{theorem}
+\begin{proof}
+    Аналогично эллипсу
+\end{proof}
+
+\begin{lemma}
+    Если выбрать точку $M$ на прямой $l$, такую, что $|AM - BM| = \max$, то $\angle(AM, l) = \angle(BM, l)$
+
+\end{lemma}
+
+\begin{proof}
+    ...
+\end{proof}
+
+\begin{theorem}[Оптическое свойство гиперболы]
+    TODO: рисунок
+\end{theorem}
+
+\begin{proof}
+    ...
+\end{proof}
+
+\section{Парабола}
+\begin{definition}
+    Парабола -- кривая, которая в подходящих координатах имеет уравнение:
+    \[y^2=2px\]
+    где $p$ -- параметр параболы
+\end{definition}
+\begin{definition}
+    Пусть $F$ -- точка, $l$ -- прямая, тогда парабола -- ГМТ $M$:
+    \[\frac{FM}{\dist(M;l)} = e = 1\]
+\end{definition}
+\begin{theorem}
+    Определения равносильны
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        \left(x + \frac{p}{2}\right) = \sqrt{\left(x-\frac{p}{2}\right)^2 + y^2}\\
+        \left(x + \frac{p}{2}\right)^2 = \left(x-\frac{p}{2}\right)^2 + y^2\\
+        y^2 = 2px
+    \end{gather*}
+\end{proof}
+
+Характеристики параболы
+\begin{itemize}
+    \item $F$ -- фокус
+    \item $l$ -- директриса
+    \item $e=1$ -- эксцентриситет
+\end{itemize}
+
+

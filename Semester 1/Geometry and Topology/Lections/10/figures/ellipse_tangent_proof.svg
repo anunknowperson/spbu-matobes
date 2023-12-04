@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="90mm"
+   height="50mm"
+   viewBox="0 0 90 50"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   sodipodi:docname="ellipse_tangent_proof.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:snap-grids="false"
+     inkscape:snap-intersection-paths="false"
+     inkscape:object-paths="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-nodes="false"
+     inkscape:snap-tangential="true"
+     inkscape:snap-midpoints="true"
+     width="90mm"
+     inkscape:zoom="1.6075767"
+     inkscape:cx="217.40798"
+     inkscape:cy="98.284579"
+     inkscape:window-width="1920"
+     inkscape:window-height="984"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9"
+       units="mm"
+       spacingx="5"
+       spacingy="5" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round"
+       id="path27316"
+       cx="47.960781"
+       cy="28.82127"
+       rx="30.000002"
+       ry="15" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 5.0350891,23.509453 33.499411,15.679078 63.068053,7.7561854"
+       id="path27431" />
+    <circle
+       id="path27546"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="22.828489"
+       cy="28.68898"
+       r="0.39687499" />
+    <circle
+       id="path27548"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="72.828484"
+       cy="28.68898"
+       r="0.39687499" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="21.811781"
+       y="32.388405"
+       id="text33849"><tspan
+         sodipodi:role="line"
+         id="tspan33847"
+         style="stroke-width:0.264583"
+         x="21.811781"
+         y="32.388405">$F_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="71.779793"
+       y="32.551884"
+       id="text40567"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="71.779793"
+         y="32.551884"
+         id="tspan40569">$F_2$</tspan></text>
+    <circle
+       id="path42632"
+       style="fill:#0000ff;stroke:none;stroke-width:0.264583"
+       cx="34.051147"
+       cy="15.632702"
+       r="0.39687499" />
+    <circle
+       id="path42700"
+       style="fill:#ff0000;stroke:none;stroke-width:0.264583"
+       cx="57.18932"
+       cy="9.3313866"
+       r="0.39687499" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="31.919676"
+       y="13.259296"
+       id="text46304"><tspan
+         sodipodi:role="line"
+         id="tspan46302"
+         style="stroke-width:0.264583"
+         x="31.919676"
+         y="13.259296">$M_0$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="56.156483"
+       y="8.065443"
+       id="text51074"><tspan
+         sodipodi:role="line"
+         id="tspan51072"
+         style="stroke-width:0.264583"
+         x="56.156483"
+         y="8.065443">$M$</tspan></text>
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 22.828487,28.688978 34.051146,15.632703 72.828479,28.688978"
+       id="path52828" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 22.828487,28.688978 57.189321,9.3313864 72.828479,28.688978"
+       id="path52896" />
+    <path
+       style="fill:#008000;stroke:#008000;stroke-width:0.352777;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path54297"
+       sodipodi:type="arc"
+       sodipodi:cx="34.051147"
+       sodipodi:cy="15.632702"
+       sodipodi:rx="2.613291"
+       sodipodi:ry="2.613291"
+       sodipodi:start="2.2423192"
+       sodipodi:end="2.9266112"
+       sodipodi:arc-type="arc"
+       d="m 32.425213,17.678582 a 2.613291,2.613291 0 0 1 -0.9272,-1.488389"
+       sodipodi:open="true" />
+    <path
+       style="fill:#008000;stroke:#008000;stroke-width:0.352777;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path54297-1"
+       sodipodi:type="arc"
+       sodipodi:cx="34.051144"
+       sodipodi:cy="15.632704"
+       sodipodi:rx="2.613291"
+       sodipodi:ry="2.613291"
+       sodipodi:start="6.0021716"
+       sodipodi:end="0.33493652"
+       sodipodi:arc-type="arc"
+       d="m 36.561928,14.90796 a 2.613291,2.613291 0 0 1 -0.04271,1.583757"
+       sodipodi:open="true" />
+  </g>
+</svg>
