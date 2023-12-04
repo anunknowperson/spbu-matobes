@@ -22,6 +22,7 @@
 \usepackage{multicol}
 \usepackage[usenames,dvipsnames]{xcolor}
 
+
 % \usepackage{cmbright}
 
 
@@ -101,17 +102,21 @@
 
 
 % tikz
+\usepackage{grffile}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{tikz-cd}
+\usepackage{pgfkeys}
 \usetikzlibrary{intersections, angles, quotes, calc, positioning}
 \usetikzlibrary{arrows.meta}
-\usepackage{pgfplots}
 \pgfplotsset{compat=1.13}
 
 
 \tikzset{
     force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
 }
+\tikzset{axis/.style={color=blue!50, very thick, -Latex}}
+\tikzset{dot/.style={draw,fill,circle,inner sep=0.05},}
 
 % theorems
 \makeatother
