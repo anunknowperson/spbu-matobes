@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="55mm"
+   height="35mm"
+   viewBox="0 0 55 35"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   sodipodi:docname="hyperbola_helper_1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="2.2734568"
+     inkscape:cx="91.710562"
+     inkscape:cy="109.9647"
+     inkscape:window-width="1920"
+     inkscape:window-height="984"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:object-nodes="false"
+     inkscape:snap-nodes="false"
+     inkscape:snap-grids="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9"
+       units="mm"
+       spacingx="5"
+       spacingy="5"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,25 H 50"
+       id="path1987" />
+    <circle
+       id="path1989"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="20"
+       cy="15"
+       r="0.39687499" />
+    <circle
+       id="path1991"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="35"
+       cy="5"
+       r="0.39687499" />
+    <circle
+       id="path1993"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="40"
+       cy="25"
+       r="0.39687499" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 34.999998,5 39.999999,25 20,15"
+       id="path1995" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.176108px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 35.024541,4.9631864 25.03626,11.616444 15.047977,18.269702 5.0596937,24.922959"
+       id="path2180" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="17.17795"
+       y="13.708238"
+       id="text4188"><tspan
+         sodipodi:role="line"
+         id="tspan4186"
+         style="stroke-width:0.264583"
+         x="17.17795"
+         y="13.708238">$A$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="32.962326"
+       y="3.5354207"
+       id="text7888"><tspan
+         sodipodi:role="line"
+         id="tspan7886"
+         style="stroke-width:0.264583"
+         x="32.962326"
+         y="3.5354207">$B$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="38.282387"
+       y="29.000713"
+       id="text10136"><tspan
+         sodipodi:role="line"
+         id="tspan10134"
+         style="stroke-width:0.264583"
+         x="38.282387"
+         y="29.000713">$M$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="4.4206038"
+       y="28.932222"
+       id="text14738"><tspan
+         sodipodi:role="line"
+         id="tspan14736"
+         style="stroke-width:0.264583"
+         x="4.4206038"
+         y="28.932222">$M_0$</tspan></text>
+    <circle
+       id="path17527"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="5"
+       cy="25"
+       r="0.39687499" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Liberation Serif';-inkscape-font-specification:'Liberation Serif, Normal';font-variant-ligatures:none;stroke-width:0.264583"
+       x="45.520935"
+       y="24.183144"
+       id="text19655"><tspan
+         sodipodi:role="line"
+         id="tspan19653"
+         style="stroke-width:0.264583"
+         x="45.520935"
+         y="24.183144">$l$</tspan></text>
+  </g>
+</svg>
