@@ -1,0 +1,137 @@
+\lesson{10}{04.12.2023}{Парабола. Кривые второго порядка}
+
+\begin{theorem}
+    $(x_0, y_0)$ -- точка на параболе $y^2=2px$, тогда
+    \[yy_0 = p (x+x_0)\]
+    -- уравнение касательной в $(x_0, y_0)$
+\end{theorem}
+\begin{proof}
+    \begin{gather*}
+        px = yy_0 - px_0\\
+        y^2 = 2px = 2yy_0-2px_0\\
+        y^2 - 2yy_0 + 2px_0 = 0\\
+        \frac{D}{4} = y_0^2 - 2px_0 = 0
+    \end{gather*}
+    1 решение
+\end{proof}
+\begin{theorem}[Оптическое свойство параболы]
+    ...
+\end{theorem}
+
+\begin{proof}
+    ...
+\end{proof}
+
+\chapter{Кривые второго порядка.}
+
+\section{Приведение уравнения II порядка к каноническому виду}
+\begin{gather*}
+    a_{11} x^2 + 2 a_{12} xy + a_{22} y^2 + 2b_1 +2b_2y +b_3 = 0\\
+    a_{11}^2 + a_{12}^2 + a_{22}^2 \neq 0
+\end{gather*}
+
+\textbf{I шаг. } Поворот на угол $\alpha$, чтобы избавиться от $a_{12}$
+
+\begin{theorem}
+    $(x', y')$ получено поворотом $(x,y)$ на $\alpha$:
+    \begin{gather*}
+        \begin{cases}
+            x' = x \cos \alpha + y \sin \alpha \\
+            y' = - x \sin \alpha + y \cos \alpha
+        \end{cases}\qquad
+        \begin{cases}
+            x = x' \cos \alpha - y' \sin \alpha \\
+            y = x' \sin \alpha + y' \cos \alpha
+        \end{cases}
+    \end{gather*}
+\end{theorem}
+\begin{proof}
+    Для доказательства используем полярную систему координат $(r, \phi) \to (r', \phi')$
+
+    \begin{gather*}
+        r' = r \qquad \phi' = \phi - \alpha\\
+        x = r \cos \phi \qquad y = r \sin \phi \\
+        \begin{cases}
+            x' = r' \cos \phi' = r \cos (\phi - \alpha) = r \cos \phi \cos \alpha + r \sin \phi \sin \alpha  \\
+            y' = r' \sin \phi' = r \sin (\phi - \alpha) = -r \cos \phi \sin \alpha + r \sin \phi \cos \alpha \\
+        \end{cases}\\
+        \begin{cases}
+            x' = x \cos \alpha + y \sin \alpha \\
+            y' = -x \sin \alpha + y \cos \alpha
+        \end{cases}\\
+        x = x' \cos \alpha - y' \sin \alpha\\
+        y = x' \sin \alpha + y' \cos \alpha
+    \end{gather*}
+\end{proof}
+
+Получили такое выражение, выясним при каком $\alpha a_{12}$ станет нулем
+\begin{multline*}
+    a_{11} (x' \cos \alpha - y' \sin \alpha)^2 + 2a_{12} (x' \cos \alpha - y' \sin \alpha)(x' \sin \alpha + y' \cos \alpha) + \\
+    + a_{22} (x' \sin \alpha + y' \cos \alpha)^2 + ... = 0
+\end{multline*}
+
+Коэффициент при $x'y'$:
+\begin{gather*}
+    a_{11}(-2\cos\alpha\sin\alpha) + 2 a_{12} (\cos^2 \alpha - \sin^2 \alpha)
+    + a_{22}(2\sin\alpha \cos\alpha) = 0\\
+    -a_{11} \sin 2\alpha + 2a_{12} \cos 2\alpha + a_{22} \sin 2 \alpha=0 |:\cos2\alpha\\
+    -a_{11} \tg 2 \alpha + a_{22} \tg 2 \alpha = -2 a_{12}\\
+    \tg 2 \alpha = \frac{2 a_{12}}{a_{11} - a_{22}}\\
+    \ctg 2 \alpha = \frac{a_{11} - a_{22}}{2a_{12}}
+\end{gather*}
+Если $a_{12} \neq 0$, то $\ctg 2 \alpha$ найдется, то найдем $\alpha \in \left[0; \frac{\pi}{2}\right]$.
+Если $a_{12} = 0$, то $\alpha = 0$
+
+\textbf{II шаг. } Теперь рассмотрим уравнение
+\[a_{11} x^2 + a_{22} y^2 + 2b_1 x + 2 b_2y +b_3 = 0\]
+(вообще-то везде штрихи)
+
+\begin{lemma}
+    Если $a_{11} \neq 0$, то считаем $b_1 = 0$ (иначе сдвинем переменные: $x' = x - x_0$)
+    \begin{gather*}
+        a_{11} x^2 + 2 b_1 x =
+        a_{11}\left(x^2+2\frac{b_1}{a_{11}}x + \frac{b_1^2}{a_{11}^2} -  \frac{b_1^2}{a_{11}^2}\right) =
+        a_{11} x'^2 - \frac{b_1^2}{a_{11}}\\
+        x' = x + \frac{b_1}{a_{11}}
+    \end{gather*}
+
+    Аналогично если $a_{22} \neq 0 $, то считаем $b_2=0$
+\end{lemma}
+
+\section{Виды кривых}
+\subsection{Эллиптический тип}
+$a_{11}>0, a_{22} > 0$ (иначе умножим на $-1$)
+\[a_{11} x^2 + a_{22} y^2 + b^3 = 0\]
+\begin{enumerate}
+    \item $b_3 < 0$ $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ -- эллипс
+          \[a = \sqrt{\frac{-b_3}{a_{11}}}; b = \sqrt{\frac{-b_3}{a_{22}}}\]
+    \item $b_3 = 0$ $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 0$ -- точка
+    \item $b_3> 0$ $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = -1$ -- пустое множество или мнимый эллипс
+\end{enumerate}
+
+\subsection{Гиперболический тип}
+$a_{11}>0, a_{22} < 0$ (или наоборот)
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item $b_3 \neq 0$ $\frac{x^2}{a^2} - \frac{y^2}{b_2} = 1$ --  гипербола
+    \item $b_3 = 0$ $\frac{x^2}{a^2} - \frac{y^2}{b_2} = 0$ -- пара пересекающихся прямых
+          \begin{gather*}
+              \left(\frac{x}{a}+\frac{y}{b}\right)\left(\frac{x}{a} - \frac{y}{b}\right)=0\\
+              \frac{x}{a} = \pm \frac{y}{b}
+          \end{gather*}
+\end{enumerate}
+
+\subsection{Параболический тип}
+$a_{11} = 0, a_{22} \neq 0$, считаем, что $b_2 = 0$
+\[a_{22}y^2 + 2b_1x + b_3 = 0\]
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item Если $b_1 \neq 0$, то считаем $b_3 = 0$
+          \[2b_1x + b_3 = 2b_1\left(x + \frac{b_3}{2b_1}\right) = 2b_1 x'\]
+          $y^2 = 2px$ -- парабола
+    \item Если $b_1 = 0, a_{22} > 0 \quad a_{22}y^2 + b_3 = 0$ \\
+          $b_3 < 0$ $\frac{y^2}{b^2} = 1$ -- пара параллельных прямых
+          \[\frac{y}{b} = \pm 1\]
+    \item $b_3=0$ $\frac{y^2}{b^2} =0$ -- одна прямая
+    \item $b_3>0$ $\frac{y^2}{b^2} =-1$ -- пустое множество или пара мнимых прямых
+\end{enumerate}
