@@ -14,3 +14,4 @@
 9. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Discrete%20Mathematics/Lections/9/master.pdf
 10. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Discrete%20Mathematics/Lections/10/master.pdf
 11. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Discrete%20Mathematics/Lections/11/master.pdf
+12. https://github.com/anunknowperson/spbu-matobes/blob/main/Semester%201/Discrete%20Mathematics/Lections/12/master.pdf

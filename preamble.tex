@@ -109,6 +109,7 @@
 \usepackage{pgfplots}
 \usepackage{tikz-cd}
 \usepackage{pgfkeys}
+\usetikzlibrary{shapes.geometric,arrows,fit,matrix,positioning}
 \usetikzlibrary{intersections, angles, quotes, calc, positioning}
 \usetikzlibrary{arrows.meta}
 \pgfplotsset{compat=1.13}
@@ -119,6 +120,11 @@
 }
 \tikzset{axis/.style={color=blue!50, very thick, -Latex}}
 \tikzset{dot/.style={draw,fill,circle,inner sep=0.05},}
+\tikzset
+{
+    treenode/.style = {circle, draw=black, align=center, minimum size=1cm},
+    subtree/.style  = {isosceles triangle, draw=black, align=center, minimum height=0.5cm, minimum width=1cm, shape border rotate=90, anchor=north}
+}
 
 % theorems
 \makeatother
